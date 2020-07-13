@@ -108,4 +108,3 @@ Optional:
       - (Read/GET) Query all posts where user is author
    - Create Post Screen
       - (Create/POST) Create a new post object
-

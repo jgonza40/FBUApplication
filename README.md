@@ -6,6 +6,7 @@
 1. [Overview](#Overview)
 1. [Product Spec](#Product-Spec)
 1. [Wireframes](#Wireframes)
+1. [Schema](#Schema)
 
 ## Overview
 ### Description
@@ -85,8 +86,26 @@ Optional:
 
 
 ## Wireframes
-<img src="revised-wireframe1.png" width=900><br>
-<img src="revised-wireframe2.png" width=900><br>
+<img src="revised-wireframe1.png" width=1100><br>
+<img src="revised-wireframe2.png" width=1100><br>
 
+## Schema 
+### Models
+#### Post
 
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the user post (default field) |
+   | author        | Pointer to User| image author |
+   | image         | File     | image that user posts |
+   | caption       | String   | image caption by author |
+   | category      | String   | will have an option of 6 categories |
+   | createdAt     | DateTime | date when post is created (default field) |
+   
+### Networking
+#### List of network requests by screen
+   - Home Feed Screen
+      - (Read/GET) Query all posts where user is author
+   - Create Post Screen
+      - (Create/POST) Create a new post object
 

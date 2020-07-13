@@ -39,8 +39,8 @@ Social Media App with a focus on uploading memories in the form of images or quo
 
 
 ## Wireframes
-<img src="revised-wireframe1.png" width=800><br>
-<img src="revised-wireframe2.png" width=800><br>
+<img src="revised-wireframe1.png" width=900><br>
+<img src="revised-wireframe2.png" width=900><br>
 
 
 

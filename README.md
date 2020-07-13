@@ -86,7 +86,7 @@ Optional:
 
 
 ## Wireframes
-<img src="rPage2.png" width=1000><br>
+<img src="Page2.png" width=1000><br>
 <img src="revised-wireframe2.png" width=1000><br>
 
 ## Schema 

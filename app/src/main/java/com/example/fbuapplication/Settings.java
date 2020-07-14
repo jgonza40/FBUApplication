@@ -5,14 +5,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toolbar;
 
 import com.parse.ParseUser;
 
 public class Settings extends AppCompatActivity {
 
-    Button btnLogout;
+    private Button btnLogout;
+    private Toolbar toolbar;
     public static final String TAG = "Settings";
 
     @Override
@@ -32,6 +36,7 @@ public class Settings extends AppCompatActivity {
 
         });
     }
+
     private void logoutUser(){
         Log.i(TAG, "Attempting to logout user ");
         ParseUser.logOut();
@@ -40,4 +45,5 @@ public class Settings extends AppCompatActivity {
         Intent i = new Intent(this, LoginActivity.class);
         startActivity(i);
     }
+
 }

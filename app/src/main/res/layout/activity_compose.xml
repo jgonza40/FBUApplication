@@ -5,52 +5,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ComposeActivity">
+    android:orientation="vertical"
+    android:padding="10dp">
 
-    <EditText
-        android:id="@+id/etDescription"
-        android:layout_width="match_parent"
+
+    <TextView
+        android:id="@+id/tvTypeCompose"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:backgroundTint="#33FFFFFF"
-        android:ems="10"
-        android:hint="Description..."
-        android:textColor="#FFFFFF"
+        android:layout_marginTop="276dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="what memory did u create today?"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnCaptureImage"
-        android:layout_width="match_parent"
+        android:id="@+id/btnImage"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#33FFFFFF"
-        android:text="Take Picture"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginTop="36dp"
+        android:text="image memory"
+        app:layout_constraintEnd_toStartOf="@+id/tvOr"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etDescription" />
-
-    <ImageView
-        android:id="@+id/ivPostImage"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCaptureImage"
-        tools:srcCompat="@tools:sample/avatars" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTypeCompose" />
 
     <Button
-        android:id="@+id/btnSubmit"
-        android:layout_width="match_parent"
+        android:id="@+id/btnQuote"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#33FFFFFF"
-        android:text="Submit"
-        android:textColor="#FFFFFF"
+        android:layout_marginTop="36dp"
+        android:text="quote memory"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivPostImage" />
+        app:layout_constraintStart_toEndOf="@+id/tvOr"
+        app:layout_constraintTop_toBottomOf="@+id/tvTypeCompose" />
 
+    <TextView
+        android:id="@+id/tvOr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:text="or"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnQuote"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnQuote" />
 </androidx.constraintlayout.widget.ConstraintLayout>

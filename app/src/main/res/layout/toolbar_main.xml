@@ -28,4 +28,12 @@
         app:layout_constraintStart_toStartOf="@+id/toolbar"
         app:layout_constraintTop_toTopOf="@+id/toolbar" />
 
+    <ImageView
+        android:id="@+id/settings_icon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="end"
+        android:onClick="goToSettings"
+        app:srcCompat="@drawable/ic_temp_settings" />
+
 </androidx.appcompat.widget.Toolbar>

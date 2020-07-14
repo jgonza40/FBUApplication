@@ -13,7 +13,7 @@
         android:id="@+id/tvTypeCompose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="276dp"
+        android:layout_marginTop="250dp"
         android:fontFamily="sans-serif-medium"
         android:text="what memory did u create today?"
         android:textSize="18sp"

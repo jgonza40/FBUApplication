@@ -17,7 +17,9 @@
             android:id="@+id/etDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
             android:backgroundTint="#33FF0000"
             android:ems="10"
             android:hint="Description..."
@@ -30,7 +32,9 @@
             android:id="@+id/btnCaptureImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="36dp"
+            android:layout_marginEnd="16dp"
             android:background="#33000000"
             android:text="Take Picture"
             android:textColor="#FFFFFF"
@@ -50,41 +54,44 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <Button
-            android:id="@+id/btnSubmit"
+            android:id="@+id/btnImagePost"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="48dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:background="#33000000"
-            android:text="Submit"
+            android:text="post"
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnSteppingStone" />
+            app:layout_constraintTop_toBottomOf="@+id/btnImageSteppingStone" />
 
         <Button
-            android:id="@+id/btnSelfCare"
+            android:id="@+id/btnImageSelfCare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="44dp"
             android:layout_marginTop="16dp"
             android:text="self-care"
-            app:layout_constraintStart_toEndOf="@+id/btnFood"
-            app:layout_constraintTop_toBottomOf="@+id/tvCategory" />
+            app:layout_constraintStart_toEndOf="@+id/btnImageFood"
+            app:layout_constraintTop_toBottomOf="@+id/tvImageCategory" />
 
         <Button
-            android:id="@+id/btnFood"
+            android:id="@+id/btnImageFood"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:text="food"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvCategory" />
+            app:layout_constraintTop_toBottomOf="@+id/tvImageCategory" />
 
         <Button
-            android:id="@+id/btnFamily"
+            android:id="@+id/btnImageFamily"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -92,24 +99,24 @@
             android:text="family"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/btnSelfCare"
-            app:layout_constraintTop_toBottomOf="@+id/tvCategory" />
+            app:layout_constraintStart_toEndOf="@+id/btnImageSelfCare"
+            app:layout_constraintTop_toBottomOf="@+id/tvImageCategory" />
 
         <Button
-            android:id="@+id/btnTravel"
+            android:id="@+id/btnImageTravel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="48dp"
             android:text="travel"
-            app:layout_constraintBottom_toTopOf="@+id/btnSubmit"
+            app:layout_constraintBottom_toTopOf="@+id/btnImagePost"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnFood"
+            app:layout_constraintTop_toBottomOf="@+id/btnImageFood"
             app:layout_constraintVertical_bias="1.0" />
 
         <Button
-            android:id="@+id/btnActive"
+            android:id="@+id/btnImageActive"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="21dp"
@@ -117,25 +124,25 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="48dp"
             android:text="active"
-            app:layout_constraintBottom_toTopOf="@+id/btnSubmit"
+            app:layout_constraintBottom_toTopOf="@+id/btnImagePost"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.9"
-            app:layout_constraintStart_toEndOf="@+id/btnSteppingStone"
-            app:layout_constraintTop_toBottomOf="@+id/btnFamily"
+            app:layout_constraintStart_toEndOf="@+id/btnImageSteppingStone"
+            app:layout_constraintTop_toBottomOf="@+id/btnImageFamily"
             app:layout_constraintVertical_bias="1.0" />
 
         <Button
-            android:id="@+id/btnSteppingStone"
+            android:id="@+id/btnImageSteppingStone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="21dp"
             android:layout_marginTop="16dp"
             android:text="stepping-stone"
-            app:layout_constraintStart_toEndOf="@+id/btnTravel"
-            app:layout_constraintTop_toBottomOf="@+id/btnSelfCare" />
+            app:layout_constraintStart_toEndOf="@+id/btnImageTravel"
+            app:layout_constraintTop_toBottomOf="@+id/btnImageSelfCare" />
 
         <TextView
-            android:id="@+id/tvCategory"
+            android:id="@+id/tvImageCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"

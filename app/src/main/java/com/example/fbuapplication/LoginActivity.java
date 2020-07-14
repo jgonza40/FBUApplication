@@ -48,9 +48,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Log.i(TAG, "onClick signUp button");
-                String username = etUsername.getText().toString();
-                String password = etPassword.getText().toString();
-                signUpUser(username, password);
+                signUpUser();
             }
         });
     }
@@ -72,7 +70,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void signUpUser(String newUsername, String newPassword) {
+    private void signUpUser() {
         Intent i = new Intent(this, SignUpActivity.class);
         startActivity(i);
         finish();

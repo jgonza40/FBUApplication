@@ -14,9 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ComposeActivity"></activity>
-        <activity android:name=".MapActivity" />
-        <activity android:name=".SearchActivity" />
-        <activity android:name=".ProfileActivity" />
         <activity android:name=".Settings" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".LoginActivity">

@@ -3,6 +3,8 @@ package com.example.fbuapplication;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,12 +13,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.fbuapplication.fragments.HomeFragment;
+import com.example.fbuapplication.fragments.MapFragment;
+import com.example.fbuapplication.fragments.ProfileFragment;
+import com.example.fbuapplication.fragments.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView bottomNavigationView;
     private Toolbar toolbar;
+    final FragmentManager fragmentManager = getSupportFragmentManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +41,32 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                return false;
+                Fragment fragment;
+                switch (menuItem.getItemId()) {
+                    case R.id.action_home:
+                        Toast.makeText(MainActivity.this, "home", Toast.LENGTH_SHORT).show();
+                        fragment = new HomeFragment();
+                        break;
+                    case R.id.action_map:
+                        Toast.makeText(MainActivity.this, "map", Toast.LENGTH_SHORT).show();
+                        fragment = new MapFragment();
+                        break;
+                    case R.id.action_search:
+                        Toast.makeText(MainActivity.this, "search", Toast.LENGTH_SHORT).show();
+                        fragment = new SearchFragment();
+                        break;
+                    case R.id.action_profile:
+                    default:
+                        Toast.makeText(MainActivity.this, "profile", Toast.LENGTH_SHORT).show();
+                        fragment = new ProfileFragment();
+                        break;
+                }
+                fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
+                return true;
             }
         });
+        // Set default selection
+        bottomNavigationView.setSelectedItemId(R.id.action_home);
     }
 
 //    @Override

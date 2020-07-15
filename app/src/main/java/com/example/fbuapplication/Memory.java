@@ -60,7 +60,7 @@ public class Memory extends ParseObject {
         return getString(KEY_CATEGORY);
     }
 
-    public void setCategory(int category){
+    public void setCategory(String category){
         put(KEY_CATEGORY, category);
     }
 }

@@ -41,6 +41,7 @@
         android:id="@+id/tvImgCreatedAt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
         android:text="yesterday"
         app:layout_constraintBottom_toBottomOf="@+id/ivImgProfilePic"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,15 +59,15 @@
         app:layout_constraintTop_toBottomOf="@+id/ivImgPostImage" />
 
     <TextView
-        android:id="@+id/tvImgTripTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="5dp"
-        android:text="Rome Trip"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/ivImgLocation"
-        app:layout_constraintTop_toBottomOf="@+id/ivImgProfilePic" />
+    android:id="@+id/tvImgTripTitle"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="5dp"
+    android:text="Rome Trip"
+    android:textSize="18sp"
+    app:layout_constraintStart_toEndOf="@+id/ivImgLocation"
+    app:layout_constraintTop_toBottomOf="@+id/ivImgProfilePic" />
 
     <ImageView
         android:id="@+id/ivImgLocation"
@@ -74,12 +75,12 @@
         android:layout_height="20dp"
         android:layout_marginTop="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/tvImgTripTitle"
-        app:layout_constraintStart_toEndOf="@+id/ivImgProfilePic"
+        app:layout_constraintStart_toStartOf="@+id/tvImgUsername"
         app:layout_constraintTop_toBottomOf="@+id/ivImgProfilePic"
         tools:srcCompat="@drawable/ic_location" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/tvQuoteCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"

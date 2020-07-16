@@ -8,21 +8,15 @@
     tools:context=".fragments.MapFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <fragment
-        android:id="@+id/map"
-        class="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toTopOf="@+id/btnCompose" />
 
     <Button
-        android:id="@+id/btnCompose"
+        android:id="@+id/btnGoToMap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="compose"
+        android:text="go to map"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView2" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

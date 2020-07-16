@@ -44,23 +44,30 @@ public class MainActivity extends AppCompatActivity {
                 Fragment fragment;
                 switch (menuItem.getItemId()) {
                     case R.id.action_home:
-                        Toast.makeText(MainActivity.this, "home", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MainActivity.this, "home", Toast.LENGTH_SHORT).show();
                         fragment = new HomeFragment();
+                        //fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
                         break;
                     case R.id.action_map:
-                        Toast.makeText(MainActivity.this, "map", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MainActivity.this, "map", Toast.LENGTH_SHORT).show();
                         fragment = new MapFragment();
+                        //Intent i = new Intent(MainActivity.this, MapComposeActivity.class);
+                        //startActivity(i);
                         break;
                     case R.id.action_search:
-                        Toast.makeText(MainActivity.this, "search", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MainActivity.this, "search", Toast.LENGTH_SHORT).show();
                         fragment = new SearchFragment();
+                        //fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
                         break;
                     case R.id.action_profile:
                     default:
-                        Toast.makeText(MainActivity.this, "profile", Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(MainActivity.this, "profile", Toast.LENGTH_SHORT).show();
                         fragment = new ProfileFragment();
+                        //fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
                         break;
                 }
+                // cannot do this here because not each of them are fragments so if map was clicked, the
+                // variable fragment would be null
                 fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
                 return true;
             }

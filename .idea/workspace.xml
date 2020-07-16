@@ -22,10 +22,15 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/fragments/MapFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/fragments/MapFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_map.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_map.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/map_memory_setter.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/map_window_item.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/toolbar_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/toolbar_main.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,15 +82,22 @@
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
-    <key name="android.template.1772549534">
-      <recent name="com.example.fbuapplication" />
-    </key>
-    <key name="android.template.-178521200">
-      <recent name="com.example.fbuapplication" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
       <recent name="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.example.fbuapplication" />
+    </key>
+    <key name="android.template.-723563452">
+      <recent name="com.example.fbuapplication" />
+    </key>
+    <key name="android.template.-178521200">
+      <recent name="com.example.fbuapplication.fragments" />
+      <recent name="com.example.fbuapplication" />
+    </key>
+    <key name="android.template.1772549534">
+      <recent name="com.example.fbuapplication" />
     </key>
   </component>
   <component name="RunManager">
@@ -172,10 +184,14 @@
     <state x="811" y="257" key="#com.intellij.ide.util.MemberChooser/0.23.1792.1031@0.23.1792.1031" timestamp="1594784169717" />
     <state x="811" y="258" key="#com.intellij.ide.util.MemberChooser/0.23.1792.1034@0.23.1792.1034" timestamp="1594758509889" />
     <state x="811" y="258" key="#com.intellij.ide.util.MemberChooser/0.23.1792.1036@0.23.1792.1036" timestamp="1594828933207" />
-    <state x="774" y="295" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1594837032461">
-      <screen x="0" y="23" width="1792" height="1033" />
+    <state x="760" y="472" width="473" height="276" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1594912670092">
+      <screen x="0" y="23" width="1792" height="1034" />
     </state>
-    <state x="774" y="294" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1792.1031@0.23.1792.1031" timestamp="1594756814437" />
+    <state x="760" y="472" width="473" height="276" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.23.1792.1034@0.23.1792.1034" timestamp="1594912670092" />
+    <state x="774" y="294" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1594914173934">
+      <screen x="0" y="23" width="1792" height="1031" />
+    </state>
+    <state x="774" y="294" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1792.1031@0.23.1792.1031" timestamp="1594914173934" />
     <state x="774" y="295" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1792.1033@0.23.1792.1033" timestamp="1594837032461" />
     <state x="591" y="300" key="AndroidCreateResourceDirectoryDialog" timestamp="1594828337845">
       <screen x="0" y="23" width="1792" height="1036" />
@@ -196,33 +212,33 @@
       <screen x="0" y="23" width="1792" height="1036" />
     </state>
     <state x="767" y="276" key="Github.UntrackedFilesDialog/0.23.1792.1036@0.23.1792.1036" timestamp="1594265045039" />
-    <state width="1670" height="164" key="GridCell.Tab.0.bottom" timestamp="1594851702430">
+    <state width="1670" height="164" key="GridCell.Tab.0.bottom" timestamp="1594913168446">
       <screen x="0" y="23" width="1792" height="1034" />
     </state>
     <state width="1364" height="245" key="GridCell.Tab.0.bottom/0.23.1792.1031@0.23.1792.1031" timestamp="1594785733481" />
     <state width="1364" height="245" key="GridCell.Tab.0.bottom/0.23.1792.1033@0.23.1792.1033" timestamp="1594703654597" />
-    <state width="1670" height="164" key="GridCell.Tab.0.bottom/0.23.1792.1034@0.23.1792.1034" timestamp="1594851702430" />
+    <state width="1670" height="164" key="GridCell.Tab.0.bottom/0.23.1792.1034@0.23.1792.1034" timestamp="1594913168446" />
     <state width="1670" height="164" key="GridCell.Tab.0.bottom/0.23.1792.1036@0.23.1792.1036" timestamp="1594831762515" />
-    <state width="1670" height="164" key="GridCell.Tab.0.center" timestamp="1594851702430">
+    <state width="1670" height="164" key="GridCell.Tab.0.center" timestamp="1594913168446">
       <screen x="0" y="23" width="1792" height="1034" />
     </state>
     <state width="1364" height="245" key="GridCell.Tab.0.center/0.23.1792.1031@0.23.1792.1031" timestamp="1594785733481" />
     <state width="1364" height="245" key="GridCell.Tab.0.center/0.23.1792.1033@0.23.1792.1033" timestamp="1594703654596" />
-    <state width="1670" height="164" key="GridCell.Tab.0.center/0.23.1792.1034@0.23.1792.1034" timestamp="1594851702430" />
+    <state width="1670" height="164" key="GridCell.Tab.0.center/0.23.1792.1034@0.23.1792.1034" timestamp="1594913168446" />
     <state width="1670" height="164" key="GridCell.Tab.0.center/0.23.1792.1036@0.23.1792.1036" timestamp="1594831762514" />
-    <state width="1670" height="164" key="GridCell.Tab.0.left" timestamp="1594851702429">
+    <state width="1670" height="164" key="GridCell.Tab.0.left" timestamp="1594913168445">
       <screen x="0" y="23" width="1792" height="1034" />
     </state>
     <state width="1364" height="245" key="GridCell.Tab.0.left/0.23.1792.1031@0.23.1792.1031" timestamp="1594785733481" />
     <state width="1364" height="245" key="GridCell.Tab.0.left/0.23.1792.1033@0.23.1792.1033" timestamp="1594703654596" />
-    <state width="1670" height="164" key="GridCell.Tab.0.left/0.23.1792.1034@0.23.1792.1034" timestamp="1594851702429" />
+    <state width="1670" height="164" key="GridCell.Tab.0.left/0.23.1792.1034@0.23.1792.1034" timestamp="1594913168445" />
     <state width="1670" height="164" key="GridCell.Tab.0.left/0.23.1792.1036@0.23.1792.1036" timestamp="1594831762514" />
-    <state width="1670" height="164" key="GridCell.Tab.0.right" timestamp="1594851702430">
+    <state width="1670" height="164" key="GridCell.Tab.0.right" timestamp="1594913168446">
       <screen x="0" y="23" width="1792" height="1034" />
     </state>
     <state width="1364" height="245" key="GridCell.Tab.0.right/0.23.1792.1031@0.23.1792.1031" timestamp="1594785733481" />
     <state width="1364" height="245" key="GridCell.Tab.0.right/0.23.1792.1033@0.23.1792.1033" timestamp="1594703654597" />
-    <state width="1670" height="164" key="GridCell.Tab.0.right/0.23.1792.1034@0.23.1792.1034" timestamp="1594851702430" />
+    <state width="1670" height="164" key="GridCell.Tab.0.right/0.23.1792.1034@0.23.1792.1034" timestamp="1594913168446" />
     <state width="1670" height="164" key="GridCell.Tab.0.right/0.23.1792.1036@0.23.1792.1036" timestamp="1594831762514" />
     <state x="742" y="325" key="chooseDestDirectoryDialog" timestamp="1594754547554">
       <screen x="0" y="23" width="1792" height="1033" />
@@ -233,5 +249,9 @@
     </state>
     <state x="322" y="100" width="1470" height="828" key="com.android.tools.idea.avdmanager.AvdListDialog/0.23.1792.1036@0.23.1792.1036" timestamp="1594840740027" />
     <state x="334" y="100" width="1470" height="828" key="com.android.tools.idea.avdmanager.AvdListDialog/0.23.1792.1037@0.23.1792.1037" timestamp="1594840560623" />
+    <state x="622" y="378" width="670" height="676" key="search.everywhere.popup" timestamp="1594913988989">
+      <screen x="0" y="23" width="1792" height="1031" />
+    </state>
+    <state x="622" y="378" width="670" height="676" key="search.everywhere.popup/0.23.1792.1031@0.23.1792.1031" timestamp="1594913988989" />
   </component>
 </project>

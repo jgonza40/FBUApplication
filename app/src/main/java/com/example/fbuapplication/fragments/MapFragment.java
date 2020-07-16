@@ -10,7 +10,6 @@ import android.location.Location;
 import android.os.Bundle;
 import android.os.Looper;
 import android.os.SystemClock;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +26,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+
+import com.example.fbuapplication.ComposeActivity;
+import com.example.fbuapplication.LocationRecap;
 import com.example.fbuapplication.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
@@ -54,11 +56,12 @@ import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.RuntimePermissions;
 
 import static com.google.android.gms.location.LocationServices.getFusedLocationProviderClient;
+
 @RuntimePermissions
-public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickListener, OnMapReadyCallback {
+public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickListener, OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
     //private Button btnCompose;
     private SupportMapFragment mapFragment;
-   // private GoogleMap map;
+    // private GoogleMap map;
     private LocationRequest mLocationRequest;
     Location mCurrentLocation;
     private long UPDATE_INTERVAL = 60000;  /* 60 secs */
@@ -100,9 +103,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         mContext = getActivity();
-
         FragmentManager fm = getActivity().getSupportFragmentManager();/// getChildFragmentManager();
         supportMapFragment = (SupportMapFragment) fm.findFragmentById(R.id.map_container);
         if (supportMapFragment == null) {
@@ -110,6 +111,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
             fm.beginTransaction().replace(R.id.map_container, supportMapFragment).commit();
         }
         supportMapFragment.getMapAsync(this);
+
     }
 
     @Override
@@ -120,8 +122,8 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
             return;
         }
         map.setMyLocationEnabled(true);
-        map.animateCamera(CameraUpdateFactory.zoomTo(15));
         map.setOnMapLongClickListener(this);
+        map.setOnInfoWindowClickListener(this);
     }
 
     // Fires when a long press happens on the map
@@ -156,8 +158,6 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
                         // Extract content from alert dialog
                         String title = ((EditText) alertDialog.findViewById(R.id.etMemoryTitle)).
                                 getText().toString();
-                        Button btnAdd = alertDialog.findViewById(R.id.btnAdd);
-                        Button btnView = alertDialog.findViewById(R.id.btnView);
                         // Creates and adds marker to the map
                         Marker marker = map.addMarker(new MarkerOptions()
                                 .position(point)
@@ -169,7 +169,9 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
         // Configure dialog button (Cancel)
         alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel",
                 new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) { dialog.cancel(); }
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
                 });
 
         // Display the dialog
@@ -335,6 +337,32 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
     public void onSaveInstanceState(Bundle savedInstanceState) {
         savedInstanceState.putParcelable(KEY_LOCATION, mCurrentLocation);
         super.onSaveInstanceState(savedInstanceState);
+    }
+
+    @Override
+    public void onInfoWindowClick(Marker marker) {
+        View messageView = LayoutInflater.from(getActivity()).inflate(R.layout.add_view_window, null);
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setView(messageView);
+        ((Button) messageView.findViewById(R.id.btnAdd)).setText("add");
+        ((Button) messageView.findViewById(R.id.btnView)).setText("view");
+        final AlertDialog alertDialog = builder.create();
+        messageView.findViewById(R.id.btnAdd).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), ComposeActivity.class);
+                startActivity(i);
+            }
+        });
+        messageView.findViewById(R.id.btnView).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), LocationRecap.class);
+                startActivity(i);
+            }
+        });
+        builder.setCancelable(true);
+        alertDialog.show();
     }
 
     // Define a DialogFragment that displays the error dialog

@@ -2,6 +2,7 @@ package com.example.fbuapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -73,6 +74,8 @@ public class ComposeQuoteMemory extends AppCompatActivity {
                 }
                 Log.i(TAG, "post was saved successfully!");
                 etQuote.setText("");
+                Intent i = new Intent(ComposeQuoteMemory.this, MainActivity.class);
+                startActivity(i);
                 // Setting pb to invisible once post is submitted
                 //pb.setVisibility(View.INVISIBLE);
             }

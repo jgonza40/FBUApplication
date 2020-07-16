@@ -23,11 +23,11 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/MapComposeActivity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/ComposeImageMemory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/ComposeImageMemory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/ComposeQuoteMemory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/ComposeQuoteMemory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/fragments/MapFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/fragments/MapFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_map_compose.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_map.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_map.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/custom_info_window.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/map_window_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/map_window_item.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,9 +51,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="valueResourceFile" />
-        <option value="Class" />
         <option value="resourceFile" />
         <option value="layoutResourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -174,10 +174,11 @@
       <screen x="0" y="23" width="1792" height="1033" />
     </state>
     <state x="479" y="534" key="#PSD/0.23.1792.1033@0.23.1792.1033" timestamp="1594848432888" />
-    <state x="811" y="258" key="#com.intellij.ide.util.MemberChooser" timestamp="1594828933207">
-      <screen x="0" y="23" width="1792" height="1036" />
+    <state x="811" y="257" key="#com.intellij.ide.util.MemberChooser" timestamp="1594932640349">
+      <screen x="0" y="23" width="1792" height="1033" />
     </state>
     <state x="811" y="257" key="#com.intellij.ide.util.MemberChooser/0.23.1792.1031@0.23.1792.1031" timestamp="1594784169717" />
+    <state x="811" y="257" key="#com.intellij.ide.util.MemberChooser/0.23.1792.1033@0.23.1792.1033" timestamp="1594932640349" />
     <state x="811" y="258" key="#com.intellij.ide.util.MemberChooser/0.23.1792.1034@0.23.1792.1034" timestamp="1594758509889" />
     <state x="811" y="258" key="#com.intellij.ide.util.MemberChooser/0.23.1792.1036@0.23.1792.1036" timestamp="1594828933207" />
     <state x="760" y="472" width="473" height="276" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1594912670092">
@@ -194,11 +195,11 @@
     </state>
     <state x="591" y="299" key="AndroidCreateResourceDirectoryDialog/0.23.1792.1031@0.23.1792.1031" timestamp="1594783896589" />
     <state x="591" y="300" key="AndroidCreateResourceDirectoryDialog/0.23.1792.1036@0.23.1792.1036" timestamp="1594828337845" />
-    <state x="624" y="303" key="AndroidCreateResourceFileDialog" timestamp="1594853643865">
+    <state x="624" y="303" key="AndroidCreateResourceFileDialog" timestamp="1594936753914">
       <screen x="0" y="23" width="1792" height="1033" />
     </state>
     <state x="624" y="302" key="AndroidCreateResourceFileDialog/0.23.1792.1031@0.23.1792.1031" timestamp="1594783917990" />
-    <state x="624" y="303" key="AndroidCreateResourceFileDialog/0.23.1792.1033@0.23.1792.1033" timestamp="1594853643865" />
+    <state x="624" y="303" key="AndroidCreateResourceFileDialog/0.23.1792.1033@0.23.1792.1033" timestamp="1594936753914" />
     <state x="624" y="303" key="AndroidCreateResourceFileDialog/0.23.1792.1034@0.23.1792.1034" timestamp="1594699751611" />
     <state x="854" y="463" key="Github.ShareDialog" timestamp="1594265040279">
       <screen x="0" y="23" width="1792" height="1036" />

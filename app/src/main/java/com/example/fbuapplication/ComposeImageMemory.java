@@ -205,6 +205,8 @@ public class ComposeImageMemory extends AppCompatActivity {
                 Log.i(TAG, "post was saved successfully!");
                 etDescription.setText("");
                 ivPostImage.setImageResource(0);
+                Intent i = new Intent(ComposeImageMemory.this, MainActivity.class);
+                startActivity(i);
                 // Setting pb to invisible once post is submitted
                 //pb.setVisibility(View.INVISIBLE);
             }

@@ -67,8 +67,8 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="imagePath" value="$PROJECT_DIR$/../profile_icon.png" />
-                                                <entry key="scalingPercent" value="75" />
+                                                <entry key="imagePath" value="$PROJECT_DIR$/../memRecapIcon.png" />
+                                                <entry key="scalingPercent" value="60" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -91,8 +91,8 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="$PROJECT_DIR$/../profile_icon.png" />
-                                                <entry key="scalingPercent" value="75" />
+                                                <entry key="imagePath" value="$PROJECT_DIR$/../memRecapIcon.png" />
+                                                <entry key="scalingPercent" value="60" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -124,8 +124,9 @@
                                   </option>
                                   <option name="values">
                                     <map>
+                                      <entry key="backgroundColor" value="ffffff" />
                                       <entry key="legacyIconShape" value="NONE" />
-                                      <entry key="outputName" value="ic_profile" />
+                                      <entry key="outputName" value="app_icon" />
                                     </map>
                                   </option>
                                 </PersistentState>

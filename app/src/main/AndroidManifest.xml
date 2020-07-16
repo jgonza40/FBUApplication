@@ -27,6 +27,7 @@
         android:roundIcon="@mipmap/mem_recap_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".FriendProfile"></activity>
         <activity android:name=".LocationRecap" />
 
         <provider

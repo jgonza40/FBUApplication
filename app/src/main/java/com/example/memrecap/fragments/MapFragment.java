@@ -1,4 +1,4 @@
-package com.example.fbuapplication.fragments;
+package com.example.memrecap.fragments;
 
 import android.Manifest;
 import android.app.Dialog;
@@ -26,11 +26,10 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
-import com.example.fbuapplication.ComposeActivity;
-import com.example.fbuapplication.LocationRecap;
-import com.example.fbuapplication.R;
+import com.example.memrecap.ComposeActivity;
+import com.example.memrecap.LocationRecap;
+import com.example.memrecap.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.FusedLocationProviderClient;

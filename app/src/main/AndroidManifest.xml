@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.fbuapplication">
+    package="com.example.memrecap">
 
     <permission
         android:name="android.permission.ACCESS_FINE_LOCATION"
@@ -20,15 +20,15 @@
         android:required="true" />
 
     <application
-        android:name=".ParseApplication"
+        android:name="com.example.memrecap.ParseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/new_app_icon"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/new_app_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FriendProfile"></activity>
-        <activity android:name=".LocationRecap" />
+        <activity android:name="com.example.memrecap.FriendProfile"></activity>
+        <activity android:name="com.example.memrecap.LocationRecap" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -43,19 +43,19 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity android:name=".ComposeQuoteMemory" />
-        <activity android:name=".ComposeImageMemory" />
-        <activity android:name=".ComposeActivity" />
-        <activity android:name=".Settings" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name="com.example.memrecap.ComposeQuoteMemory" />
+        <activity android:name="com.example.memrecap.ComposeImageMemory" />
+        <activity android:name="com.example.memrecap.ComposeActivity" />
+        <activity android:name="com.example.memrecap.Settings" />
+        <activity android:name="com.example.memrecap.SignUpActivity" />
+        <activity android:name="com.example.memrecap.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name="com.example.memrecap.MainActivity" />
 
         <uses-library
             android:name="com.google.android.maps"

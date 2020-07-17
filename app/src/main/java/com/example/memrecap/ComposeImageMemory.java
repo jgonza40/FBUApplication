@@ -1,4 +1,4 @@
-package com.example.fbuapplication;
+package com.example.memrecap;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;

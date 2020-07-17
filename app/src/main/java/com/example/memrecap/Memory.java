@@ -1,4 +1,4 @@
-package com.example.fbuapplication;
+package com.example.memrecap;
 
 import com.parse.ParseClassName;
 import com.parse.ParseFile;

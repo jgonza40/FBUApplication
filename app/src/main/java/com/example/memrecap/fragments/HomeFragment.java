@@ -1,4 +1,4 @@
-package com.example.fbuapplication.fragments;
+package com.example.memrecap.fragments;
 
 import android.os.Bundle;
 
@@ -11,8 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.fbuapplication.Memory;
-import com.example.fbuapplication.R;
+import com.example.memrecap.Memory;
+import com.example.memrecap.R;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;

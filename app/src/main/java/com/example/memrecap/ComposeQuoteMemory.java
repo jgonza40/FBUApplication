@@ -1,4 +1,4 @@
-package com.example.fbuapplication;
+package com.example.memrecap;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,11 +12,8 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.parse.ParseException;
-import com.parse.ParseFile;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
-
-import java.io.File;
 
 public class ComposeQuoteMemory extends AppCompatActivity {
 

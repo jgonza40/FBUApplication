@@ -1,4 +1,4 @@
-package com.example.fbuapplication;
+package com.example.memrecap;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,10 +9,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import com.example.fbuapplication.fragments.HomeFragment;
-import com.example.fbuapplication.fragments.MapFragment;
-import com.example.fbuapplication.fragments.ProfileFragment;
-import com.example.fbuapplication.fragments.SearchFragment;
+import com.example.memrecap.fragments.HomeFragment;
+import com.example.memrecap.fragments.MapFragment;
+import com.example.memrecap.fragments.ProfileFragment;
+import com.example.memrecap.fragments.SearchFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {

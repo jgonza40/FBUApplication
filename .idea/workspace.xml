@@ -12,10 +12,65 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ffd3ccd4-b44a-4282-bb00-4569c914bad3" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/toolbar_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/toolbar_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/app_icon.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/app_icon_round.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_temp_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-anydpi-v26/ic_temp_settings_round.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/app_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/app_icon_background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/app_icon_foreground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/app_icon_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_temp_settings.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_temp_settings_background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_temp_settings_foreground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/ic_temp_settings_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/app_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/app_icon_background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/app_icon_foreground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/app_icon_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_temp_settings.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_temp_settings_background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_temp_settings_foreground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-mdpi/ic_temp_settings_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/app_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/app_icon_background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/app_icon_foreground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/app_icon_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_temp_settings.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_temp_settings_background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_temp_settings_foreground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xhdpi/ic_temp_settings_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/app_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/app_icon_background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/app_icon_foreground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/app_icon_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_temp_settings.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_temp_settings_background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_temp_settings_foreground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxhdpi/ic_temp_settings_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/app_icon_background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/app_icon_foreground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/app_icon_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_temp_settings_background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_temp_settings_foreground.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/mipmap-xxxhdpi/ic_temp_settings_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,9 +121,8 @@
     <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
-      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
+    <key name="android.template.1772549534">
+      <recent name="com.example.fbuapplication" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.example.fbuapplication" />
@@ -80,8 +134,9 @@
       <recent name="com.example.fbuapplication.fragments" />
       <recent name="com.example.fbuapplication" />
     </key>
-    <key name="android.template.1772549534">
-      <recent name="com.example.fbuapplication" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable-v24" />
+      <recent name="$PROJECT_DIR$/app/src/main/res/drawable" />
     </key>
   </component>
   <component name="RunManager">
@@ -197,31 +252,31 @@
       <screen x="0" y="23" width="1792" height="1036" />
     </state>
     <state x="767" y="276" key="Github.UntrackedFilesDialog/0.23.1792.1036@0.23.1792.1036" timestamp="1594265045039" />
-    <state width="1670" height="164" key="GridCell.Tab.0.bottom" timestamp="1594913168446">
-      <screen x="0" y="23" width="1792" height="1034" />
+    <state width="1239" height="337" key="GridCell.Tab.0.bottom" timestamp="1595002392157">
+      <screen x="0" y="23" width="1792" height="1031" />
     </state>
-    <state width="1364" height="245" key="GridCell.Tab.0.bottom/0.23.1792.1031@0.23.1792.1031" timestamp="1594785733481" />
+    <state width="1239" height="337" key="GridCell.Tab.0.bottom/0.23.1792.1031@0.23.1792.1031" timestamp="1595002392157" />
     <state width="1364" height="245" key="GridCell.Tab.0.bottom/0.23.1792.1033@0.23.1792.1033" timestamp="1594703654597" />
     <state width="1670" height="164" key="GridCell.Tab.0.bottom/0.23.1792.1034@0.23.1792.1034" timestamp="1594913168446" />
     <state width="1670" height="164" key="GridCell.Tab.0.bottom/0.23.1792.1036@0.23.1792.1036" timestamp="1594831762515" />
-    <state width="1670" height="164" key="GridCell.Tab.0.center" timestamp="1594913168446">
-      <screen x="0" y="23" width="1792" height="1034" />
+    <state width="1239" height="337" key="GridCell.Tab.0.center" timestamp="1595002392157">
+      <screen x="0" y="23" width="1792" height="1031" />
     </state>
-    <state width="1364" height="245" key="GridCell.Tab.0.center/0.23.1792.1031@0.23.1792.1031" timestamp="1594785733481" />
+    <state width="1239" height="337" key="GridCell.Tab.0.center/0.23.1792.1031@0.23.1792.1031" timestamp="1595002392157" />
     <state width="1364" height="245" key="GridCell.Tab.0.center/0.23.1792.1033@0.23.1792.1033" timestamp="1594703654596" />
     <state width="1670" height="164" key="GridCell.Tab.0.center/0.23.1792.1034@0.23.1792.1034" timestamp="1594913168446" />
     <state width="1670" height="164" key="GridCell.Tab.0.center/0.23.1792.1036@0.23.1792.1036" timestamp="1594831762514" />
-    <state width="1670" height="164" key="GridCell.Tab.0.left" timestamp="1594913168445">
-      <screen x="0" y="23" width="1792" height="1034" />
+    <state width="1239" height="337" key="GridCell.Tab.0.left" timestamp="1595002392156">
+      <screen x="0" y="23" width="1792" height="1031" />
     </state>
-    <state width="1364" height="245" key="GridCell.Tab.0.left/0.23.1792.1031@0.23.1792.1031" timestamp="1594785733481" />
+    <state width="1239" height="337" key="GridCell.Tab.0.left/0.23.1792.1031@0.23.1792.1031" timestamp="1595002392156" />
     <state width="1364" height="245" key="GridCell.Tab.0.left/0.23.1792.1033@0.23.1792.1033" timestamp="1594703654596" />
     <state width="1670" height="164" key="GridCell.Tab.0.left/0.23.1792.1034@0.23.1792.1034" timestamp="1594913168445" />
     <state width="1670" height="164" key="GridCell.Tab.0.left/0.23.1792.1036@0.23.1792.1036" timestamp="1594831762514" />
-    <state width="1670" height="164" key="GridCell.Tab.0.right" timestamp="1594913168446">
-      <screen x="0" y="23" width="1792" height="1034" />
+    <state width="1239" height="337" key="GridCell.Tab.0.right" timestamp="1595002392157">
+      <screen x="0" y="23" width="1792" height="1031" />
     </state>
-    <state width="1364" height="245" key="GridCell.Tab.0.right/0.23.1792.1031@0.23.1792.1031" timestamp="1594785733481" />
+    <state width="1239" height="337" key="GridCell.Tab.0.right/0.23.1792.1031@0.23.1792.1031" timestamp="1595002392157" />
     <state width="1364" height="245" key="GridCell.Tab.0.right/0.23.1792.1033@0.23.1792.1033" timestamp="1594703654597" />
     <state width="1670" height="164" key="GridCell.Tab.0.right/0.23.1792.1034@0.23.1792.1034" timestamp="1594913168446" />
     <state width="1670" height="164" key="GridCell.Tab.0.right/0.23.1792.1036@0.23.1792.1036" timestamp="1594831762514" />

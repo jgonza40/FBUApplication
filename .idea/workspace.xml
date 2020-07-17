@@ -6,6 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="MapFra" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
@@ -19,21 +20,7 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/ComposeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/ComposeActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/ComposeImageMemory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/ComposeImageMemory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/ComposeQuoteMemory.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/ComposeQuoteMemory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/LoginActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/Settings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/SignUpActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/SignUpActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/fragments/HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/fragments/HomeFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/fragments/MapFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/fragments/MapFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/fragments/ProfileFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/fragments/ProfileFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/fragments/SearchFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/fbuapplication/fragments/SearchFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_compose_image_memory.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_compose_image_memory.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_compose_quote_memory.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_compose_quote_memory.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_map.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_map.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,33 +206,33 @@
       <screen x="0" y="23" width="1792" height="1036" />
     </state>
     <state x="767" y="276" key="Github.UntrackedFilesDialog/0.23.1792.1036@0.23.1792.1036" timestamp="1594265045039" />
-    <state width="1239" height="153" key="GridCell.Tab.0.bottom" timestamp="1595014926419">
+    <state width="1239" height="153" key="GridCell.Tab.0.bottom" timestamp="1595016023634">
       <screen x="0" y="23" width="1792" height="1031" />
     </state>
     <state width="1239" height="337" key="GridCell.Tab.0.bottom/0.23.1792.1031@0.0.1792.1120" timestamp="1595009927234" />
-    <state width="1239" height="153" key="GridCell.Tab.0.bottom/0.23.1792.1031@0.23.1792.1031" timestamp="1595014926419" />
+    <state width="1239" height="153" key="GridCell.Tab.0.bottom/0.23.1792.1031@0.23.1792.1031" timestamp="1595016023634" />
     <state width="1239" height="286" key="GridCell.Tab.0.bottom/0.23.1792.1033@0.23.1792.1033" timestamp="1595010741380" />
     <state width="1670" height="164" key="GridCell.Tab.0.bottom/0.23.1792.1034@0.23.1792.1034" timestamp="1594913168446" />
     <state width="1670" height="164" key="GridCell.Tab.0.bottom/0.23.1792.1036@0.23.1792.1036" timestamp="1594831762515" />
-    <state width="1239" height="153" key="GridCell.Tab.0.center" timestamp="1595014926417">
+    <state width="1239" height="153" key="GridCell.Tab.0.center" timestamp="1595016023633">
       <screen x="0" y="23" width="1792" height="1031" />
     </state>
-    <state width="1239" height="153" key="GridCell.Tab.0.center/0.23.1792.1031@0.23.1792.1031" timestamp="1595014926417" />
+    <state width="1239" height="153" key="GridCell.Tab.0.center/0.23.1792.1031@0.23.1792.1031" timestamp="1595016023633" />
     <state width="1239" height="286" key="GridCell.Tab.0.center/0.23.1792.1033@0.23.1792.1033" timestamp="1595010741380" />
     <state width="1670" height="164" key="GridCell.Tab.0.center/0.23.1792.1034@0.23.1792.1034" timestamp="1594913168446" />
     <state width="1670" height="164" key="GridCell.Tab.0.center/0.23.1792.1036@0.23.1792.1036" timestamp="1594831762514" />
-    <state width="1239" height="153" key="GridCell.Tab.0.left" timestamp="1595014926416">
+    <state width="1239" height="153" key="GridCell.Tab.0.left" timestamp="1595016023633">
       <screen x="0" y="23" width="1792" height="1031" />
     </state>
-    <state width="1239" height="153" key="GridCell.Tab.0.left/0.23.1792.1031@0.23.1792.1031" timestamp="1595014926416" />
+    <state width="1239" height="153" key="GridCell.Tab.0.left/0.23.1792.1031@0.23.1792.1031" timestamp="1595016023633" />
     <state width="1239" height="286" key="GridCell.Tab.0.left/0.23.1792.1033@0.23.1792.1033" timestamp="1595010741380" />
     <state width="1670" height="164" key="GridCell.Tab.0.left/0.23.1792.1034@0.23.1792.1034" timestamp="1594913168445" />
     <state width="1670" height="164" key="GridCell.Tab.0.left/0.23.1792.1036@0.23.1792.1036" timestamp="1594831762514" />
-    <state width="1239" height="153" key="GridCell.Tab.0.right" timestamp="1595014926418">
+    <state width="1239" height="153" key="GridCell.Tab.0.right" timestamp="1595016023634">
       <screen x="0" y="23" width="1792" height="1031" />
     </state>
     <state width="1239" height="337" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1595009927207" />
-    <state width="1239" height="153" key="GridCell.Tab.0.right/0.23.1792.1031@0.23.1792.1031" timestamp="1595014926417" />
+    <state width="1239" height="153" key="GridCell.Tab.0.right/0.23.1792.1031@0.23.1792.1031" timestamp="1595016023634" />
     <state width="1239" height="286" key="GridCell.Tab.0.right/0.23.1792.1033@0.23.1792.1033" timestamp="1595010741380" />
     <state width="1670" height="164" key="GridCell.Tab.0.right/0.23.1792.1034@0.23.1792.1034" timestamp="1594913168446" />
     <state width="1670" height="164" key="GridCell.Tab.0.right/0.23.1792.1036@0.23.1792.1036" timestamp="1594831762514" />

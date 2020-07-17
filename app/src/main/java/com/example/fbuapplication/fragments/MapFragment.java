@@ -26,6 +26,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.fbuapplication.ComposeActivity;
 import com.example.fbuapplication.LocationRecap;
@@ -59,9 +60,6 @@ import static com.google.android.gms.location.LocationServices.getFusedLocationP
 
 @RuntimePermissions
 public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickListener, OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
-    //private Button btnCompose;
-    //private SupportMapFragment mapFragment;
-    // private GoogleMap map;
     private LocationRequest mLocationRequest;
     Location mCurrentLocation;
     private long UPDATE_INTERVAL = 60000;  /* 60 secs */
@@ -79,13 +77,10 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
     private Context mContext;
     private SupportMapFragment supportMapFragment;
     private GoogleMap map;
-//    private MarkerOptions currentPositionMarker = null;
-//    private Marker currentLocationMarker;
 
     public MapFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -97,7 +92,6 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
     }
 
     @Override
@@ -142,10 +136,8 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
         // set message_item.xml to AlertDialog builder
         alertDialogBuilder.setView(messageView);
-
         // Create alert dialog
         final AlertDialog alertDialog = alertDialogBuilder.create();
-
         // Configure dialog button (OK)
         alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK",
                 new DialogInterface.OnClickListener() {
@@ -172,21 +164,16 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
                         dialog.cancel();
                     }
                 });
-
-        // Display the dialog
         alertDialog.show();
     }
-
     private void dropPinEffect(final Marker marker) {
         // Handler allows us to repeat a code block after a specified delay
         final android.os.Handler handler = new android.os.Handler();
         final long start = SystemClock.uptimeMillis();
         final long duration = 1500;
-
         // Use the bounce interpolator
         final android.view.animation.Interpolator interpolator =
                 new BounceInterpolator();
-
         // Animate marker with a bounce updating its position every 15ms
         handler.post(new Runnable() {
             @Override
@@ -198,7 +185,6 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
                                 / duration), 0);
                 // Set the anchor
                 marker.setAnchor(0.5f, 1.0f + 14 * t);
-
                 if (t > 0.0) {
                     // Post this event again 15ms from now.
                     handler.postDelayed(this, 15);
@@ -268,7 +254,6 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
             // Get the error dialog from Google Play services
             Dialog errorDialog = GooglePlayServicesUtil.getErrorDialog(resultCode, getActivity(),
                     CONNECTION_FAILURE_RESOLUTION_REQUEST);
-
             // If Google Play services can provide an error dialog
             if (errorDialog != null) {
                 // Create a new DialogFragment for the error dialog
@@ -276,7 +261,6 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
                 errorFragment.setDialog(errorDialog);
                 errorFragment.show(getActivity().getSupportFragmentManager(), "Location Updates");
             }
-
             return false;
         }
     }
@@ -294,7 +278,6 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
             Toast.makeText(getContext(), "Current location was null, enable GPS on emulator!", Toast.LENGTH_SHORT).show();
         }
         MapFragmentPermissionsDispatcher.startLocationUpdatesWithPermissionCheck(this);
-
     }
 
     @NeedsPermission({Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION})
@@ -330,8 +313,8 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
         String msg = "Updated Location: " +
                 Double.toString(location.getLatitude()) + "," +
                 Double.toString(location.getLongitude());
-        Log.i(TAG, mCurrentLocation.toString());
-        Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+        // When I leave this, it crashes app on second run (weirddddd)
+        //Toast.makeText(getContext(), msg, Toast.LENGTH_SHORT).show();
     }
 
     public void onSaveInstanceState(Bundle savedInstanceState) {
@@ -367,7 +350,6 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
 
     // Define a DialogFragment that displays the error dialog
     public static class ErrorDialogFragment extends DialogFragment {
-
         // Global field to contain the error dialog
         private Dialog mDialog;
 

@@ -51,11 +51,11 @@ public class ComposeImageMemory extends AppCompatActivity {
     private String setCategory;
     public String photoFileName = "photo.jpg";
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compose_image_memory);
+        pb = findViewById(R.id.pbImgLoad);
         etDescription = findViewById(R.id.etDescription);
         btnCaptureImage = findViewById(R.id.btnCaptureImage);
         ivPostImage = findViewById(R.id.ivPostImage);
@@ -86,17 +86,17 @@ public class ComposeImageMemory extends AppCompatActivity {
                     return;
                 }
                 ParseUser currentUser = ParseUser.getCurrentUser();
-                if(setCategory == ""){
+                if (setCategory == "") {
                     Toast.makeText(ComposeImageMemory.this, "must select a category!", Toast.LENGTH_LONG).show();
                     return;
                 }
-                //pb.setVisibility(ProgressBar.VISIBLE);
+                pb.setVisibility(ProgressBar.VISIBLE);
                 savePost(description, currentUser, photoFile, setCategory);
             }
         });
     }
 
-    private String getCategory(){
+    private String getCategory() {
         setCategory = "";
         btnImageFood.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -202,13 +202,13 @@ public class ComposeImageMemory extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "error while saving!", Toast.LENGTH_LONG).show();
                     return;
                 }
-                Log.i(TAG, "post was saved successfully!");
                 etDescription.setText("");
                 ivPostImage.setImageResource(0);
+                // Setting pb to invisible once post is submitted
+                pb.setVisibility(View.INVISIBLE);
                 Intent i = new Intent(ComposeImageMemory.this, MainActivity.class);
                 startActivity(i);
-                // Setting pb to invisible once post is submitted
-                //pb.setVisibility(View.INVISIBLE);
+                finish();
             }
         });
     }

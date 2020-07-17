@@ -28,6 +28,7 @@ public class HomeFragment extends Fragment {
     public HomeFragment() {
         // Required empty public constructor
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -41,6 +42,7 @@ public class HomeFragment extends Fragment {
         queryPosts();
     }
 
+    // Getting posts from the Parse backend
     protected void queryPosts() {
         // Specify which class to query
         ParseQuery<Memory> query = ParseQuery.getQuery(Memory.class);
@@ -55,12 +57,8 @@ public class HomeFragment extends Fragment {
                     return;
                 }
                 for (Memory memory : memories) {
-                    Log.i(TAG, "Post: " + memory.getDescription() + ", Username: " + memory.getUser().getUsername());
+                    // Will add all memories in parse to display in all
                 }
-//                adapter.clear();
-//                adapter.addAll(posts);
-//                swipeContainer.setRefreshing(false);
-//                adapter.notifyDataSetChanged();
             }
         });
     }

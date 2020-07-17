@@ -26,7 +26,6 @@ public class SignUpActivity extends AppCompatActivity {
     public static final String KEY_FIRST_NAME = "firstName";
     public static final String KEY_LAST_NAME = "lastName";
     public static final String KEY_BIRTHDAY = "birthday";
-    public static final String KEY_PROFILE_PICTURE = "profilePicture";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +45,6 @@ public class SignUpActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.i(TAG, "onClick signUp button");
                 String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
                 String birthday = etBirthday.getText().toString();
@@ -75,8 +73,6 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(SignUpActivity.this, "Issue with password", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
-                    // Sign up didn't succeed. Look at the ParseException
-                    // to figure out what went wrong
                     goMainActivity();
                 }
             }
@@ -89,8 +85,7 @@ public class SignUpActivity extends AppCompatActivity {
         finish();
     }
 
-    private void errorCheckBirthday(String birthdayInput){
+    private void errorCheckBirthday(String birthdayInput) {
         //DEAL W ERROR CHECKING HERE
-
     }
 }

@@ -38,12 +38,11 @@ public class Settings extends AppCompatActivity {
     }
 
     private void logoutUser(){
-        Log.i(TAG, "Attempting to logout user ");
         ParseUser.logOut();
     }
+
     private void goLoginActivity() {
         Intent i = new Intent(this, LoginActivity.class);
         startActivity(i);
     }
-
 }

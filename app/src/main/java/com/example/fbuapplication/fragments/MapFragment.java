@@ -60,7 +60,7 @@ import static com.google.android.gms.location.LocationServices.getFusedLocationP
 @RuntimePermissions
 public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickListener, OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
     //private Button btnCompose;
-    private SupportMapFragment mapFragment;
+    //private SupportMapFragment mapFragment;
     // private GoogleMap map;
     private LocationRequest mLocationRequest;
     Location mCurrentLocation;
@@ -79,8 +79,8 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
     private Context mContext;
     private SupportMapFragment supportMapFragment;
     private GoogleMap map;
-    private MarkerOptions currentPositionMarker = null;
-    private Marker currentLocationMarker;
+//    private MarkerOptions currentPositionMarker = null;
+//    private Marker currentLocationMarker;
 
     public MapFragment() {
         // Required empty public constructor
@@ -104,14 +104,13 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mContext = getActivity();
-        FragmentManager fm = getActivity().getSupportFragmentManager();/// getChildFragmentManager();
+        FragmentManager fm = getChildFragmentManager();
         supportMapFragment = (SupportMapFragment) fm.findFragmentById(R.id.map_container);
         if (supportMapFragment == null) {
             supportMapFragment = SupportMapFragment.newInstance();
             fm.beginTransaction().replace(R.id.map_container, supportMapFragment).commit();
         }
         supportMapFragment.getMapAsync(this);
-
     }
 
     @Override
@@ -285,7 +284,6 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
     @Override
     public void onResume() {
         super.onResume();
-
         // Display the connection status
         if (mCurrentLocation != null) {
             Toast.makeText(getContext(), "GPS location was found!", Toast.LENGTH_SHORT).show();
@@ -296,6 +294,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
             Toast.makeText(getContext(), "Current location was null, enable GPS on emulator!", Toast.LENGTH_SHORT).show();
         }
         MapFragmentPermissionsDispatcher.startLocationUpdatesWithPermissionCheck(this);
+
     }
 
     @NeedsPermission({Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION})
@@ -331,6 +330,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
         String msg = "Updated Location: " +
                 Double.toString(location.getLatitude()) + "," +
                 Double.toString(location.getLongitude());
+        Log.i(TAG, mCurrentLocation.toString());
         Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
     }
 

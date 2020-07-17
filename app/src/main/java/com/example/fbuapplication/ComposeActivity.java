@@ -18,7 +18,7 @@ public class ComposeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_compose);
         btnImage = findViewById(R.id.btnImage);
         btnQuote = findViewById(R.id.btnQuote);
-
+        // Didn't add finish() so users are able to come back to activity
         btnImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

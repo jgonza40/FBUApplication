@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.parse.ParseException;
@@ -35,6 +36,7 @@ public class ComposeQuoteMemory extends AppCompatActivity {
     private String setCategory;
     private EditText etQuote;
     private Button btnPost;
+    private ProgressBar pb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,7 @@ public class ComposeQuoteMemory extends AppCompatActivity {
         btnImageTravel = findViewById(R.id.btnQuoteTravel);
         btnImageSteppingStone = findViewById(R.id.btnQuoteSteppingStone);
         btnImageActive = findViewById(R.id.btnQuoteActive);
+        pb = findViewById(R.id.pbQuoteLoad);
         etQuote = findViewById(R.id.etQuote);
         getCategory();
         btnPost.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +57,7 @@ public class ComposeQuoteMemory extends AppCompatActivity {
             public void onClick(View view) {
                 String quote = etQuote.getText().toString();
                 ParseUser currentUser = ParseUser.getCurrentUser();
+                pb.setVisibility(ProgressBar.VISIBLE);
                 savePost(quote, currentUser, setCategory);
             }
         });
@@ -72,15 +76,16 @@ public class ComposeQuoteMemory extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "error while saving!", Toast.LENGTH_LONG).show();
                     return;
                 }
-                Log.i(TAG, "post was saved successfully!");
                 etQuote.setText("");
+                // Setting pb to invisible once post is submitted
+                pb.setVisibility(View.INVISIBLE);
                 Intent i = new Intent(ComposeQuoteMemory.this, MainActivity.class);
                 startActivity(i);
-                // Setting pb to invisible once post is submitted
-                //pb.setVisibility(View.INVISIBLE);
+                finish();
             }
         });
     }
+
     private String getCategory(){
         setCategory = "";
         btnImageFood.setOnClickListener(new View.OnClickListener() {

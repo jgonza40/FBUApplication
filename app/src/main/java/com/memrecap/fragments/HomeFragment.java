@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,7 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.memrecap.MemoryImageAdapter;
+import com.memrecap.MemoryAdapter;
 import com.memrecap.models.Memory;
 import com.memrecap.R;
 import com.parse.FindCallback;
@@ -31,7 +30,7 @@ public class HomeFragment extends Fragment {
     public static final String TAG = "HomeFragment";
     public static final int MAX_POSTS = 20;
     private RecyclerView rvPosts;
-    protected MemoryImageAdapter imgAdapter;
+    protected MemoryAdapter adapter;
     protected List<Memory> imgMemories;
     private SwipeRefreshLayout swipeContainer;
 
@@ -51,8 +50,8 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         rvPosts = view.findViewById(R.id.rvPosts);
         imgMemories = new ArrayList<>();
-        imgAdapter = new MemoryImageAdapter(getContext(), imgMemories);
-        rvPosts.setAdapter(imgAdapter);
+        adapter = new MemoryAdapter(getContext(), imgMemories);
+        rvPosts.setAdapter(adapter);
         rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
         queryPosts();
     }
@@ -82,7 +81,7 @@ public class HomeFragment extends Fragment {
                     // Will add all memories in parse to display in all
                 }
                 imgMemories.addAll(imageMems);
-                imgAdapter.notifyDataSetChanged();
+                adapter.notifyDataSetChanged();
 //                quoteMemories.addAll(quoteMems);
 //                quoteAdapter.notifyDataSetChanged();
             }

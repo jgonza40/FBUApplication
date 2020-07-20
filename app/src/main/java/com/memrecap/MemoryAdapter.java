@@ -20,7 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
 
-public class MemoryImageAdapter extends RecyclerView.Adapter<MemoryImageAdapter.ViewHolder> {
+public class MemoryAdapter extends RecyclerView.Adapter<MemoryAdapter.ViewHolder> {
 
     private Context context;
     private List<Memory> memories;
@@ -29,9 +29,9 @@ public class MemoryImageAdapter extends RecyclerView.Adapter<MemoryImageAdapter.
     private static final int HOUR_MILLIS = 60 * MINUTE_MILLIS;
     private static final int DAY_MILLIS = 24 * HOUR_MILLIS;
     public static final String USER_PROFILE_PIC = "profilePicture";
-    public static final String TAG = "MemoryImageAdapter";
+    public static final String TAG = "MemoryAdapter";
 
-    public MemoryImageAdapter(Context context, List<Memory> memories) {
+    public MemoryAdapter(Context context, List<Memory> memories) {
         this.context = context;
         this.memories = memories;
     }
@@ -54,7 +54,7 @@ public class MemoryImageAdapter extends RecyclerView.Adapter<MemoryImageAdapter.
         return memories.size();
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder{
+     class ViewHolder extends RecyclerView.ViewHolder{
 
         private ImageView ivImgPostImage;
         private TextView tvImgUsername;

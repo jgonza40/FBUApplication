@@ -5,6 +5,8 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseUser;
 
+import org.json.JSONObject;
+
 @ParseClassName("Memory")
 public class Memory extends ParseObject {
 
@@ -15,52 +17,61 @@ public class Memory extends ParseObject {
     public static final String KEY_MEMORY_TITLE = "memoryTitle";
     public static final String KEY_CATEGORY = "category";
     public static final String KEY_CREATED_AT = "createdAt";
+    public static final String KEY_MARKER = "marker";
 
-    public String getDescription(){
+    public String getDescription() {
         return getString(KEY_DESCRIPTION);
     }
 
-    public void setDescription(String description){
+    public void setDescription(String description) {
         put(KEY_DESCRIPTION, description);
     }
 
-    public ParseFile getImage(){
+    public ParseFile getImage() {
         return getParseFile(KEY_IMAGE);
     }
 
-    public void setImage(ParseFile parseFile){
+    public void setImage(ParseFile parseFile) {
         put(KEY_IMAGE, parseFile);
     }
 
-    public ParseUser getUser(){
+    public ParseUser getUser() {
         return getParseUser(KEY_USER);
     }
 
-    public void setUser(ParseUser user){
+    public void setUser(ParseUser user) {
         put(KEY_USER, user);
     }
 
-    public String getQuote(){
+    public JSONObject getKeyMarker() {
+        return getJSONObject(KEY_MARKER);
+    }
+
+    public void setMarker(JSONObject marker) {
+        put(KEY_MARKER, marker);
+    }
+
+    public String getQuote() {
         return getString(KEY_QUOTE);
     }
 
-    public void setQuote(String quote){
+    public void setQuote(String quote) {
         put(KEY_QUOTE, quote);
     }
 
-    public String getMemoryTitle(){
+    public String getMemoryTitle() {
         return getString(KEY_MEMORY_TITLE);
     }
 
-    public void setMemoryTitle(String memoryTitle){
+    public void setMemoryTitle(String memoryTitle) {
         put(KEY_MEMORY_TITLE, memoryTitle);
     }
 
-    public String getCategory(){
+    public String getCategory() {
         return getString(KEY_CATEGORY);
     }
 
-    public void setCategory(String category){
+    public void setCategory(String category) {
         put(KEY_CATEGORY, category);
     }
 }

@@ -2,6 +2,7 @@ package com.memrecap;
 
 import android.app.Application;
 
+import com.memrecap.models.Marker;
 import com.memrecap.models.Memory;
 import com.parse.Parse;
 import com.parse.ParseObject;
@@ -14,6 +15,7 @@ public class ParseApplication extends Application {
 
         // Register your parse models
         ParseObject.registerSubclass(Memory.class);
+        ParseObject.registerSubclass(Marker.class);
 
         // set applicationId, and server server based on the values in the Heroku settings.
         // clientKey is not needed unless explicitly configured

@@ -18,7 +18,6 @@ import android.view.animation.BounceInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -26,7 +25,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-
 import com.memrecap.activities.ComposeActivity;
 import com.memrecap.activities.LocationRecap;
 import com.memrecap.R;
@@ -47,10 +45,19 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.memrecap.activities.SignUpActivity;
+import com.memrecap.models.Marker;
+import com.parse.ParseException;
+import com.parse.ParseUser;
+import com.parse.SaveCallback;
+import com.parse.SignUpCallback;
+
+import org.json.JSONArray;
+
+import java.lang.reflect.Array;
 
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.RuntimePermissions;
@@ -64,6 +71,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
     private long UPDATE_INTERVAL = 60000;  /* 60 secs */
     private long FASTEST_INTERVAL = 5000; /* 5 secs */
     public static final String TAG = "MapFragment";
+    public static final String MARKERS_ARRAY = "markers";
 
     private final static String KEY_LOCATION = "location";
 
@@ -144,16 +152,18 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
                     public void onClick(DialogInterface dialog, int which) {
                         // Define color of marker icon
                         BitmapDescriptor defaultMarker =
-                                BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN);
+                                BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE);
                         // Extract content from alert dialog
                         String title = ((EditText) alertDialog.findViewById(R.id.etMemoryTitle)).
                                 getText().toString();
                         // Creates and adds marker to the map
-                        Marker marker = map.addMarker(new MarkerOptions()
+                        com.google.android.gms.maps.model.Marker marker = map.addMarker(new MarkerOptions()
                                 .position(point)
                                 .title(title)
                                 .icon(defaultMarker));
                         dropPinEffect(marker);
+                        // Setting database stuff
+                        saveParseMarker(marker, title);
                     }
                 });
         // Configure dialog button (Cancel)
@@ -165,7 +175,41 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
                 });
         alertDialog.show();
     }
-    private void dropPinEffect(final Marker marker) {
+
+    private void saveParseMarker(com.google.android.gms.maps.model.Marker marker, String title){
+        ParseUser user = ParseUser.getCurrentUser();
+
+        Marker newMarker = new Marker();
+        newMarker.setMarkerLat(Double.toString(marker.getPosition().latitude));
+        newMarker.setMarkerLong(Double.toString((marker.getPosition().longitude)));
+        newMarker.setMarkerUser(user);
+        newMarker.setMarkerTitle(title);
+        newMarker.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Error while saving marker", e);
+                    Toast.makeText(getContext(), "error while saving!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                Log.i(TAG, "marker was saved successfully!");
+            }
+        });
+        user.add(MARKERS_ARRAY, newMarker.toString());
+        user.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Error while saving marker to user", e);
+                    Toast.makeText(getContext(), "error while saving marker to user!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                Log.i(TAG, "marker was to user saved successfully!");
+            }
+        });
+    }
+
+    private void dropPinEffect(final com.google.android.gms.maps.model.Marker marker) {
         // Handler allows us to repeat a code block after a specified delay
         final android.os.Handler handler = new android.os.Handler();
         final long start = SystemClock.uptimeMillis();
@@ -230,7 +274,12 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
      */
     @Override
     public void onStart() {
+        loadUserMarkers();
         super.onStart();
+    }
+
+    private void loadUserMarkers() {
+
     }
 
     /*
@@ -322,7 +371,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
     }
 
     @Override
-    public void onInfoWindowClick(Marker marker) {
+    public void onInfoWindowClick(com.google.android.gms.maps.model.Marker marker) {
         View messageView = LayoutInflater.from(getActivity()).inflate(R.layout.add_view_window, null);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(messageView);

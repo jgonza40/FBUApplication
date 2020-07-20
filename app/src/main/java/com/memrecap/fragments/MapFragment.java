@@ -50,7 +50,9 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.memrecap.activities.SignUpActivity;
 import com.memrecap.models.Marker;
+import com.parse.FindCallback;
 import com.parse.ParseException;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 import com.parse.SignUpCallback;
@@ -58,6 +60,7 @@ import com.parse.SignUpCallback;
 import org.json.JSONArray;
 
 import java.lang.reflect.Array;
+import java.util.List;
 
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.RuntimePermissions;
@@ -279,6 +282,28 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
     }
 
     private void loadUserMarkers() {
+        // Specify which class to query
+//        ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
+//        query.include(Post.KEY_USER);
+//        query.setLimit(MAX_POSTS);
+//        query.addDescendingOrder(Post.KEY_CREATED_AT);
+//        query.findInBackground(new FindCallback<Post>() {
+//            @Override
+//            public void done(List<Post> posts, ParseException e) {
+//                if (e != null) {
+//                    Log.e(TAG, "Issue with getting posts", e);
+//                    return;
+//                }
+//                for (Post post : posts) {
+//                    Log.i(TAG, "Post: " + post.getDescription() + ", Username: " + post.getUser().getUsername());
+//                }
+//                adapter.clear();
+//                adapter.addAll(posts);
+//                swipeContainer.setRefreshing(false);
+//                //allPosts.addAll(posts);
+//                adapter.notifyDataSetChanged();
+//            }
+//        });
 
     }
 

@@ -27,8 +27,8 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.memrecap.ComposeActivity;
-import com.memrecap.LocationRecap;
+import com.memrecap.activities.ComposeActivity;
+import com.memrecap.activities.LocationRecap;
 import com.memrecap.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;

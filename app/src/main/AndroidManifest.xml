@@ -27,8 +27,8 @@
         android:roundIcon="@mipmap/new_app_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.memrecap.FriendProfile"></activity>
-        <activity android:name="com.memrecap.LocationRecap" />
+        <activity android:name="com.memrecap.activities.FriendProfile"></activity>
+        <activity android:name="com.memrecap.activities.LocationRecap" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -43,19 +43,19 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity android:name="com.memrecap.ComposeQuoteMemory" />
-        <activity android:name="com.memrecap.ComposeImageMemory" />
-        <activity android:name="com.memrecap.ComposeActivity" />
-        <activity android:name="com.memrecap.Settings" />
-        <activity android:name="com.memrecap.SignUpActivity" />
-        <activity android:name="com.memrecap.LoginActivity">
+        <activity android:name="com.memrecap.activities.ComposeQuoteMemory" />
+        <activity android:name="com.memrecap.activities.ComposeImageMemory" />
+        <activity android:name="com.memrecap.activities.ComposeActivity" />
+        <activity android:name="com.memrecap.activities.Settings" />
+        <activity android:name="com.memrecap.activities.SignUpActivity" />
+        <activity android:name="com.memrecap.activities.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.memrecap.MainActivity" />
+        <activity android:name="com.memrecap.activities.MainActivity" />
 
         <uses-library
             android:name="com.google.android.maps"

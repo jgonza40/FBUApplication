@@ -2,6 +2,7 @@ package com.memrecap;
 
 import android.app.Application;
 
+import com.memrecap.models.Memory;
 import com.parse.Parse;
 import com.parse.ParseObject;
 

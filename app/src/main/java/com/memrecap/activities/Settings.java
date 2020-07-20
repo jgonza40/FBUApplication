@@ -1,4 +1,4 @@
-package com.memrecap;
+package com.memrecap.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toolbar;
 
+import com.memrecap.R;
+import com.memrecap.activities.LoginActivity;
 import com.parse.ParseUser;
 
 public class Settings extends AppCompatActivity {

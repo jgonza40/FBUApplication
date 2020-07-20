@@ -1,4 +1,4 @@
-package com.memrecap;
+package com.memrecap.models;
 
 import com.parse.ParseClassName;
 import com.parse.ParseObject;

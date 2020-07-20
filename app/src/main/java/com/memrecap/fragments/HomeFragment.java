@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.memrecap.Memory;
+import com.memrecap.models.Memory;
 import com.memrecap.R;
 import com.parse.FindCallback;
 import com.parse.ParseException;

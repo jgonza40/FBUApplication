@@ -1,4 +1,4 @@
-package com.memrecap;
+package com.memrecap.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.memrecap.R;
 import com.memrecap.fragments.HomeFragment;
 import com.memrecap.fragments.MapFragment;
 import com.memrecap.fragments.ProfileFragment;

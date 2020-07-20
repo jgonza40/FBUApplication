@@ -1,4 +1,4 @@
-package com.example.memrecap;
+package com.memrecap;
 
 import androidx.appcompat.app.AppCompatActivity;
 

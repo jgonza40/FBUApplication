@@ -1,4 +1,4 @@
-package com.example.memrecap.fragments;
+package com.memrecap.fragments;
 
 import android.Manifest;
 import android.app.Dialog;
@@ -27,9 +27,9 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.example.memrecap.ComposeActivity;
-import com.example.memrecap.LocationRecap;
-import com.example.memrecap.R;
+import com.memrecap.ComposeActivity;
+import com.memrecap.LocationRecap;
+import com.memrecap.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.FusedLocationProviderClient;

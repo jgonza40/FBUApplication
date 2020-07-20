@@ -1,8 +1,9 @@
-package com.example.memrecap;
+package com.memrecap;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
 
 public class FriendProfile extends AppCompatActivity {
 

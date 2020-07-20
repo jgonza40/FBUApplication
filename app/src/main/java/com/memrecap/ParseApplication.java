@@ -1,4 +1,4 @@
-package com.example.memrecap;
+package com.memrecap;
 
 import android.app.Application;
 

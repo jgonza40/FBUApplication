@@ -1,7 +1,7 @@
 package com.memrecap;
 
 import android.content.Context;
-import android.util.Log;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +12,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.memrecap.activities.ImageMemoryDetailsActivity;
+import com.memrecap.activities.QuoteMemoryDetailsActivity;
 import com.memrecap.models.Memory;
 import com.parse.ParseFile;
+
+import org.parceler.Parcels;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,16 +26,18 @@ import java.util.Locale;
 
 public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private Context context;
-    private List<Memory> memories;
+    public static final String TAG = "MemoryAdapter";
+    public static final String USER_PROFILE_PIC = "profilePicture";
+
     private static final int SECOND_MILLIS = 1000;
     private static final int MINUTE_MILLIS = 60 * SECOND_MILLIS;
     private static final int HOUR_MILLIS = 60 * MINUTE_MILLIS;
     private static final int DAY_MILLIS = 24 * HOUR_MILLIS;
     private static int TYPE_IMAGE = 1;
     private static int TYPE_QUOTE = 2;
-    public static final String USER_PROFILE_PIC = "profilePicture";
-    public static final String TAG = "MemoryAdapter";
+
+    private Context context;
+    private List<Memory> memories;
 
     public MemoryAdapter(Context context, List<Memory> memories) {
         this.context = context;
@@ -42,11 +48,11 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
-        if (viewType == TYPE_IMAGE) { // for call layout
+        if (viewType == TYPE_IMAGE) {
             view = LayoutInflater.from(context).inflate(R.layout.image_memory_post, parent, false);
             return new ImageViewHolder(view);
 
-        } else { // for email layout
+        } else {
             view = LayoutInflater.from(context).inflate(R.layout.quote_memory_post, parent, false);
             return new QuoteViewHolder(view);
         }
@@ -77,7 +83,7 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     // Need two viewholder classes because they each have different layouts
-    class ImageViewHolder extends RecyclerView.ViewHolder {
+    class ImageViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private ImageView ivImgPostImage;
         private ImageView ivImgLocation;
@@ -88,7 +94,6 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         private TextView tvImgTripTitle;
         private TextView tvImgCategory;
 
-
         ImageViewHolder(@NonNull View itemView) {
             super(itemView);
             ivImgPostImage = itemView.findViewById(R.id.ivImgPostImage);
@@ -98,7 +103,21 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             tvImgCreatedAt = itemView.findViewById(R.id.tvImgCreatedAt);
             tvImgCaption = itemView.findViewById(R.id.tvImgCaption);
             tvImgTripTitle = itemView.findViewById(R.id.tvImgTripTitle);
-            tvImgCategory = itemView.findViewById(R.id.tvQuoteCategory);
+            tvImgCategory = itemView.findViewById(R.id.tvImgCategory);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            int position = getAdapterPosition();
+            if (position != RecyclerView.NO_POSITION) {
+                Memory memory = memories.get(position);
+                Intent intent = new Intent(context, ImageMemoryDetailsActivity.class);
+                // Serialize the post using parceler, use its short name as a key
+                intent.putExtra(Memory.class.getSimpleName(), Parcels.wrap(memory));
+                context.startActivity(intent);
+            }
         }
 
         public void setImageDetails(Memory memory) {
@@ -123,7 +142,7 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     // Second viewholder class (quote posts)
-    class QuoteViewHolder extends RecyclerView.ViewHolder {
+    class QuoteViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         private ImageView ivQuoteProfilePic;
         private ImageView ivQuoteLocation;
@@ -142,6 +161,20 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             tvQuoteTripTitle = itemView.findViewById(R.id.tvQuoteTripTitle);
             tvQuoteCategory = itemView.findViewById(R.id.tvQuoteCategory);
             tvQuote = itemView.findViewById(R.id.tvQuote);
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            int position = getAdapterPosition();
+            if (position != RecyclerView.NO_POSITION) {
+                Memory memory = memories.get(position);
+                Intent intent = new Intent(context, QuoteMemoryDetailsActivity.class);
+                // Serialize the post using parceler, use its short name as a key
+                intent.putExtra(Memory.class.getSimpleName(), Parcels.wrap(memory));
+                context.startActivity(intent);
+            }
         }
 
         public void setQuoteDetails(Memory memory) {
@@ -184,7 +217,6 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 return diff / DAY_MILLIS + "d" + " ago";
             }
         } catch (ParseException e) {
-            Log.i(TAG, "getRelativeTimeAgo failed");
             e.printStackTrace();
         }
         return "";

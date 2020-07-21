@@ -1,40 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/imagePostContainer"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="5dp">
+    android:layout_margin="5dp"
+    tools:context="com.memrecap.activities.ImageMemoryDetailsActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/ivImgPostImage"
+            android:id="@+id/ivDetImgPostImage"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_marginTop="8dp"
             android:scaleType="centerCrop"
-            app:layout_constraintTop_toBottomOf="@+id/tvImgTripTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvDetImgTripTitle"
             tools:layout_editor_absoluteX="103dp"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/tvImgUsername"
+            android:id="@+id/tvDetImgUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:fontFamily="sans-serif-medium"
             android:text="bob"
             android:textColor="#000000"
-            app:layout_constraintBottom_toBottomOf="@+id/ivImgProfilePic"
-            app:layout_constraintStart_toEndOf="@+id/ivImgProfilePic"
+            app:layout_constraintBottom_toBottomOf="@+id/ivDetImgProfilePic"
+            app:layout_constraintStart_toEndOf="@+id/ivDetImgProfilePic"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/ivImgProfilePic"
+            android:id="@+id/ivDetImgProfilePic"
             android:layout_width="30dp"
             android:layout_height="30dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -42,17 +44,17 @@
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/tvImgCreatedAt"
+            android:id="@+id/tvDetImgCreatedAt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:text="yesterday"
-            app:layout_constraintBottom_toBottomOf="@+id/ivImgProfilePic"
+            app:layout_constraintBottom_toBottomOf="@+id/ivDetImgProfilePic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tvImgCaption"
+            android:id="@+id/tvDetImgCaption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -60,31 +62,31 @@
             android:text="insert caption here..."
             android:textColor="#000000"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivImgPostImage" />
+            app:layout_constraintTop_toBottomOf="@+id/ivDetImgPostImage" />
 
         <TextView
-            android:id="@+id/tvImgTripTitle"
+            android:id="@+id/tvDetImgTripTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="5dp"
             android:text="Rome Trip"
             android:textSize="14sp"
-            app:layout_constraintStart_toEndOf="@+id/ivImgLocation"
-            app:layout_constraintTop_toBottomOf="@+id/ivImgProfilePic" />
+            app:layout_constraintStart_toEndOf="@+id/ivDetImgLocation"
+            app:layout_constraintTop_toBottomOf="@+id/ivDetImgProfilePic" />
 
         <ImageView
-            android:id="@+id/ivImgLocation"
+            android:id="@+id/ivDetImgLocation"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginTop="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/tvImgTripTitle"
+            app:layout_constraintBottom_toBottomOf="@+id/tvDetImgTripTitle"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivImgProfilePic"
+            app:layout_constraintTop_toBottomOf="@+id/ivDetImgProfilePic"
             tools:srcCompat="@drawable/ic_location" />
 
         <TextView
-            android:id="@+id/tvImgCategory"
+            android:id="@+id/tvDetImgCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -92,7 +94,7 @@
             android:text="category: self-care"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/tvImgCaption"
-            app:layout_constraintTop_toBottomOf="@+id/tvImgCaption" />
+            app:layout_constraintStart_toStartOf="@+id/tvDetImgCaption"
+            app:layout_constraintTop_toBottomOf="@+id/tvDetImgCaption" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

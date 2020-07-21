@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/imagePostContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    tools:context="com.memrecap.activities.QuoteMemoryDetailsActivity">
+
+    <ImageView
+        android:id="@+id/ivDetQuoteProfilePic"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvDetQuoteUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="bob"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toBottomOf="@+id/ivDetQuoteProfilePic"
+        app:layout_constraintStart_toEndOf="@+id/ivDetQuoteProfilePic"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDetQuoteTripTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:text="Rome Trip"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/ivDetQuoteLocation"
+        app:layout_constraintTop_toBottomOf="@+id/tvDetQuote" />
+
+    <ImageView
+        android:id="@+id/ivDetQuoteLocation"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDetQuoteTripTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDetQuote"
+        tools:srcCompat="@drawable/ic_location" />
+
+    <TextView
+        android:id="@+id/tvDetQuoteCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="category: self-care"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDetQuoteTripTitle" />
+
+    <TextView
+        android:id="@+id/tvDetQuote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="sans-serif-medium"
+        android:text='"quote ...."'
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/tvDetQuoteUsername"
+        app:layout_constraintTop_toBottomOf="@+id/ivDetQuoteProfilePic" />
+
+    <TextView
+        android:id="@+id/tvDetQuoteCreatedAt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:text="yesterday"
+        app:layout_constraintBottom_toBottomOf="@+id/ivDetQuoteProfilePic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

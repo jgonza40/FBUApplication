@@ -14,7 +14,7 @@ public class Memory extends ParseObject {
     public static final String KEY_IMAGE = "image";
     public static final String KEY_USER = "user";
     public static final String KEY_QUOTE = "quote";
-    public static final String KEY_MEMORY_TITLE = "memoryTitle";
+    public static final String KEY_TITLE = "title";
     public static final String KEY_CATEGORY = "category";
     public static final String KEY_CREATED_AT = "createdAt";
     public static final String KEY_MARKER = "marker";
@@ -60,11 +60,11 @@ public class Memory extends ParseObject {
     }
 
     public String getMemoryTitle() {
-        return getString(KEY_MEMORY_TITLE);
+        return getString(KEY_TITLE);
     }
 
     public void setMemoryTitle(String memoryTitle) {
-        put(KEY_MEMORY_TITLE, memoryTitle);
+        put(KEY_TITLE, memoryTitle);
     }
 
     public String getCategory() {

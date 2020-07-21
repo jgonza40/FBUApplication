@@ -29,7 +29,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.memrecap.activities.ComposeActivity;
-import com.memrecap.activities.LocationRecap;
+import com.memrecap.activities.LocationRecapActivity;
 import com.memrecap.R;
 
 import com.google.android.gms.maps.model.Marker;
@@ -184,7 +184,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
         messageView.findViewById(R.id.btnView).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getActivity(), LocationRecap.class);
+                Intent i = new Intent(getActivity(), LocationRecapActivity.class);
                 startActivity(i);
             }
         });

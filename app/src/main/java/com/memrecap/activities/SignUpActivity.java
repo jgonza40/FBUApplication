@@ -17,16 +17,18 @@ import com.parse.SignUpCallback;
 
 public class SignUpActivity extends AppCompatActivity {
 
+    public static final String TAG = "SignUpActivity";
+    public static final String KEY_FIRST_NAME = "firstName";
+    public static final String KEY_LAST_NAME = "lastName";
+    public static final String KEY_BIRTHDAY = "birthday";
+
+
     private EditText etUsername;
     private EditText etPassword;
     private EditText etFirstName;
     private EditText etLastName;
     private EditText etBirthday;
     private Button btnSignUp;
-    public static final String TAG = "SignUpActivity";
-    public static final String KEY_FIRST_NAME = "firstName";
-    public static final String KEY_LAST_NAME = "lastName";
-    public static final String KEY_BIRTHDAY = "birthday";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,15 +60,14 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void signUpUser(String newUsername, String newPassword, String newFirstName,
                             String newLastName, String newBirthday) {
-        // Create the ParseUser
         ParseUser user = new ParseUser();
-        // Set core properties
+
         user.setUsername(newUsername);
         user.setPassword(newPassword);
         user.put(KEY_FIRST_NAME, newFirstName);
         user.put(KEY_LAST_NAME, newLastName);
         user.put(KEY_BIRTHDAY, newBirthday);
-        // Invoke signUpInBackground
+
         user.signUpInBackground(new SignUpCallback() {
             public void done(ParseException e) {
                 if (e != null) {
@@ -87,6 +88,6 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void errorCheckBirthday(String birthdayInput) {
-        //DEAL W ERROR CHECKING HERE
+        //TODO: Deal with error handling
     }
 }

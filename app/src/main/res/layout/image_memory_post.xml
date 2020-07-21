@@ -15,7 +15,8 @@
             android:id="@+id/ivImgPostImage"
             android:layout_width="match_parent"
             android:layout_height="300dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="centerCrop"
             app:layout_constraintTop_toBottomOf="@+id/tvImgTripTitle"
             tools:layout_editor_absoluteX="103dp"
             tools:srcCompat="@tools:sample/avatars" />
@@ -68,7 +69,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="5dp"
             android:text="Rome Trip"
-            android:textSize="18sp"
+            android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@+id/ivImgLocation"
             app:layout_constraintTop_toBottomOf="@+id/ivImgProfilePic" />
 
@@ -78,7 +79,7 @@
             android:layout_height="20dp"
             android:layout_marginTop="5dp"
             app:layout_constraintBottom_toBottomOf="@+id/tvImgTripTitle"
-            app:layout_constraintStart_toStartOf="@+id/tvImgUsername"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ivImgProfilePic"
             tools:srcCompat="@drawable/ic_location" />
 
@@ -87,7 +88,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:layout_marginBottom="8dp"
             android:text="category: self-care"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tvImgCaption"
             app:layout_constraintTop_toBottomOf="@+id/tvImgCaption" />
     </androidx.constraintlayout.widget.ConstraintLayout>

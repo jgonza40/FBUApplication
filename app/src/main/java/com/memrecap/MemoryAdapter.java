@@ -115,6 +115,10 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             Glide.with(context)
                     .load(memory.getUser().getParseFile(USER_PROFILE_PIC))
                     .into(ivImgProfilePic);
+            Glide.with(context)
+                    .load(context.getResources().getDrawable(R.drawable.ic_location))
+                    .placeholder(R.mipmap.ic_location)
+                    .into(ivImgLocation);
         }
     }
 
@@ -148,6 +152,10 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             Glide.with(context)
                     .load(memory.getUser().getParseFile(USER_PROFILE_PIC))
                     .into(ivQuoteProfilePic);
+            Glide.with(context)
+                    .load(context.getResources().getDrawable(R.drawable.ic_location))
+                    .placeholder(R.mipmap.ic_location)
+                    .into(ivQuoteLocation);
         }
     }
 

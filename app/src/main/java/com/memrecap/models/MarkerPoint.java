@@ -5,7 +5,7 @@ import com.parse.ParseObject;
 import com.parse.ParseUser;
 
 @ParseClassName("Marker")
-public class Marker extends ParseObject {
+public class MarkerPoint extends ParseObject {
     public static final String KEY_MARKER_USER = "user";
     public static final String KEY_MARKER_TITLE = "title";
     public static final String KEY_MARKER_LAT = "latitude";

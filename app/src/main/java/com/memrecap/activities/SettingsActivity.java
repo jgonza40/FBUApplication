@@ -7,24 +7,21 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toolbar;
 
 import com.memrecap.R;
-import com.memrecap.activities.LoginActivity;
 import com.parse.ParseUser;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    private Button btnLogout;
-    private Toolbar toolbar;
     public static final String TAG = "SettingsActivity";
+
+    private Button btnLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         btnLogout = findViewById(R.id.btnLogout);
-        ParseUser currentUser = ParseUser.getCurrentUser();
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,7 +34,7 @@ public class SettingsActivity extends AppCompatActivity {
         });
     }
 
-    private void logoutUser(){
+    private void logoutUser() {
         ParseUser.logOut();
     }
 

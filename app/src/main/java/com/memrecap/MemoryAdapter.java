@@ -76,7 +76,6 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public int getItemViewType(int position) {
         if (memories.get(position).getImage() == null) {
             return TYPE_QUOTE;
-
         } else {
             return TYPE_IMAGE;
         }
@@ -142,7 +141,7 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     // Second viewholder class (quote posts)
-    class QuoteViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class QuoteViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private ImageView ivQuoteProfilePic;
         private ImageView ivQuoteLocation;
@@ -192,10 +191,9 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
     }
 
-    // The purpose of this method is to get appropriate time stamps
     public String getRelativeTimeAgo(String rawJsonDate) {
-        String twitterFormat = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
-        SimpleDateFormat sf = new SimpleDateFormat(twitterFormat, Locale.ENGLISH);
+        String MemRecapFormat = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
+        SimpleDateFormat sf = new SimpleDateFormat(MemRecapFormat, Locale.ENGLISH);
         sf.setLenient(true);
         try {
             long time = sf.parse(rawJsonDate).getTime();

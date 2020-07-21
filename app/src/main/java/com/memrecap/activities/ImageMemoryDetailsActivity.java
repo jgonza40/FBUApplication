@@ -77,8 +77,8 @@ public class ImageMemoryDetailsActivity extends AppCompatActivity {
 
     // The purpose of this method is to get appropriate time stamps for posts
     public String getRelativeTimeAgo(String rawJsonDate) {
-        String twitterFormat = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
-        SimpleDateFormat sf = new SimpleDateFormat(twitterFormat, Locale.ENGLISH);
+        String MemRecapFormat = "EEE MMM dd HH:mm:ss ZZZZZ yyyy";
+        SimpleDateFormat sf = new SimpleDateFormat(MemRecapFormat, Locale.ENGLISH);
         sf.setLenient(true);
         try {
             long time = sf.parse(rawJsonDate).getTime();

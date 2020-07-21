@@ -17,11 +17,12 @@ import com.parse.ParseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
+    public static final String TAG = "LoginActivity";
+
     private EditText etUsername;
     private EditText etPassword;
     private Button btnLogin;
     private Button btnSignUp;
-    public static final String TAG = "LoginActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +32,6 @@ public class LoginActivity extends AppCompatActivity {
         if (ParseUser.getCurrentUser() != null) {
             goMainActivity();
         }
-        // Declaring all of the components
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
@@ -56,13 +56,11 @@ public class LoginActivity extends AppCompatActivity {
         ParseUser.logInInBackground(username, password, new LogInCallback() {
             @Override
             public void done(ParseUser user, ParseException e) {
-                // Enters this if condition on failure
                 if (e != null) {
                     Log.e(TAG, "Issue with login", e);
                     Toast.makeText(LoginActivity.this, "Issue with password", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                // If succeeds, then we can navigate the user to the main activity
                 goMainActivity();
             }
         });

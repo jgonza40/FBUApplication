@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // Find the toolbar view inside the activity layout
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle(null);
@@ -61,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToSettings(View view) {
-        // Navigate to the compose activity
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }

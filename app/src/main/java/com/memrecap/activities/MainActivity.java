@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToSettings(View view) {
         // Navigate to the compose activity
-        Intent intent = new Intent(this, Settings.class);
+        Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
 }

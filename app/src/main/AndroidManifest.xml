@@ -31,7 +31,7 @@
         <activity android:name=".activities.QuoteMemoryDetailsActivity"></activity>
         <activity android:name=".activities.ImageMemoryDetailsActivity" />
         <activity android:name=".activities.FriendProfile" />
-        <activity android:name=".activities.LocationRecap" />
+        <activity android:name=".activities.LocationRecapActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -49,7 +49,7 @@
         <activity android:name=".activities.ComposeQuoteMemory" />
         <activity android:name=".activities.ComposeImageMemory" />
         <activity android:name=".activities.ComposeActivity" />
-        <activity android:name=".activities.Settings" />
+        <activity android:name=".activities.SettingsActivity" />
         <activity android:name=".activities.SignUpActivity" />
         <activity android:name=".activities.LoginActivity">
             <intent-filter>

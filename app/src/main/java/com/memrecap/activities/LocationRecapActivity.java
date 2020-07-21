@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.memrecap.R;
 
-public class LocationRecap extends AppCompatActivity {
+public class LocationRecapActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

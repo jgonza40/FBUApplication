@@ -13,11 +13,11 @@ import com.memrecap.R;
 import com.memrecap.activities.LoginActivity;
 import com.parse.ParseUser;
 
-public class Settings extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity {
 
     private Button btnLogout;
     private Toolbar toolbar;
-    public static final String TAG = "Settings";
+    public static final String TAG = "SettingsActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

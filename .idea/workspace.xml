@@ -22,16 +22,13 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/memrecap/MemoryImageAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/memrecap/MemoryAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/memrecap/MemoryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/memrecap/MemoryAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/memrecap/fragments/HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/memrecap/fragments/HomeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/memrecap/fragments/MapFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/memrecap/fragments/MapFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_compose_quote_memory.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_compose_quote_memory.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/image_memory_post.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/image_memory_post.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/quote_memory_post.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/quote_memory_post.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,6 +47,9 @@
         <projects_view />
       </state>
     </system>
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="FBUApplication" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -179,10 +179,10 @@
       <screen x="0" y="23" width="1792" height="1033" />
     </state>
     <state x="479" y="534" key="#PSD/0.23.1792.1033@0.23.1792.1033" timestamp="1594848432888" />
-    <state x="811" y="256" key="#com.intellij.ide.util.MemberChooser" timestamp="1595282208860">
+    <state x="811" y="256" key="#com.intellij.ide.util.MemberChooser" timestamp="1595289523691">
       <screen x="0" y="23" width="1792" height="1030" />
     </state>
-    <state x="811" y="256" key="#com.intellij.ide.util.MemberChooser/0.23.1792.1030@0.23.1792.1030" timestamp="1595282208860" />
+    <state x="811" y="256" key="#com.intellij.ide.util.MemberChooser/0.23.1792.1030@0.23.1792.1030" timestamp="1595289523691" />
     <state x="811" y="257" key="#com.intellij.ide.util.MemberChooser/0.23.1792.1031@0.23.1792.1031" timestamp="1594784169717" />
     <state x="811" y="257" key="#com.intellij.ide.util.MemberChooser/0.23.1792.1033@0.23.1792.1033" timestamp="1594932640349" />
     <state x="811" y="258" key="#com.intellij.ide.util.MemberChooser/0.23.1792.1034@0.23.1792.1034" timestamp="1594758509889" />

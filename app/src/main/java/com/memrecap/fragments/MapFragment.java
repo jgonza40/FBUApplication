@@ -304,7 +304,6 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
 //                adapter.notifyDataSetChanged();
 //            }
 //        });
-
     }
 
     /*

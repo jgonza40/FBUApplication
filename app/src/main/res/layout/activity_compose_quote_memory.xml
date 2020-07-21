@@ -52,7 +52,7 @@
             android:layout_marginTop="16dp"
             android:text="self-care"
             app:layout_constraintStart_toEndOf="@+id/btnQuoteFood"
-            app:layout_constraintTop_toBottomOf="@+id/tvImgCategory" />
+            app:layout_constraintTop_toBottomOf="@+id/tvQuoteCategory" />
 
         <Button
             android:id="@+id/btnQuoteFood"
@@ -62,7 +62,7 @@
             android:layout_marginTop="16dp"
             android:text="food"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvImgCategory" />
+            app:layout_constraintTop_toBottomOf="@+id/tvQuoteCategory" />
 
         <Button
             android:id="@+id/btnQuoteFamily"
@@ -74,7 +74,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/btnQuoteSelfCare"
-            app:layout_constraintTop_toBottomOf="@+id/tvImgCategory" />
+            app:layout_constraintTop_toBottomOf="@+id/tvQuoteCategory" />
 
         <Button
             android:id="@+id/btnQuoteTravel"
@@ -116,7 +116,7 @@
             app:layout_constraintTop_toBottomOf="@+id/btnQuoteSelfCare" />
 
         <TextView
-            android:id="@+id/tvImgCategory"
+            android:id="@+id/tvQuoteCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"

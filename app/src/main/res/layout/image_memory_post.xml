@@ -83,7 +83,7 @@
             tools:srcCompat="@drawable/ic_location" />
 
         <TextView
-            android:id="@+id/tvImgCategory"
+            android:id="@+id/tvQuoteCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"

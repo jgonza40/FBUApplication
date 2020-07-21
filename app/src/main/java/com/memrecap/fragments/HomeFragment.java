@@ -31,7 +31,7 @@ public class HomeFragment extends Fragment {
     public static final int MAX_POSTS = 20;
     private RecyclerView rvPosts;
     protected MemoryAdapter adapter;
-    protected List<Memory> imgMemories;
+    protected List<Memory> allMemories;
     private SwipeRefreshLayout swipeContainer;
 
     public HomeFragment() {
@@ -49,8 +49,8 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         rvPosts = view.findViewById(R.id.rvPosts);
-        imgMemories = new ArrayList<>();
-        adapter = new MemoryAdapter(getContext(), imgMemories);
+        allMemories = new ArrayList<>();
+        adapter = new MemoryAdapter(getContext(), allMemories);
         rvPosts.setAdapter(adapter);
         rvPosts.setLayoutManager(new LinearLayoutManager(getContext()));
         queryPosts();
@@ -70,20 +70,11 @@ public class HomeFragment extends Fragment {
                     Log.e(TAG, "Issue with getting posts", e);
                     return;
                 }
-                List<Memory> imageMems = new ArrayList<Memory>();
-                List<Memory> quoteMems = new ArrayList<Memory>();
+//
                 for (Memory memory : memories) {
-                    if(memory.getImage() != null){
-                        imageMems.add(memory);
-                    } else{
-                        quoteMems.add(memory);
-                    }
-                    // Will add all memories in parse to display in all
                 }
-                imgMemories.addAll(imageMems);
+                allMemories.addAll(memories);
                 adapter.notifyDataSetChanged();
-//                quoteMemories.addAll(quoteMems);
-//                quoteAdapter.notifyDataSetChanged();
             }
         });
     }

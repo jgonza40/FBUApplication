@@ -29,19 +29,17 @@ public class HomeFragment extends Fragment {
 
     public static final String TAG = "HomeFragment";
     public static final int MAX_POSTS = 20;
+
     private RecyclerView rvPosts;
     protected MemoryAdapter adapter;
     protected List<Memory> allMemories;
     private SwipeRefreshLayout swipeContainer;
 
-    public HomeFragment() {
-        // Required empty public constructor
-    }
+    public HomeFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
@@ -56,9 +54,7 @@ public class HomeFragment extends Fragment {
         queryPosts();
     }
 
-    // Getting posts from the Parse backend
     protected void queryPosts() {
-        // Specify which class to query
         ParseQuery<Memory> query = ParseQuery.getQuery(Memory.class);
         query.include(Memory.KEY_USER);
         query.setLimit(MAX_POSTS);
@@ -69,9 +65,6 @@ public class HomeFragment extends Fragment {
                 if (e != null) {
                     Log.e(TAG, "Issue with getting posts", e);
                     return;
-                }
-//
-                for (Memory memory : memories) {
                 }
                 allMemories.addAll(memories);
                 adapter.notifyDataSetChanged();

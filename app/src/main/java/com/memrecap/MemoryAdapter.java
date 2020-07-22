@@ -131,7 +131,7 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                         .into(ivImgPostImage);
             }
             Glide.with(context)
-                    .load(memory.getUser().getParseFile(USER_PROFILE_PIC))
+                    .load(memory.getUser().getParseFile(USER_PROFILE_PIC).getUrl())
                     .into(ivImgProfilePic);
             Glide.with(context)
                     .load(context.getResources().getDrawable(R.drawable.ic_location))

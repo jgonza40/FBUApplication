@@ -17,10 +17,13 @@
             android:id="@+id/ivDetImgPostImage"
             android:layout_width="match_parent"
             android:layout_height="300dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:scaleType="centerCrop"
-            app:layout_constraintTop_toBottomOf="@+id/tvDetImgTripTitle"
-            tools:layout_editor_absoluteX="103dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivDetImgProfilePic"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
@@ -51,7 +54,8 @@
             android:text="yesterday"
             app:layout_constraintBottom_toBottomOf="@+id/ivDetImgProfilePic"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/tvDetImgUsername"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/tvDetImgCaption"
@@ -68,21 +72,21 @@
             android:id="@+id/tvDetImgTripTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
             android:text="Rome Trip"
             android:textSize="14sp"
-            app:layout_constraintStart_toEndOf="@+id/ivDetImgLocation"
-            app:layout_constraintTop_toBottomOf="@+id/ivDetImgProfilePic" />
+            app:layout_constraintBottom_toBottomOf="@+id/tvDetImgCategory"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvDetImgCategory" />
 
         <ImageView
             android:id="@+id/ivDetImgLocation"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginTop="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/tvDetImgTripTitle"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivDetImgProfilePic"
+            android:layout_marginEnd="2dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvDetImgCategory"
+            app:layout_constraintEnd_toStartOf="@+id/tvDetImgTripTitle"
+            app:layout_constraintTop_toTopOf="@+id/tvDetImgCategory"
             tools:srcCompat="@drawable/ic_location" />
 
         <TextView

@@ -7,7 +7,7 @@ import android.os.Bundle;
 import com.memrecap.R;
 
 
-public class FriendProfile extends AppCompatActivity {
+public class FriendProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

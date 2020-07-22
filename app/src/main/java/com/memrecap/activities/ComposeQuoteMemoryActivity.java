@@ -17,7 +17,9 @@ import com.parse.ParseException;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
-public class ComposeQuoteMemory extends AppCompatActivity {
+public class ComposeQuoteMemoryActivity extends AppCompatActivity {
+
+    public static final String TAG = "ComposeQuoteMemory";
 
     public static final String SELF_CARE = "selfCare";
     public static final String FOOD = "food";
@@ -25,7 +27,7 @@ public class ComposeQuoteMemory extends AppCompatActivity {
     public static final String STEPPING_STONE = "steppingStone";
     public static final String ACTIVE = "active";
     public static final String TRAVEL = "travel";
-    public static final String TAG = "ComposeFragment";
+
     private Button btnImageFood;
     private Button btnImageSelfCare;
     private Button btnImageFamily;
@@ -50,7 +52,9 @@ public class ComposeQuoteMemory extends AppCompatActivity {
         btnImageActive = findViewById(R.id.btnQuoteActive);
         pb = findViewById(R.id.pbQuoteLoad);
         etQuote = findViewById(R.id.etQuote);
+
         getCategory();
+
         btnPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,7 +82,7 @@ public class ComposeQuoteMemory extends AppCompatActivity {
                 etQuote.setText("");
                 // Setting pb to invisible once post is submitted
                 pb.setVisibility(View.INVISIBLE);
-                Intent i = new Intent(ComposeQuoteMemory.this, MainActivity.class);
+                Intent i = new Intent(ComposeQuoteMemoryActivity.this, MainActivity.class);
                 startActivity(i);
                 finish();
             }

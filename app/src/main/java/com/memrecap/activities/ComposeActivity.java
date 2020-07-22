@@ -31,7 +31,7 @@ public class ComposeActivity extends AppCompatActivity {
         btnQuote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(ComposeActivity.this, ComposeQuoteMemory.class);
+                Intent i = new Intent(ComposeActivity.this, ComposeQuoteMemoryActivity.class);
                 startActivity(i);
             }
         });

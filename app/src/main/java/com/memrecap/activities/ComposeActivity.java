@@ -25,7 +25,7 @@ public class ComposeActivity extends AppCompatActivity {
         btnImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(ComposeActivity.this, ComposeImageMemory.class);
+                Intent i = new Intent(ComposeActivity.this, ComposeImageMemoryActivity.class);
                 startActivity(i);
             }
         });

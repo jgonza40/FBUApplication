@@ -28,7 +28,9 @@ import com.parse.SaveCallback;
 
 import java.io.File;
 
-public class ComposeImageMemory extends AppCompatActivity {
+public class ComposeImageMemoryActivity extends AppCompatActivity {
+
+    public static final String TAG = "ComposeImageMemoryActivity";
 
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
     public static final String SELF_CARE = "selfCare";
@@ -37,19 +39,22 @@ public class ComposeImageMemory extends AppCompatActivity {
     public static final String STEPPING_STONE = "steppingStone";
     public static final String ACTIVE = "active";
     public static final String TRAVEL = "travel";
-    public static final String TAG = "ComposeFragment";
-    private EditText etDescription;
-    private Button btnCaptureImage;
-    private ImageView ivPostImage;
-    private Button btnPost;
+
+
     private File photoFile;
     private ProgressBar pb;
+    private EditText etDescription;
+    private ImageView ivPostImage;
+
+    private Button btnPost;
+    private Button btnCaptureImage;
     private Button btnImageFood;
     private Button btnImageSelfCare;
     private Button btnImageFamily;
     private Button btnImageTravel;
     private Button btnImageSteppingStone;
     private Button btnImageActive;
+
     private String setCategory;
     public String photoFileName = "photo.jpg";
 
@@ -68,13 +73,16 @@ public class ComposeImageMemory extends AppCompatActivity {
         btnImageTravel = findViewById(R.id.btnImageTravel);
         btnImageSteppingStone = findViewById(R.id.btnImageSteppingStone);
         btnImageActive = findViewById(R.id.btnImageActive);
+
         btnCaptureImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 launchCamera();
             }
         });
+
         getCategory();
+
         btnPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -84,12 +92,12 @@ public class ComposeImageMemory extends AppCompatActivity {
                     return;
                 }
                 if (photoFile == null || ivPostImage.getDrawable() == null) {
-                    Toast.makeText(ComposeImageMemory.this, "there is no image!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ComposeImageMemoryActivity.this, "there is no image!", Toast.LENGTH_LONG).show();
                     return;
                 }
                 ParseUser currentUser = ParseUser.getCurrentUser();
                 if (setCategory == "") {
-                    Toast.makeText(ComposeImageMemory.this, "must select a category!", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ComposeImageMemoryActivity.this, "must select a category!", Toast.LENGTH_LONG).show();
                     return;
                 }
                 pb.setVisibility(ProgressBar.VISIBLE);
@@ -140,21 +148,18 @@ public class ComposeImageMemory extends AppCompatActivity {
     }
 
     private void launchCamera() {
-        // create Intent to take a picture and return control to the calling application
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        // Create a File reference for future access
         photoFile = getPhotoFileUri(photoFileName);
 
         // wrap File object into a content provider
         // required for API >= 24
         // See https://guides.codepath.com/android/Sharing-Content-with-Intents#sharing-files-with-api-24-or-higher
-        Uri fileProvider = FileProvider.getUriForFile(ComposeImageMemory.this, "com.codepath.fileprovider", photoFile);
+        Uri fileProvider = FileProvider.getUriForFile(ComposeImageMemoryActivity.this, "com.codepath.fileprovider", photoFile);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, fileProvider);
 
         // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
         // So as long as the result is not null, it's safe to use the intent.
         if (intent.resolveActivity(getPackageManager()) != null) {
-            // Start the image capture intent to take photo
             startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
         }
     }
@@ -168,24 +173,20 @@ public class ComposeImageMemory extends AppCompatActivity {
                 Bitmap takenImage = BitmapFactory.decodeFile(photoFile.getAbsolutePath());
                 // Load the taken image into a preview
                 ivPostImage.setImageBitmap(takenImage);
-            } else { // Result was a failure
+            } else {
                 Toast.makeText(getApplicationContext(), "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
             }
         }
     }
 
-    // Returns the File for a photo stored on disk given the fileName
     public File getPhotoFileUri(String fileName) {
-        // Get safe storage directory for photos
-        // Use `getExternalFilesDir` on Context to access package-specific directories.
-        // This way, we don't need to request external read/write runtime permissions.
+        // Get safe storage directory for photos to avoid requesting external read/write runtime permissions.
         File mediaStorageDir = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), TAG);
 
         // Create the storage directory if it does not exist
         if (!mediaStorageDir.exists() && !mediaStorageDir.mkdirs()) {
             Log.d(TAG, "failed to create directory");
         }
-
         // Return the file target for the photo based on filename
         return new File(mediaStorageDir.getPath() + File.separator + fileName);
     }
@@ -208,7 +209,7 @@ public class ComposeImageMemory extends AppCompatActivity {
                 ivPostImage.setImageResource(0);
                 // Setting pb to invisible once post is submitted
                 pb.setVisibility(View.INVISIBLE);
-                Intent i = new Intent(ComposeImageMemory.this, MainActivity.class);
+                Intent i = new Intent(ComposeImageMemoryActivity.this, MainActivity.class);
                 startActivity(i);
                 finish();
             }

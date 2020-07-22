@@ -11,6 +11,7 @@ import com.memrecap.R;
 
 public class ComposeActivity extends AppCompatActivity {
 
+    public static final String TAG = "ComposeActivity";
     private Button btnImage;
     private Button btnQuote;
 
@@ -20,7 +21,7 @@ public class ComposeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_compose);
         btnImage = findViewById(R.id.btnImage);
         btnQuote = findViewById(R.id.btnQuote);
-        // Didn't add finish() so users are able to come back to activity
+
         btnImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -28,6 +29,7 @@ public class ComposeActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
         btnQuote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

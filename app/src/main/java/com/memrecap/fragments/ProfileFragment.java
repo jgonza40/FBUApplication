@@ -99,8 +99,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
         btnProfileSteppingStone.setOnClickListener(this);
         btnProfileActive.setOnClickListener(this);
 
-        foodSelected = false;
-        selfCareSelected = true;
+        foodSelected = true;
+        selfCareSelected = false;
         familySelected = false;
         travelSelected = false;
         steppingStoneSelected = false;

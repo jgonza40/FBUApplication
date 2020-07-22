@@ -59,7 +59,7 @@ public class ImageMemoryDetailsActivity extends AppCompatActivity {
         tvDetImgCreatedAt.setText(getRelativeTimeAgo(memory.getCreatedAt().toString()));
         tvDetImgCaption.setText(memory.getDescription());
         tvDetImgCategory.setText("category: " + memory.getCategory());
-
+        tvDetImgTripTitle.setText(memory.getMemoryTitle());
         ParseFile image = memory.getImage();
         if (image != null) {
             Glide.with(getApplicationContext())

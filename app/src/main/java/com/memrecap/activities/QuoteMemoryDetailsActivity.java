@@ -56,6 +56,7 @@ public class QuoteMemoryDetailsActivity extends AppCompatActivity {
         tvDetQuoteCreatedAt.setText(getRelativeTimeAgo(memory.getCreatedAt().toString()));
         tvDetQuoteCategory.setText("category: " + memory.getCategory());
         tvDetQuote.setText(memory.getQuote());
+        tvDetQuoteTripTitle.setText(memory.getMemoryTitle());
         Glide.with(getApplicationContext())
                 .load(memory.getUser().getParseFile(USER_PROFILE_PIC).getUrl())
                 .into(ivDetQuoteProfilePic);

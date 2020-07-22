@@ -124,6 +124,7 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             tvImgCreatedAt.setText(getRelativeTimeAgo(memory.getCreatedAt().toString()));
             tvImgCaption.setText(memory.getDescription());
             tvImgCategory.setText("category: " + memory.getCategory());
+            tvImgTripTitle.setText(memory.getMemoryTitle());
             ParseFile image = memory.getImage();
             if (image != null) {
                 Glide.with(context)

@@ -19,18 +19,27 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.memrecap.models.MarkerPoint;
 import com.memrecap.models.Memory;
 import com.memrecap.R;
 import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import java.io.File;
 
 public class ComposeImageMemoryActivity extends AppCompatActivity {
 
     public static final String TAG = "ComposeImageMemoryActivity";
+
+    public static final String PASS_LAT = "markerClickedLat";
+    public static final String PASS_LONG = "markerClickedLong";
+    public static final String MARKERS_ARRAY = "markers";
 
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
     public static final String SELF_CARE = "selfCare";
@@ -54,6 +63,7 @@ public class ComposeImageMemoryActivity extends AppCompatActivity {
     private Button btnImageTravel;
     private Button btnImageSteppingStone;
     private Button btnImageActive;
+    private MarkerPoint marker;
 
     private String setCategory;
     public String photoFileName = "photo.jpg";
@@ -81,6 +91,19 @@ public class ComposeImageMemoryActivity extends AppCompatActivity {
             }
         });
 
+        // Gets the previously created intent to get 2 marker values
+        Intent myIntent = getIntent();
+        final String markerLat = myIntent.getStringExtra(PASS_LAT);
+        final String markerLong = myIntent.getStringExtra(PASS_LONG);
+
+        try {
+            marker = getMarkerForPost(markerLat, markerLong);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
         getCategory();
 
         btnPost.setOnClickListener(new View.OnClickListener() {
@@ -101,9 +124,24 @@ public class ComposeImageMemoryActivity extends AppCompatActivity {
                     return;
                 }
                 pb.setVisibility(ProgressBar.VISIBLE);
-                savePost(description, currentUser, photoFile, setCategory);
+                savePost(description, currentUser, photoFile, setCategory, marker);
             }
         });
+    }
+
+    private MarkerPoint getMarkerForPost(String markerLat, String markerLong) throws JSONException, ParseException {
+        JSONArray userMarkers = ParseUser.getCurrentUser().getJSONArray(MARKERS_ARRAY);
+        MarkerPoint correspondingMarker = null;
+        for (int i = 0; i < userMarkers.length(); i++) {
+            String marker = userMarkers.getJSONObject(i).getString("objectId");
+            ParseQuery<MarkerPoint> query = ParseQuery.getQuery(MarkerPoint.class);
+            MarkerPoint currMarker = query.get(marker);
+            if (currMarker.getMarkerLat().equals(markerLat) && currMarker.getMarkerLong().equals(markerLong)) {
+
+                correspondingMarker = currMarker;
+            }
+        }
+        return correspondingMarker;
     }
 
     private String getCategory() {
@@ -191,12 +229,14 @@ public class ComposeImageMemoryActivity extends AppCompatActivity {
         return new File(mediaStorageDir.getPath() + File.separator + fileName);
     }
 
-    private void savePost(String description, ParseUser currentUser, File photoFile, String category) {
+    private void savePost(String description, ParseUser currentUser, File photoFile, String category, MarkerPoint markerPoint) {
         Memory memory = new Memory();
         memory.setDescription(description);
         memory.setImage(new ParseFile(photoFile));
         memory.setUser(currentUser);
         memory.setCategory(category);
+        memory.setMemoryTitle(markerPoint.getMarkerTitle());
+        memory.setMarker(markerPoint);
         memory.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {

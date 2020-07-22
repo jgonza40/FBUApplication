@@ -34,21 +34,22 @@
         android:id="@+id/tvDetQuoteTripTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginEnd="8dp"
         android:text="Rome Trip"
         android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@+id/ivDetQuoteLocation"
-        app:layout_constraintTop_toBottomOf="@+id/tvDetQuote" />
+        app:layout_constraintBottom_toBottomOf="@+id/tvDetQuoteCategory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvDetQuoteCategory" />
 
     <ImageView
         android:id="@+id/ivDetQuoteLocation"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvDetQuoteTripTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDetQuote"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDetQuoteCategory"
+        app:layout_constraintEnd_toStartOf="@+id/tvDetQuoteTripTitle"
+        app:layout_constraintTop_toTopOf="@+id/tvDetQuoteCategory"
+        app:layout_constraintVertical_bias="1.0"
         tools:srcCompat="@drawable/ic_location" />
 
     <TextView
@@ -60,7 +61,7 @@
         android:text="category: self-care"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDetQuoteTripTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDetQuote" />
 
     <TextView
         android:id="@+id/tvDetQuote"

@@ -182,7 +182,7 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             tvQuoteCategory.setText("category: " + memory.getCategory());
             tvQuote.setText(memory.getQuote());
             Glide.with(context)
-                    .load(memory.getUser().getParseFile(USER_PROFILE_PIC))
+                    .load(memory.getUser().getParseFile(USER_PROFILE_PIC).getUrl())
                     .into(ivQuoteProfilePic);
             Glide.with(context)
                     .load(context.getResources().getDrawable(R.drawable.ic_location))

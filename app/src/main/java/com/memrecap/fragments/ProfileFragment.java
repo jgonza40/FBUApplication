@@ -78,61 +78,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
     }
 
     @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.btnProfileFood:
-                foodSelected = true;
-                selfCareSelected = false;
-                familySelected = false;
-                travelSelected = false;
-                steppingStoneSelected = false;
-                activeSelected = false;
-                break;
-            case R.id.btnProfileSelfCare:
-                foodSelected = false;
-                selfCareSelected = true;
-                familySelected = false;
-                travelSelected = false;
-                steppingStoneSelected = false;
-                activeSelected = false;
-                break;
-            case R.id.btnProfileFamily:
-                foodSelected = false;
-                selfCareSelected = false;
-                familySelected = true;
-                travelSelected = false;
-                steppingStoneSelected = false;
-                activeSelected = false;
-                break;
-            case R.id.btnProfileTravel:
-                foodSelected = false;
-                selfCareSelected = false;
-                familySelected = false;
-                travelSelected = true;
-                steppingStoneSelected = false;
-                activeSelected = false;
-                break;
-            case R.id.btnProfileSteppingStone:
-                foodSelected = false;
-                selfCareSelected = false;
-                familySelected = false;
-                travelSelected = false;
-                steppingStoneSelected = true;
-                activeSelected = false;
-                break;
-            case R.id.btnProfileActive:
-            default:
-                foodSelected = false;
-                selfCareSelected = false;
-                familySelected = false;
-                travelSelected = false;
-                steppingStoneSelected = false;
-                activeSelected = true;
-                break;
-        }
-    }
-
-    @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
@@ -164,6 +109,67 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
         setProfileComponents(ivProfileImage, tvProfileUsername);
 
         recyclerViewSetup();
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btnProfileFood:
+                foodSelected = true;
+                selfCareSelected = false;
+                familySelected = false;
+                travelSelected = false;
+                steppingStoneSelected = false;
+                activeSelected = false;
+                recyclerViewSetup();
+                break;
+            case R.id.btnProfileSelfCare:
+                foodSelected = false;
+                selfCareSelected = true;
+                familySelected = false;
+                travelSelected = false;
+                steppingStoneSelected = false;
+                activeSelected = false;
+                recyclerViewSetup();
+                break;
+            case R.id.btnProfileFamily:
+                foodSelected = false;
+                selfCareSelected = false;
+                familySelected = true;
+                travelSelected = false;
+                steppingStoneSelected = false;
+                activeSelected = false;
+                recyclerViewSetup();
+                break;
+            case R.id.btnProfileTravel:
+                foodSelected = false;
+                selfCareSelected = false;
+                familySelected = false;
+                travelSelected = true;
+                steppingStoneSelected = false;
+                activeSelected = false;
+                recyclerViewSetup();
+                break;
+            case R.id.btnProfileSteppingStone:
+                foodSelected = false;
+                selfCareSelected = false;
+                familySelected = false;
+                travelSelected = false;
+                steppingStoneSelected = true;
+                activeSelected = false;
+                recyclerViewSetup();
+                break;
+            case R.id.btnProfileActive:
+            default:
+                foodSelected = false;
+                selfCareSelected = false;
+                familySelected = false;
+                travelSelected = false;
+                steppingStoneSelected = false;
+                activeSelected = true;
+                recyclerViewSetup();
+                break;
+        }
     }
 
     private void setProfileComponents(ImageView profImage, TextView username){

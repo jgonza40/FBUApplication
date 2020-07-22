@@ -73,8 +73,11 @@ import static com.google.android.gms.location.LocationServices.getFusedLocationP
 public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickListener, OnMapReadyCallback, GoogleMap.OnInfoWindowClickListener {
 
     public static final String TAG = "MapFragment";
+
     public static final String MARKERS_ARRAY = "markers";
     private final static String KEY_LOCATION = "location";
+    public static final String PASS_LAT = "markerClickedLat";
+    public static final String PASS_LONG = "markerClickedLong";
     /*
      * Define a request code to send to Google Play services This code is
      * returned in Activity.onActivityResult
@@ -167,17 +170,20 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
     }
 
     @Override
-    public void onInfoWindowClick(Marker marker) {
+    public void onInfoWindowClick(final Marker marker) {
         View messageView = LayoutInflater.from(getActivity()).inflate(R.layout.add_view_window, null);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(messageView);
         ((Button) messageView.findViewById(R.id.btnAdd)).setText("add");
         ((Button) messageView.findViewById(R.id.btnView)).setText("view");
+        Log.i(TAG, String.valueOf(marker.getPosition().latitude));
         final AlertDialog alertDialog = builder.create();
         messageView.findViewById(R.id.btnAdd).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(), ComposeActivity.class);
+                i.putExtra(PASS_LAT, String.valueOf(marker.getPosition().latitude));
+                i.putExtra(PASS_LONG, String.valueOf(marker.getPosition().longitude));
                 startActivity(i);
             }
         });

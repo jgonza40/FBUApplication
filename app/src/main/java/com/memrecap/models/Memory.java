@@ -43,11 +43,11 @@ public class Memory extends ParseObject {
         put(KEY_USER, user);
     }
 
-    public JSONObject getKeyMarker() {
-        return getJSONObject(KEY_MARKER);
+    public String getKeyMarkerId() {
+        return getObjectId();
     }
 
-    public void setMarker(JSONObject marker) {
+    public void setMarker(MarkerPoint marker) {
         put(KEY_MARKER, marker);
     }
 

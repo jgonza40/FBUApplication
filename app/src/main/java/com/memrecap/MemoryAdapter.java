@@ -181,6 +181,7 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             tvQuoteCreatedAt.setText(getRelativeTimeAgo(memory.getCreatedAt().toString()));
             tvQuoteCategory.setText("category: " + memory.getCategory());
             tvQuote.setText(memory.getQuote());
+            tvQuoteTripTitle.setText(memory.getMemoryTitle());
             Glide.with(context)
                     .load(memory.getUser().getParseFile(USER_PROFILE_PIC).getUrl())
                     .into(ivQuoteProfilePic);

@@ -67,7 +67,7 @@ public class ImageMemoryDetailsActivity extends AppCompatActivity {
                     .into(ivDetImgPostImage);
         }
         Glide.with(getApplicationContext())
-                .load(memory.getUser().getParseFile(USER_PROFILE_PIC))
+                .load(memory.getUser().getParseFile(USER_PROFILE_PIC).getUrl())
                 .into(ivDetImgProfilePic);
         Glide.with(getApplicationContext())
                 .load(getApplicationContext().getResources().getDrawable(R.drawable.ic_location))

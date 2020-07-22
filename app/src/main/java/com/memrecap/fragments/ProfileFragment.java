@@ -26,9 +26,10 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class ProfileFragment extends Fragment implements View.OnClickListener{
+public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     public static final String TAG = "ProfileFragment";
 
@@ -66,6 +67,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
     private Boolean travelSelected;
     private Boolean steppingStoneSelected;
     private Boolean activeSelected;
+    private ArrayList<Boolean> booleans = new ArrayList<Boolean>(Arrays.asList(foodSelected,
+            selfCareSelected, familySelected, travelSelected, steppingStoneSelected, activeSelected));
 
     protected MemoryAdapter adapter;
 
@@ -99,12 +102,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
         btnProfileSteppingStone.setOnClickListener(this);
         btnProfileActive.setOnClickListener(this);
 
+        resetBooleanValues();
         foodSelected = true;
-        selfCareSelected = false;
-        familySelected = false;
-        travelSelected = false;
-        steppingStoneSelected = false;
-        activeSelected = false;
 
         setProfileComponents(ivProfileImage, tvProfileUsername);
 
@@ -115,71 +114,56 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnProfileFood:
+                resetBooleanValues();
                 foodSelected = true;
-                selfCareSelected = false;
-                familySelected = false;
-                travelSelected = false;
-                steppingStoneSelected = false;
-                activeSelected = false;
                 recyclerViewSetup();
                 break;
             case R.id.btnProfileSelfCare:
-                foodSelected = false;
+                resetBooleanValues();
                 selfCareSelected = true;
-                familySelected = false;
-                travelSelected = false;
-                steppingStoneSelected = false;
-                activeSelected = false;
                 recyclerViewSetup();
                 break;
             case R.id.btnProfileFamily:
-                foodSelected = false;
-                selfCareSelected = false;
+                resetBooleanValues();
                 familySelected = true;
-                travelSelected = false;
-                steppingStoneSelected = false;
-                activeSelected = false;
                 recyclerViewSetup();
                 break;
             case R.id.btnProfileTravel:
-                foodSelected = false;
-                selfCareSelected = false;
-                familySelected = false;
+                resetBooleanValues();
                 travelSelected = true;
-                steppingStoneSelected = false;
-                activeSelected = false;
                 recyclerViewSetup();
                 break;
             case R.id.btnProfileSteppingStone:
-                foodSelected = false;
-                selfCareSelected = false;
-                familySelected = false;
-                travelSelected = false;
+                resetBooleanValues();
                 steppingStoneSelected = true;
-                activeSelected = false;
                 recyclerViewSetup();
                 break;
             case R.id.btnProfileActive:
             default:
-                foodSelected = false;
-                selfCareSelected = false;
-                familySelected = false;
-                travelSelected = false;
-                steppingStoneSelected = false;
+                resetBooleanValues();
                 activeSelected = true;
                 recyclerViewSetup();
                 break;
         }
     }
 
-    private void setProfileComponents(ImageView profImage, TextView username){
+    private void resetBooleanValues() {
+        foodSelected = false;
+        selfCareSelected = false;
+        familySelected = false;
+        travelSelected = false;
+        steppingStoneSelected = false;
+        activeSelected = false;
+    }
+
+    private void setProfileComponents(ImageView profImage, TextView username) {
         username.setText("@" + ParseUser.getCurrentUser().getUsername());
         Glide.with(getContext())
                 .load(ParseUser.getCurrentUser().getParseFile(USER_PROFILE_PIC).getUrl())
                 .into(profImage);
     }
 
-    private void recyclerViewSetup(){
+    private void recyclerViewSetup() {
         foodMemories = new ArrayList<>();
         selfCareMemories = new ArrayList<>();
         familyMemories = new ArrayList<>();
@@ -209,15 +193,15 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
                 }
 
                 for (Memory memory : memories) {
-                    if(memory.getCategory().equals(FOOD)){
+                    if (memory.getCategory().equals(FOOD)) {
                         foodMemories.add(memory);
-                    } else if(memory.getCategory().equals(SELF_CARE)){
+                    } else if (memory.getCategory().equals(SELF_CARE)) {
                         selfCareMemories.add(memory);
-                    } else if(memory.getCategory().equals(FAMILY)){
+                    } else if (memory.getCategory().equals(FAMILY)) {
                         familyMemories.add(memory);
-                    } else if(memory.getCategory().equals(TRAVEL)){
+                    } else if (memory.getCategory().equals(TRAVEL)) {
                         travelMemories.add(memory);
-                    } else if(memory.getCategory().equals(STEPPING_STONE)){
+                    } else if (memory.getCategory().equals(STEPPING_STONE)) {
                         steppingStoneMemories.add(memory);
                     } else {
                         activeMemories.add(memory);
@@ -230,23 +214,23 @@ public class ProfileFragment extends Fragment implements View.OnClickListener{
         });
     }
 
-    private void setFinalList(){
-        if(foodSelected){
+    private void setFinalList() {
+        if (foodSelected) {
             finalList.clear();
             finalList.addAll(foodMemories);
-        } else if(selfCareSelected){
+        } else if (selfCareSelected) {
             finalList.clear();
             finalList.addAll(selfCareMemories);
-        } else if(familySelected){
+        } else if (familySelected) {
             finalList.clear();
             finalList.addAll(familyMemories);
-        } else if(travelSelected){
+        } else if (travelSelected) {
             finalList.clear();
             finalList.addAll(travelMemories);
-        } else if(steppingStoneSelected){
+        } else if (steppingStoneSelected) {
             finalList.clear();
             finalList.addAll(steppingStoneMemories);
-        }else{
+        } else {
             finalList.clear();
             finalList.addAll(activeMemories);
         }

@@ -184,6 +184,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         query.whereEqualTo(Memory.KEY_USER, ParseUser.getCurrentUser());
         query.setLimit(MAX_POSTS);
         query.addDescendingOrder(Memory.KEY_CREATED_AT);
+
         query.findInBackground(new FindCallback<Memory>() {
             @Override
             public void done(List<Memory> memories, ParseException e) {
@@ -191,7 +192,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                     Log.e(TAG, "Issue with getting posts", e);
                     return;
                 }
-
                 for (Memory memory : memories) {
                     if (memory.getCategory().equals(FOOD)) {
                         foodMemories.add(memory);

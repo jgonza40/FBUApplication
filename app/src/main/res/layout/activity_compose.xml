@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="250dp"
         android:fontFamily="sans-serif-medium"
-        android:text="what memory did u create today?"
+        android:text="what memory did you create today?"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

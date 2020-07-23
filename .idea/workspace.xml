@@ -20,10 +20,10 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/memrecap/MemoryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/memrecap/MemoryAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/memrecap/activities/ComposeImageMemoryActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/memrecap/activities/ComposeImageMemoryActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/memrecap/activities/ImageMemoryDetailsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/memrecap/activities/ImageMemoryDetailsActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/memrecap/activities/QuoteMemoryDetailsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/memrecap/activities/QuoteMemoryDetailsActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/memrecap/activities/ComposeQuoteMemoryActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/memrecap/activities/ComposeQuoteMemoryActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_compose_image_memory.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_compose_image_memory.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_compose_quote_memory.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_compose_quote_memory.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

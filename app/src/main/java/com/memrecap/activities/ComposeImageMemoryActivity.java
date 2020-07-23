@@ -51,7 +51,6 @@ public class ComposeImageMemoryActivity extends AppCompatActivity {
 
 
     private File photoFile;
-    private ProgressBar pb;
     private EditText etDescription;
     private ImageView ivPostImage;
 
@@ -72,7 +71,6 @@ public class ComposeImageMemoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compose_image_memory);
-        pb = findViewById(R.id.pbImgLoad);
         etDescription = findViewById(R.id.etDescription);
         btnCaptureImage = findViewById(R.id.btnCaptureImage);
         ivPostImage = findViewById(R.id.ivPostImage);
@@ -118,12 +116,12 @@ public class ComposeImageMemoryActivity extends AppCompatActivity {
                     Toast.makeText(ComposeImageMemoryActivity.this, "there is no image!", Toast.LENGTH_LONG).show();
                     return;
                 }
-                ParseUser currentUser = ParseUser.getCurrentUser();
                 if (setCategory == "") {
                     Toast.makeText(ComposeImageMemoryActivity.this, "must select a category!", Toast.LENGTH_LONG).show();
                     return;
                 }
-                pb.setVisibility(ProgressBar.VISIBLE);
+                ParseUser currentUser = ParseUser.getCurrentUser();
+
                 savePost(description, currentUser, photoFile, setCategory, marker);
             }
         });
@@ -247,8 +245,7 @@ public class ComposeImageMemoryActivity extends AppCompatActivity {
                 }
                 etDescription.setText("");
                 ivPostImage.setImageResource(0);
-                // Setting pb to invisible once post is submitted
-                pb.setVisibility(View.INVISIBLE);
+
                 Intent i = new Intent(ComposeImageMemoryActivity.this, MainActivity.class);
                 startActivity(i);
                 finish();

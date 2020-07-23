@@ -46,7 +46,6 @@ public class ComposeQuoteMemoryActivity extends AppCompatActivity {
     private String setCategory;
     private EditText etQuote;
     private Button btnPost;
-    private ProgressBar pb;
     private MarkerPoint marker;
 
     @Override
@@ -60,7 +59,6 @@ public class ComposeQuoteMemoryActivity extends AppCompatActivity {
         btnImageTravel = findViewById(R.id.btnQuoteTravel);
         btnImageSteppingStone = findViewById(R.id.btnQuoteSteppingStone);
         btnImageActive = findViewById(R.id.btnQuoteActive);
-        pb = findViewById(R.id.pbQuoteLoad);
         etQuote = findViewById(R.id.etQuote);
 
         // Gets the previously created intent to get 2 marker values
@@ -82,7 +80,6 @@ public class ComposeQuoteMemoryActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String quote = etQuote.getText().toString();
                 ParseUser currentUser = ParseUser.getCurrentUser();
-                pb.setVisibility(ProgressBar.VISIBLE);
                 savePost(quote, currentUser, setCategory, marker);
             }
         });
@@ -119,8 +116,6 @@ public class ComposeQuoteMemoryActivity extends AppCompatActivity {
                     return;
                 }
                 etQuote.setText("");
-                // Setting pb to invisible once post is submitted
-                pb.setVisibility(View.INVISIBLE);
                 Intent i = new Intent(ComposeQuoteMemoryActivity.this, MainActivity.class);
                 startActivity(i);
                 finish();

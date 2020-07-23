@@ -93,7 +93,6 @@ public class ComposeQuoteMemoryActivity extends AppCompatActivity {
             ParseQuery<MarkerPoint> query = ParseQuery.getQuery(MarkerPoint.class);
             MarkerPoint currMarker = query.get(marker);
             if (currMarker.getMarkerLat().equals(markerLat) && currMarker.getMarkerLong().equals(markerLong)) {
-
                 correspondingMarker = currMarker;
             }
         }

@@ -175,7 +175,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(messageView);
         ((Button) messageView.findViewById(R.id.btnAdd)).setText("add");
-        ((Button) messageView.findViewById(R.id.btnView)).setText("view");
+        ((Button) messageView.findViewById(R.id.btnView)).setText("recap");
         Log.i(TAG, String.valueOf(marker.getPosition().latitude));
         final AlertDialog alertDialog = builder.create();
         messageView.findViewById(R.id.btnAdd).setOnClickListener(new View.OnClickListener() {

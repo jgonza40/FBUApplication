@@ -1,5 +1,6 @@
 package com.memrecap.models;
 
+import com.google.android.gms.maps.model.Marker;
 import com.parse.ParseClassName;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
@@ -43,9 +44,7 @@ public class Memory extends ParseObject {
         put(KEY_USER, user);
     }
 
-    public String getKeyMarkerId() {
-        return getObjectId();
-    }
+    public String getKeyMarkerId() { return getParseObject(KEY_MARKER).getObjectId(); }
 
     public void setMarker(MarkerPoint marker) {
         put(KEY_MARKER, marker);

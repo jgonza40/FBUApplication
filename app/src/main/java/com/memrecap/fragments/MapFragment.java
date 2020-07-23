@@ -191,6 +191,8 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(getActivity(), LocationRecapActivity.class);
+                i.putExtra(PASS_LAT, String.valueOf(marker.getPosition().latitude));
+                i.putExtra(PASS_LONG, String.valueOf(marker.getPosition().longitude));
                 startActivity(i);
             }
         });

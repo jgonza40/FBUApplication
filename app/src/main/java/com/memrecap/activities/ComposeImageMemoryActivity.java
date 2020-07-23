@@ -40,6 +40,7 @@ public class ComposeImageMemoryActivity extends AppCompatActivity {
     public static final String PASS_LAT = "markerClickedLat";
     public static final String PASS_LONG = "markerClickedLong";
     public static final String MARKERS_ARRAY = "markers";
+    public static final String OBJECT_ID = "objectId";
 
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
     public static final String SELF_CARE = "selfCare";
@@ -131,7 +132,7 @@ public class ComposeImageMemoryActivity extends AppCompatActivity {
         JSONArray userMarkers = ParseUser.getCurrentUser().getJSONArray(MARKERS_ARRAY);
         MarkerPoint correspondingMarker = null;
         for (int i = 0; i < userMarkers.length(); i++) {
-            String marker = userMarkers.getJSONObject(i).getString("objectId");
+            String marker = userMarkers.getJSONObject(i).getString(OBJECT_ID);
             ParseQuery<MarkerPoint> query = ParseQuery.getQuery(MarkerPoint.class);
             MarkerPoint currMarker = query.get(marker);
             if (currMarker.getMarkerLat().equals(markerLat) && currMarker.getMarkerLong().equals(markerLong)) {

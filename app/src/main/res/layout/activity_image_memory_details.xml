@@ -52,6 +52,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:text="yesterday"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/ivDetImgProfilePic"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tvDetImgUsername"
@@ -96,7 +97,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="8dp"
             android:text="category: self-care"
-            android:textSize="12sp"
+            android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tvDetImgCaption"
             app:layout_constraintTop_toBottomOf="@+id/tvDetImgCaption" />

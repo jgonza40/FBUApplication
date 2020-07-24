@@ -1,7 +1,6 @@
 package com.memrecap;
 
 import android.content.Context;
-import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +9,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 import com.memrecap.models.Memory;
 import com.parse.ParseFile;
 
@@ -26,28 +24,57 @@ public class LocationRecapAdapter extends ArrayAdapter<Memory> {
 
     private TextView tvLocation;
     private ImageView ivLocationImg;
+    private TextView tvLocationQuote;
+    private TextView tvLocationName;
 
     public LocationRecapAdapter(Context context, int resourceId, List<Memory> memories) {
         super(context, resourceId, memories);
     }
 
-    public View getView(int position, View convertView, ViewGroup parent){
+    public View getView(int position, View item_view, ViewGroup parent){
         Memory item_memory = getItem(position);
-        if(convertView == null){
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_location_recap, parent, false);
+        int type = getItemViewType(item_memory);
+
+        if(type == TYPE_IMAGE){
+            item_view = setImageLayout(item_view, item_memory, parent);
+        } else{
+            item_view = setQuoteLayout(item_view, item_memory, parent);
         }
 
-        tvLocation = convertView.findViewById(R.id.tvLocation);
-        ivLocationImg = convertView.findViewById(R.id.ivLocationImg);
+        return item_view;
+    }
 
-        tvLocation.setText(item_memory.getMemoryTitle());
-        ParseFile image = item_memory.getImage();
+    public View setImageLayout(View view, Memory memory, ViewGroup parent){
+        if(view == null){
+            view = LayoutInflater.from(getContext()).inflate(R.layout.item_image_recap, parent, false);
+        }
+
+        tvLocation = view.findViewById(R.id.tvLocation);
+        ivLocationImg = view.findViewById(R.id.ivLocationImg);
+
+        tvLocation.setText(memory.getMemoryTitle());
+        ParseFile image = memory.getImage();
         if (image != null) {
             Glide.with(getContext())
                     .load(image.getUrl())
                     .into(ivLocationImg);
         }
-        return convertView;
+
+        return view;
+    }
+
+    public View setQuoteLayout(View view, Memory memory, ViewGroup parent){
+        if(view == null){
+            view = LayoutInflater.from(getContext()).inflate(R.layout.item_quote_recap, parent, false);
+        }
+
+        tvLocationQuote = view.findViewById(R.id.tvLocationQuote);
+        tvLocationName = view.findViewById(R.id.tvLocationName);
+
+        tvLocationQuote.setText(memory.getQuote());
+        tvLocationName.setText(memory.getMemoryTitle());
+
+        return view;
     }
 
     public int getItemViewType(Memory memory) {
@@ -57,5 +84,4 @@ public class LocationRecapAdapter extends ArrayAdapter<Memory> {
             return TYPE_IMAGE;
         }
     }
-
 }

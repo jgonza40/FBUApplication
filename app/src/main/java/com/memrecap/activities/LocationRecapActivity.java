@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
@@ -47,7 +46,7 @@ public class LocationRecapActivity extends AppCompatActivity {
         // Gets the previously created intent to get 2 marker values
         Intent myIntent = getIntent();
         final String markerLat = myIntent.getStringExtra(PASS_LAT);
-        final String markerLong= myIntent.getStringExtra(PASS_LONG);
+        final String markerLong = myIntent.getStringExtra(PASS_LONG);
 
         try {
             marker = getMarkerForPost(markerLat, markerLong);
@@ -59,7 +58,7 @@ public class LocationRecapActivity extends AppCompatActivity {
 
         listMemories = new ArrayList<Memory>();
         getLocationPosts(marker);
-        adapter = new LocationRecapAdapter(this, R.layout.item_location_recap, listMemories);
+        adapter = new LocationRecapAdapter(this, R.layout.item_image_recap, listMemories);
         SwipeFlingAdapterView flingContainer;
         flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
         flingContainer.setAdapter(adapter);
@@ -114,9 +113,7 @@ public class LocationRecapActivity extends AppCompatActivity {
                 }
                 for (Memory memory : memories) {
                     if (memory.getKeyMarkerId().equals(markerPoint.getObjectId())) {
-                        if(memory.getImage() != null){
-                            listMemories.add(memory);
-                        }
+                        listMemories.add(memory);
                     }
                 }
                 adapter.notifyDataSetChanged();

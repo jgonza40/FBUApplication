@@ -76,7 +76,6 @@ public class ProfileRecapActivity extends AppCompatActivity {
 
             @Override
             public void onLeftCardExit(Object dataObject) {
-                Toast.makeText(ProfileRecapActivity.this, "Left!", Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -130,15 +129,25 @@ public class ProfileRecapActivity extends AppCompatActivity {
                 }
 
                 // Adding posts in the order that they should appear (order of category)
-                listMemories.addAll(foodMemories);
-                listMemories.addAll(selfCareMemories);
-                listMemories.addAll(familyMemories);
-                listMemories.addAll(travelMemories);
-                listMemories.addAll(steppingStoneMemories);
-                listMemories.addAll(activeMemories);
+                setCategoryMemories(foodMemories);
+                setCategoryMemories(selfCareMemories);
+                setCategoryMemories(familyMemories);
+                setCategoryMemories(travelMemories);
+                setCategoryMemories(steppingStoneMemories);
+                setCategoryMemories(activeMemories);
 
                 adapter.notifyDataSetChanged();
             }
         });
+    }
+
+    private void setCategoryMemories(List<Memory> list){
+        if(list.size() == 0){
+            return;
+        }
+        Memory titleMemory = new Memory();
+        titleMemory.setCategory(list.get(0).getCategory());
+        listMemories.add(titleMemory);
+        listMemories.addAll(list);
     }
 }

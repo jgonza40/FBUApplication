@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:clipToPadding="false"
     android:layout_marginStart="16dp"
     android:layout_marginTop="16dp"
     android:layout_marginEnd="16dp"
     android:layout_marginBottom="16dp"
+    android:clipToPadding="false"
     android:outlineProvider="bounds">
 
     <androidx.cardview.widget.CardView
@@ -17,37 +17,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        app:cardBackgroundColor="@color/blue"
+        app:cardBackgroundColor="@color/green"
         app:cardCornerRadius="4dp">
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
             <TextView
-                android:id="@+id/tvLocationQuote"
+                android:id="@+id/tvCategoryTitle"
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/roboto_bold"
                 android:gravity="center"
                 android:textColor="@android:color/white"
-                android:fontFamily="@font/roboto_bold"
                 android:textSize="28sp"
-                tools:text="quote"
-                android:layout_height="match_parent"
-                />
-
-
-            <TextView
-                android:id="@+id/tvLocationName"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/roboto_medium"
-                android:gravity="bottom"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                tools:text="hello" />
+                tools:text="quote" />
 
         </FrameLayout>
     </androidx.cardview.widget.CardView>
-
 </FrameLayout>

@@ -6,6 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="ProfileRecapActivity" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="info" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
@@ -19,7 +20,9 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/memrecap/fragments/MapFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/memrecap/fragments/MapFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/memrecap/activities/ProfileRecapActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/memrecap/activities/ProfileRecapActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/memrecap/fragments/ProfileFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/memrecap/fragments/ProfileFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_profile_recap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_profile_recap.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,38 +217,38 @@
       <screen x="0" y="23" width="1792" height="1036" />
     </state>
     <state x="767" y="276" key="Github.UntrackedFilesDialog/0.23.1792.1036@0.23.1792.1036" timestamp="1594265045039" />
-    <state width="1470" height="163" key="GridCell.Tab.0.bottom" timestamp="1595619260906">
-      <screen x="0" y="23" width="1792" height="1031" />
+    <state width="709" height="564" key="GridCell.Tab.0.bottom" timestamp="1595623276779">
+      <screen x="0" y="23" width="1792" height="1033" />
     </state>
     <state width="1185" height="179" key="GridCell.Tab.0.bottom/0.23.1792.1030@0.23.1792.1030" timestamp="1595311635277" />
     <state width="1239" height="337" key="GridCell.Tab.0.bottom/0.23.1792.1031@0.0.1792.1120" timestamp="1595009927234" />
     <state width="1470" height="163" key="GridCell.Tab.0.bottom/0.23.1792.1031@0.23.1792.1031" timestamp="1595619260906" />
-    <state width="1183" height="128" key="GridCell.Tab.0.bottom/0.23.1792.1033@0.23.1792.1033" timestamp="1595366077350" />
+    <state width="709" height="564" key="GridCell.Tab.0.bottom/0.23.1792.1033@0.23.1792.1033" timestamp="1595623276779" />
     <state width="1678" height="50" key="GridCell.Tab.0.bottom/0.23.1792.1034@0.23.1792.1034" timestamp="1595357704100" />
     <state width="1670" height="164" key="GridCell.Tab.0.bottom/0.23.1792.1036@0.23.1792.1036" timestamp="1594831762515" />
-    <state width="1470" height="163" key="GridCell.Tab.0.center" timestamp="1595619260905">
-      <screen x="0" y="23" width="1792" height="1031" />
+    <state width="709" height="564" key="GridCell.Tab.0.center" timestamp="1595623276778">
+      <screen x="0" y="23" width="1792" height="1033" />
     </state>
     <state width="1185" height="179" key="GridCell.Tab.0.center/0.23.1792.1030@0.23.1792.1030" timestamp="1595311635275" />
     <state width="1470" height="163" key="GridCell.Tab.0.center/0.23.1792.1031@0.23.1792.1031" timestamp="1595619260905" />
-    <state width="1183" height="128" key="GridCell.Tab.0.center/0.23.1792.1033@0.23.1792.1033" timestamp="1595366077349" />
+    <state width="709" height="564" key="GridCell.Tab.0.center/0.23.1792.1033@0.23.1792.1033" timestamp="1595623276778" />
     <state width="1678" height="50" key="GridCell.Tab.0.center/0.23.1792.1034@0.23.1792.1034" timestamp="1595357704100" />
     <state width="1670" height="164" key="GridCell.Tab.0.center/0.23.1792.1036@0.23.1792.1036" timestamp="1594831762514" />
-    <state width="1470" height="163" key="GridCell.Tab.0.left" timestamp="1595619260905">
-      <screen x="0" y="23" width="1792" height="1031" />
+    <state width="709" height="564" key="GridCell.Tab.0.left" timestamp="1595623276778">
+      <screen x="0" y="23" width="1792" height="1033" />
     </state>
     <state width="1185" height="179" key="GridCell.Tab.0.left/0.23.1792.1030@0.23.1792.1030" timestamp="1595311635274" />
     <state width="1470" height="163" key="GridCell.Tab.0.left/0.23.1792.1031@0.23.1792.1031" timestamp="1595619260905" />
-    <state width="1183" height="128" key="GridCell.Tab.0.left/0.23.1792.1033@0.23.1792.1033" timestamp="1595366077349" />
+    <state width="709" height="564" key="GridCell.Tab.0.left/0.23.1792.1033@0.23.1792.1033" timestamp="1595623276778" />
     <state width="1678" height="50" key="GridCell.Tab.0.left/0.23.1792.1034@0.23.1792.1034" timestamp="1595357704099" />
     <state width="1670" height="164" key="GridCell.Tab.0.left/0.23.1792.1036@0.23.1792.1036" timestamp="1594831762514" />
-    <state width="1470" height="163" key="GridCell.Tab.0.right" timestamp="1595619260906">
-      <screen x="0" y="23" width="1792" height="1031" />
+    <state width="709" height="564" key="GridCell.Tab.0.right" timestamp="1595623276779">
+      <screen x="0" y="23" width="1792" height="1033" />
     </state>
     <state width="1239" height="337" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1595009927207" />
     <state width="1185" height="179" key="GridCell.Tab.0.right/0.23.1792.1030@0.23.1792.1030" timestamp="1595311635276" />
     <state width="1470" height="163" key="GridCell.Tab.0.right/0.23.1792.1031@0.23.1792.1031" timestamp="1595619260906" />
-    <state width="1183" height="128" key="GridCell.Tab.0.right/0.23.1792.1033@0.23.1792.1033" timestamp="1595366077349" />
+    <state width="709" height="564" key="GridCell.Tab.0.right/0.23.1792.1033@0.23.1792.1033" timestamp="1595623276779" />
     <state width="1678" height="50" key="GridCell.Tab.0.right/0.23.1792.1034@0.23.1792.1034" timestamp="1595357704100" />
     <state width="1670" height="164" key="GridCell.Tab.0.right/0.23.1792.1036@0.23.1792.1036" timestamp="1594831762514" />
     <state x="742" y="325" key="chooseDestDirectoryDialog" timestamp="1594754547554">

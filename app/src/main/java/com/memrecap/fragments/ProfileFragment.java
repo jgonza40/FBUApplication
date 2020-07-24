@@ -37,14 +37,14 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     public static final String TAG = "ProfileFragment";
 
-    public static final String USER_PROFILE_PIC = "profilePicture";
-    public static final String SELF_CARE = "selfCare";
-    public static final String FOOD = "food";
-    public static final String FAMILY = "family";
-    public static final String STEPPING_STONE = "steppingStone";
-    public static final String ACTIVE = "active";
-    public static final String TRAVEL = "travel";
-    public static final int MAX_POSTS = 20;
+    private static final String USER_PROFILE_PIC = "profilePicture";
+    private static final String SELF_CARE = "selfCare";
+    private static final String FOOD = "food";
+    private static final String FAMILY = "family";
+    private static final String STEPPING_STONE = "steppingStone";
+    private static final String ACTIVE = "active";
+    private static final String TRAVEL = "travel";
+    private static final int MAX_POSTS = 20;
 
     private ImageView ivProfileImage;
     private TextView tvProfileUsername;
@@ -76,8 +76,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     protected MemoryAdapter adapter;
 
-    public ProfileFragment() {
-    }
+    public ProfileFragment() { }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

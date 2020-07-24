@@ -1,5 +1,6 @@
 package com.memrecap.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,9 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.memrecap.MemoryAdapter;
 import com.memrecap.R;
+import com.memrecap.activities.ComposeActivity;
+import com.memrecap.activities.ComposeImageMemoryActivity;
+import com.memrecap.activities.ProfileRecapActivity;
 import com.memrecap.models.Memory;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -93,7 +97,16 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         btnProfileTravel = view.findViewById(R.id.btnProfileTravel);
         btnProfileSteppingStone = view.findViewById(R.id.btnProfileSteppingStone);
         btnProfileActive = view.findViewById(R.id.btnProfileActive);
+        btnProfileRecap = view.findViewById(R.id.btnProfileRecap);
         rvCategoryMemories = view.findViewById(R.id.rvCategoryMemories);
+
+        btnProfileRecap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getActivity(), ProfileRecapActivity.class);
+                startActivity(i);
+            }
+        });
 
         btnProfileFood.setOnClickListener(this);
         btnProfileSelfCare.setOnClickListener(this);

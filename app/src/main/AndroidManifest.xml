@@ -28,7 +28,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.QuoteMemoryDetailsActivity"></activity>
+        <activity android:name=".activities.ProfileRecapActivity"></activity>
+        <activity android:name=".activities.QuoteMemoryDetailsActivity" />
         <activity android:name=".activities.ImageMemoryDetailsActivity" />
         <activity android:name=".activities.FriendProfileActivity" />
         <activity android:name=".activities.LocationRecapActivity" />

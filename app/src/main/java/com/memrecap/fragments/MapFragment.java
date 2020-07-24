@@ -74,10 +74,10 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
 
     public static final String TAG = "MapFragment";
 
-    public static final String MARKERS_ARRAY = "markers";
+    private static final String MARKERS_ARRAY = "markers";
     private final static String KEY_LOCATION = "location";
-    public static final String PASS_LAT = "markerClickedLat";
-    public static final String PASS_LONG = "markerClickedLong";
+    private static final String PASS_LAT = "markerClickedLat";
+    private static final String PASS_LONG = "markerClickedLong";
     /*
      * Define a request code to send to Google Play services This code is
      * returned in Activity.onActivityResult
@@ -92,8 +92,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
     private Location mCurrentLocation;
     private SupportMapFragment mSupportMapFragment;
 
-    public MapFragment() {
-    }
+    public MapFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -202,7 +201,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
 
     @SuppressWarnings({"MissingPermission"})
     @NeedsPermission({Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION})
-    void getMyLocation() {
+    protected void getMyLocation() {
         mGoogleMap.setMyLocationEnabled(true);
         mGoogleMap.getUiSettings().setMyLocationButtonEnabled(true);
 
@@ -372,7 +371,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
         }
     }
 
-    public void onLocationChanged(Location location) {
+    private void onLocationChanged(Location location) {
         // GPS may be turned off
         if (location == null) {
             return;

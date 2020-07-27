@@ -36,6 +36,20 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private static int TYPE_IMAGE = 1;
     private static int TYPE_QUOTE = 2;
 
+    private static final String SELF_CARE = "selfCare";
+    private static final String FOOD = "food";
+    private static final String FAMILY = "family";
+    private static final String STEPPING_STONE = "steppingStone";
+    private static final String ACTIVE = "active";
+    private static final String TRAVEL = "travel";
+
+    private static final String SELF_CARE_TITLE = "self care";
+    private static final String FOOD_TITLE = "food";
+    private static final String FAMILY_TITLE = "family";
+    private static final String STEPPING_STONE_TITLE = "stepping stone";
+    private static final String ACTIVE_TITLE = "active";
+    private static final String TRAVEL_TITLE = "travel";
+
     private Context context;
     private List<Memory> memories;
 
@@ -123,7 +137,7 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             tvImgUsername.setText(memory.getUser().getUsername());
             tvImgCreatedAt.setText(getRelativeTimeAgo(memory.getCreatedAt().toString()));
             tvImgCaption.setText(memory.getDescription());
-            tvImgCategory.setText("category: " + memory.getCategory());
+            tvImgCategory.setText("category: " + getCategoryTitle(memory.getCategory()));
             tvImgTripTitle.setText(memory.getMemoryTitle());
             ParseFile image = memory.getImage();
             if (image != null) {
@@ -180,7 +194,7 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         public void setQuoteDetails(Memory memory) {
             tvQuoteUsername.setText(memory.getUser().getUsername());
             tvQuoteCreatedAt.setText(getRelativeTimeAgo(memory.getCreatedAt().toString()));
-            tvQuoteCategory.setText("category: " + memory.getCategory());
+            tvQuoteCategory.setText("category: " + getCategoryTitle(memory.getCategory()));
             tvQuote.setText(memory.getQuote());
             tvQuoteTripTitle.setText(memory.getMemoryTitle());
             Glide.with(context)
@@ -220,6 +234,24 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             e.printStackTrace();
         }
         return "";
+    }
+
+    private String getCategoryTitle(String category){
+        String categoryTitle = "";
+        if(category.equals(FOOD)){
+            categoryTitle = FOOD_TITLE;
+        } else if(category.equals(SELF_CARE)){
+            categoryTitle = SELF_CARE_TITLE;
+        } else if(category.equals(FAMILY)){
+            categoryTitle = FAMILY_TITLE;
+        } else if(category.equals(STEPPING_STONE)){
+            categoryTitle = STEPPING_STONE_TITLE;
+        } else if(category.equals(TRAVEL)){
+            categoryTitle = TRAVEL_TITLE;
+        } else{
+            categoryTitle = ACTIVE_TITLE;
+        }
+        return categoryTitle;
     }
 
     public void clear() {

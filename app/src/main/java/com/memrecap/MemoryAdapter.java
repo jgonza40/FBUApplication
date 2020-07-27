@@ -221,4 +221,14 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
         return "";
     }
+
+    public void clear() {
+        memories.clear();
+        notifyDataSetChanged();
+    }
+
+    public void addAll(List<Memory> list) {
+        memories.addAll(list);
+        notifyDataSetChanged();
+    }
 }

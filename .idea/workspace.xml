@@ -6,7 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="ProfileRecapActivity" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="SearchFra" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="info" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
@@ -22,10 +22,10 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/app.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/memrecap/LocationRecapAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/memrecap/LocationRecapAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/memrecap/activities/ProfileRecapActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/memrecap/activities/ProfileRecapActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_quote_recap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_quote_recap.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/memrecap/fragments/SearchFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/memrecap/fragments/SearchFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_search.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,8 +54,8 @@
         <option value="valueResourceFile" />
         <option value="resourceFile" />
         <option value="Kotlin File" />
-        <option value="Class" />
         <option value="layoutResourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -179,10 +179,10 @@
       <screen x="0" y="23" width="1792" height="1033" />
     </state>
     <state x="479" y="534" key="#PSD/0.23.1792.1033@0.23.1792.1033" timestamp="1594848432888" />
-    <state x="811" y="257" key="#com.intellij.ide.util.MemberChooser" timestamp="1595539596909">
-      <screen x="0" y="23" width="1792" height="1031" />
+    <state x="811" y="256" key="#com.intellij.ide.util.MemberChooser" timestamp="1595878442986">
+      <screen x="0" y="23" width="1792" height="1030" />
     </state>
-    <state x="811" y="256" key="#com.intellij.ide.util.MemberChooser/0.23.1792.1030@0.23.1792.1030" timestamp="1595434747483" />
+    <state x="811" y="256" key="#com.intellij.ide.util.MemberChooser/0.23.1792.1030@0.23.1792.1030" timestamp="1595878442986" />
     <state x="811" y="257" key="#com.intellij.ide.util.MemberChooser/0.23.1792.1031@0.23.1792.1031" timestamp="1595539596909" />
     <state x="811" y="257" key="#com.intellij.ide.util.MemberChooser/0.23.1792.1033@0.23.1792.1033" timestamp="1594932640349" />
     <state x="811" y="258" key="#com.intellij.ide.util.MemberChooser/0.23.1792.1034@0.23.1792.1034" timestamp="1595358337859" />
@@ -202,9 +202,10 @@
     <state x="591" y="298" key="AndroidCreateResourceDirectoryDialog/0.23.1792.1030@0.23.1792.1030" timestamp="1595266706539" />
     <state x="591" y="299" key="AndroidCreateResourceDirectoryDialog/0.23.1792.1031@0.23.1792.1031" timestamp="1594783896589" />
     <state x="591" y="300" key="AndroidCreateResourceDirectoryDialog/0.23.1792.1036@0.23.1792.1036" timestamp="1594828337845" />
-    <state x="624" y="302" key="AndroidCreateResourceFileDialog" timestamp="1595629935263">
-      <screen x="0" y="23" width="1792" height="1031" />
+    <state x="624" y="302" key="AndroidCreateResourceFileDialog" timestamp="1595871984148">
+      <screen x="0" y="23" width="1792" height="1030" />
     </state>
+    <state x="624" y="302" key="AndroidCreateResourceFileDialog/0.23.1792.1030@0.23.1792.1030" timestamp="1595871984148" />
     <state x="624" y="302" key="AndroidCreateResourceFileDialog/0.23.1792.1031@0.23.1792.1031" timestamp="1595629935263" />
     <state x="624" y="303" key="AndroidCreateResourceFileDialog/0.23.1792.1033@0.23.1792.1033" timestamp="1595606869677" />
     <state x="624" y="303" key="AndroidCreateResourceFileDialog/0.23.1792.1034@0.23.1792.1034" timestamp="1594699751611" />
@@ -267,9 +268,10 @@
       <screen x="0" y="23" width="1792" height="1031" />
     </state>
     <state x="819" y="491" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1792.1031@0.23.1792.1031" timestamp="1595540942596" />
-    <state x="622" y="378" width="670" height="676" key="search.everywhere.popup" timestamp="1595292770163">
-      <screen x="0" y="23" width="1792" height="1031" />
+    <state x="622" y="378" width="670" height="676" key="search.everywhere.popup" timestamp="1595873099945">
+      <screen x="0" y="23" width="1792" height="1030" />
     </state>
+    <state x="622" y="378" width="670" height="676" key="search.everywhere.popup/0.23.1792.1030@0.23.1792.1030" timestamp="1595873099945" />
     <state x="622" y="378" width="670" height="676" key="search.everywhere.popup/0.23.1792.1031@0.23.1792.1031" timestamp="1595292770163" />
   </component>
 </project>

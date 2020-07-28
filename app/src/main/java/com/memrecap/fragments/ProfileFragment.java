@@ -128,35 +128,30 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             case R.id.btnProfileFood:
                 resetBooleanValues();
                 foodSelected = true;
-                recyclerViewSetup();
                 break;
             case R.id.btnProfileSelfCare:
                 resetBooleanValues();
                 selfCareSelected = true;
-                recyclerViewSetup();
                 break;
             case R.id.btnProfileFamily:
                 resetBooleanValues();
                 familySelected = true;
-                recyclerViewSetup();
                 break;
             case R.id.btnProfileTravel:
                 resetBooleanValues();
                 travelSelected = true;
-                recyclerViewSetup();
                 break;
             case R.id.btnProfileSteppingStone:
                 resetBooleanValues();
                 steppingStoneSelected = true;
-                recyclerViewSetup();
                 break;
             case R.id.btnProfileActive:
             default:
                 resetBooleanValues();
                 activeSelected = true;
-                recyclerViewSetup();
                 break;
         }
+        recyclerViewSetup();
     }
 
     private void resetBooleanValues() {
@@ -227,23 +222,18 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     }
 
     private void setFinalList() {
+        finalList.clear();
         if (foodSelected) {
-            finalList.clear();
             finalList.addAll(foodMemories);
         } else if (selfCareSelected) {
-            finalList.clear();
             finalList.addAll(selfCareMemories);
         } else if (familySelected) {
-            finalList.clear();
             finalList.addAll(familyMemories);
         } else if (travelSelected) {
-            finalList.clear();
             finalList.addAll(travelMemories);
         } else if (steppingStoneSelected) {
-            finalList.clear();
             finalList.addAll(steppingStoneMemories);
         } else {
-            finalList.clear();
             finalList.addAll(activeMemories);
         }
     }

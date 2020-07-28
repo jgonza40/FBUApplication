@@ -24,7 +24,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
             <TextView
                 android:id="@+id/tvLocationQuote"
                 android:layout_width="match_parent"
@@ -36,7 +35,6 @@
                 android:layout_height="match_parent"
                 />
 
-
             <TextView
                 android:id="@+id/tvLocationName"
                 android:layout_width="match_parent"
@@ -45,7 +43,7 @@
                 android:gravity="bottom"
                 android:textColor="@android:color/white"
                 android:textSize="20sp"
-                tools:text="hello" />
+                tools:text="@string/hello" />
 
         </FrameLayout>
     </androidx.cardview.widget.CardView>

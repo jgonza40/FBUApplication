@@ -31,13 +31,7 @@ import java.util.List;
 public class ProfileRecapActivity extends AppCompatActivity {
 
     public static final String TAG = "ProfileRecapActivity";
-
-//    private static final String SELF_CARE = "selfCare";
-//    private static final String FOOD = "food";
-//    private static final String FAMILY = "family";
-//    private static final String STEPPING_STONE = "steppingStone";
-//    private static final String ACTIVE = "active";
-//    private static final String TRAVEL = "travel";
+    
     public static final int MAX_POSTS = 20;
     public static final int NUM_OF_CATEGORIES = 6;
 

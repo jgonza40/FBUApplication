@@ -11,11 +11,6 @@ import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 import com.memrecap.LocationRecapAdapter;
 import com.memrecap.R;
 import com.memrecap.StaticVariables;
-import com.memrecap.fragments.HomeFragment;
-import com.memrecap.fragments.MapFragment;
-import com.memrecap.fragments.ProfileFragment;
-import com.memrecap.fragments.SearchFragment;
-import com.memrecap.models.MarkerPoint;
 import com.memrecap.models.Memory;
 import com.parse.FindCallback;
 import com.parse.ParseException;
@@ -31,7 +26,7 @@ import java.util.List;
 public class ProfileRecapActivity extends AppCompatActivity {
 
     public static final String TAG = "ProfileRecapActivity";
-    
+
     public static final int MAX_POSTS = 20;
     public static final int NUM_OF_CATEGORIES = 6;
 

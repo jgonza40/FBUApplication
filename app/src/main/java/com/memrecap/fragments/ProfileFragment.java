@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.memrecap.MemoryAdapter;
 import com.memrecap.R;
+import com.memrecap.StaticVariables;
 import com.memrecap.activities.ComposeActivity;
 import com.memrecap.activities.ComposeImageMemoryActivity;
 import com.memrecap.activities.ProfileRecapActivity;
@@ -38,12 +39,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     public static final String TAG = "ProfileFragment";
 
     private static final String USER_PROFILE_PIC = "profilePicture";
-    private static final String SELF_CARE = "selfCare";
-    private static final String FOOD = "food";
-    private static final String FAMILY = "family";
-    private static final String STEPPING_STONE = "steppingStone";
-    private static final String ACTIVE = "active";
-    private static final String TRAVEL = "travel";
     private static final int MAX_POSTS = 20;
 
     private ImageView ivProfileImage;
@@ -200,18 +195,26 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
                     return;
                 }
                 for (Memory memory : memories) {
-                    if (memory.getCategory().equals(FOOD)) {
-                        foodMemories.add(memory);
-                    } else if (memory.getCategory().equals(SELF_CARE)) {
-                        selfCareMemories.add(memory);
-                    } else if (memory.getCategory().equals(FAMILY)) {
-                        familyMemories.add(memory);
-                    } else if (memory.getCategory().equals(TRAVEL)) {
-                        travelMemories.add(memory);
-                    } else if (memory.getCategory().equals(STEPPING_STONE)) {
-                        steppingStoneMemories.add(memory);
-                    } else {
-                        activeMemories.add(memory);
+                    switch (memory.getCategory()) {
+                        case StaticVariables.FOOD:
+                            foodMemories.add(memory);
+                            break;
+                        case StaticVariables.SELF_CARE:
+                            selfCareMemories.add(memory);
+                            break;
+                        case StaticVariables.FAMILY:
+                            familyMemories.add(memory);
+                            break;
+                        case StaticVariables.TRAVEL:
+                            travelMemories.add(memory);
+                            break;
+                        case StaticVariables.STEPPING_STONE:
+                            steppingStoneMemories.add(memory);
+                            break;
+                        case StaticVariables.ACTIVE:
+                        default:
+                            activeMemories.add(memory);
+                            break;
                     }
                 }
 

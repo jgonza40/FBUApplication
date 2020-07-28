@@ -76,7 +76,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     protected MemoryAdapter adapter;
 
-    public ProfileFragment() { }
+    public ProfileFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

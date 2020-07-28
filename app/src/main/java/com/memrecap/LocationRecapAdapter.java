@@ -67,7 +67,6 @@ public class LocationRecapAdapter extends ArrayAdapter<Memory> {
         }
 
         tvCategoryTitle = view.findViewById(R.id.tvCategoryTitle);
-
         tvCategoryTitle.setText(getCategoryTitle(memory.getCategory()) + " memories you have created! :)");
 
         return view;

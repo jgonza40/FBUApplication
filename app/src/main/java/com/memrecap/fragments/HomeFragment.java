@@ -36,7 +36,7 @@ public class HomeFragment extends Fragment {
     protected List<Memory> allMemories;
     private SwipeRefreshLayout swipeContainer;
 
-    public HomeFragment() { }
+    public HomeFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

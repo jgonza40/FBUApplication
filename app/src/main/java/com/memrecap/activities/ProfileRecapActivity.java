@@ -10,6 +10,11 @@ import android.widget.Toast;
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 import com.memrecap.LocationRecapAdapter;
 import com.memrecap.R;
+import com.memrecap.StaticVariables;
+import com.memrecap.fragments.HomeFragment;
+import com.memrecap.fragments.MapFragment;
+import com.memrecap.fragments.ProfileFragment;
+import com.memrecap.fragments.SearchFragment;
 import com.memrecap.models.MarkerPoint;
 import com.memrecap.models.Memory;
 import com.parse.FindCallback;
@@ -27,12 +32,12 @@ public class ProfileRecapActivity extends AppCompatActivity {
 
     public static final String TAG = "ProfileRecapActivity";
 
-    private static final String SELF_CARE = "selfCare";
-    private static final String FOOD = "food";
-    private static final String FAMILY = "family";
-    private static final String STEPPING_STONE = "steppingStone";
-    private static final String ACTIVE = "active";
-    private static final String TRAVEL = "travel";
+//    private static final String SELF_CARE = "selfCare";
+//    private static final String FOOD = "food";
+//    private static final String FAMILY = "family";
+//    private static final String STEPPING_STONE = "steppingStone";
+//    private static final String ACTIVE = "active";
+//    private static final String TRAVEL = "travel";
     public static final int MAX_POSTS = 20;
     public static final int NUM_OF_CATEGORIES = 6;
 
@@ -52,6 +57,10 @@ public class ProfileRecapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile_recap);
 
         listMemories = new ArrayList<Memory>();
+
+        for(int i = 0; i < NUM_OF_CATEGORIES; i++){
+
+        }
         foodMemories = new ArrayList<Memory>();
         selfCareMemories = new ArrayList<Memory>();
         familyMemories = new ArrayList<Memory>();
@@ -75,20 +84,16 @@ public class ProfileRecapActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onLeftCardExit(Object dataObject) {
-            }
+            public void onLeftCardExit(Object dataObject) {}
 
             @Override
-            public void onRightCardExit(Object o) {
-            }
+            public void onRightCardExit(Object o) {}
 
             @Override
-            public void onAdapterAboutToEmpty(int itemsInAdapter) {
-            }
+            public void onAdapterAboutToEmpty(int itemsInAdapter) {}
 
             @Override
-            public void onScroll(float scrollProgressPercent) {
-            }
+            public void onScroll(float scrollProgressPercent) {}
         });
 
         flingContainer.setOnItemClickListener(new SwipeFlingAdapterView.OnItemClickListener() {
@@ -113,18 +118,26 @@ public class ProfileRecapActivity extends AppCompatActivity {
                     return;
                 }
                 for (Memory memory : memories) {
-                    if (memory.getCategory().equals(FOOD)) {
-                        foodMemories.add(memory);
-                    } else if (memory.getCategory().equals(SELF_CARE)) {
-                        selfCareMemories.add(memory);
-                    } else if (memory.getCategory().equals(FAMILY)) {
-                        familyMemories.add(memory);
-                    } else if (memory.getCategory().equals(TRAVEL)) {
-                        travelMemories.add(memory);
-                    } else if (memory.getCategory().equals(STEPPING_STONE)) {
-                        steppingStoneMemories.add(memory);
-                    } else {
-                        activeMemories.add(memory);
+                    switch (memory.getCategory()) {
+                        case StaticVariables.FOOD:
+                            foodMemories.add(memory);
+                            break;
+                        case StaticVariables.SELF_CARE:
+                            selfCareMemories.add(memory);
+                            break;
+                        case StaticVariables.FAMILY:
+                            familyMemories.add(memory);
+                            break;
+                        case StaticVariables.TRAVEL:
+                            travelMemories.add(memory);
+                            break;
+                        case StaticVariables.STEPPING_STONE:
+                            steppingStoneMemories.add(memory);
+                            break;
+                        case StaticVariables.ACTIVE:
+                        default:
+                            activeMemories.add(memory);
+                            break;
                     }
                 }
 

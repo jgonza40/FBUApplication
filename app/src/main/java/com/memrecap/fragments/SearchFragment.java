@@ -71,7 +71,6 @@ public class SearchFragment extends Fragment {
             public void done(List<ParseUser> users, ParseException e) {
                 if (e == null) {
                     allUsers.addAll(users);
-                    Log.i(TAG, users.toString());
                     adapter.notifyDataSetChanged();
                 } else {
                     Toast.makeText(getContext(),"Query Not Successful",Toast.LENGTH_LONG).show();

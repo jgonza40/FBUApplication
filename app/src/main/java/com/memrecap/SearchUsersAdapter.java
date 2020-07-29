@@ -46,8 +46,8 @@ public class SearchUsersAdapter extends RecyclerView.Adapter<SearchUsersAdapter.
     private static final String USER = "user";
 
     private static final String MEM_REQUEST_TITLE = "Mem-Request";
-    private static final String ACCEPT_REQUEST_TITLE = "accept request";
-    private static final String PENDING_REQUEST_TITLE = "pending request";
+    private static final String ACCEPT_REQUEST_TITLE = "accept";
+    private static final String PENDING_REQUEST_TITLE = "pending";
 
     private Context context;
     private List<ParseUser> users;

@@ -37,7 +37,8 @@ public class SearchFragment extends Fragment {
 
     private List<ParseUser> allUsers;
 
-    public SearchFragment() {}
+    public SearchFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -50,7 +51,7 @@ public class SearchFragment extends Fragment {
         etSearchUsername = view.findViewById(R.id.etSearchUsername);
         rvUsers = view.findViewById(R.id.rvUsers);
         btnSearch = view.findViewById(R.id.btnSearch);
-        
+
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,15 +66,20 @@ public class SearchFragment extends Fragment {
     }
 
     private void searchUser(String username) {
+        final ParseUser currUser = ParseUser.getCurrentUser();
         ParseQuery<ParseUser> query = ParseUser.getQuery();
         query.whereMatches("username", username);
         query.findInBackground(new FindCallback<ParseUser>() {
             public void done(List<ParseUser> users, ParseException e) {
                 if (e == null) {
-                    allUsers.addAll(users);
+                    for (int i = 0; i < users.size(); i++) {
+                        if (!(users.get(i).getObjectId().equals(currUser.getObjectId()))) {
+                            allUsers.add(users.get(i));
+                        }
+                    }
                     adapter.notifyDataSetChanged();
                 } else {
-                    Toast.makeText(getContext(),"Query Not Successful",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getContext(), "Query Not Successful", Toast.LENGTH_LONG).show();
                 }
             }
         });

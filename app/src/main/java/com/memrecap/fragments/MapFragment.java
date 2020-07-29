@@ -341,17 +341,19 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
 
     private void loadUserMarkers() throws ParseException, JSONException {
         JSONArray userMarkers = ParseUser.getCurrentUser().getJSONArray(MARKERS_ARRAY);
-        for (int i = 0; i < userMarkers.length(); i++) {
-            String marker = userMarkers.getJSONObject(i).getString("objectId");
-            ParseQuery<MarkerPoint> query = ParseQuery.getQuery(MarkerPoint.class);
-            MarkerPoint currMarker = query.get(marker);
-            BitmapDescriptor defaultMarker =
-                    BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE);
-            LatLng point = new LatLng(new Double(currMarker.getMarkerLat()), new Double(currMarker.getMarkerLong()));
-            mGoogleMap.addMarker(new MarkerOptions()
-                    .position(point)
-                    .title(currMarker.getMarkerTitle())
-                    .icon(defaultMarker));
+        if(userMarkers != null){
+            for (int i = 0; i < userMarkers.length(); i++) {
+                String marker = userMarkers.getJSONObject(i).getString("objectId");
+                ParseQuery<MarkerPoint> query = ParseQuery.getQuery(MarkerPoint.class);
+                MarkerPoint currMarker = query.get(marker);
+                BitmapDescriptor defaultMarker =
+                        BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE);
+                LatLng point = new LatLng(new Double(currMarker.getMarkerLat()), new Double(currMarker.getMarkerLong()));
+                mGoogleMap.addMarker(new MarkerOptions()
+                        .position(point)
+                        .title(currMarker.getMarkerTitle())
+                        .icon(defaultMarker));
+            }
         }
     }
 

@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.memrecap.activities.FriendProfileActivity;
+import com.memrecap.models.Friends;
 import com.memrecap.models.MarkerPoint;
 import com.memrecap.models.MemRequest;
 import com.memrecap.models.Memory;
@@ -41,10 +42,12 @@ public class SearchUsersAdapter extends RecyclerView.Adapter<SearchUsersAdapter.
     private static final String VIEW_PROFILE = "view profile";
     private static final String FRIEND_ID = "friendID";
     private static final String PENDING_REQUESTS = "pendingRequests";
-    private static final String MEM_REQUEST_TITLE = "MemRequest";
+    private static final String FRIENDS = "friends";
+    private static final String USER = "user";
+
+    private static final String MEM_REQUEST_TITLE = "Mem-Request";
     private static final String ACCEPT_REQUEST_TITLE = "accept request";
     private static final String PENDING_REQUEST_TITLE = "pending request";
-    private static final String USER = "user";
 
     private Context context;
     private List<ParseUser> users;
@@ -90,31 +93,43 @@ public class SearchUsersAdapter extends RecyclerView.Adapter<SearchUsersAdapter.
                     .load(user.getParseFile(USER_PROFILE_PIC).getUrl())
                     .into(ivSearchUserImage);
 
-            final ParseUser currentUser = ParseUser.getCurrentUser();
-            JSONArray friendsArray = currentUser.getJSONArray(USER_FRIENDS);
 
-            if (friendsArray != null) {
-                if (areFriends(user, friendsArray)) {
-                    setViewProfile(btnRequest, user);
-                } else {
-                    determineRequest(currentUser, user);
-                }
-            } else {
-                determineRequest(currentUser, user);
-            }
+            final ParseUser currentUser = ParseUser.getCurrentUser();
+            setButtonRequests(currentUser, user);
         }
 
-        private void acceptRequest(final MemRequest currentRequest, final ParseUser toUser, final ParseUser currUser){
-            btnRequest.setText(ACCEPT_REQUEST_TITLE);
-            btnRequest.setOnClickListener(new View.OnClickListener() {
+        private void setButtonRequests(final ParseUser currUser, final ParseUser friendUser) {
+            ParseQuery<Friends> query = ParseQuery.getQuery(Friends.class);
+            query.include(Friends.KEY_USER);
+            query.whereEqualTo(PendingRequests.KEY_USER, currUser);
+            query.findInBackground(new FindCallback<Friends>() {
                 @Override
-                public void onClick(View view) {
-                    currentRequest.setStatus(StaticVariables.STATUS_ACCEPTED);
-                    int requestIndex = Integer.parseInt(currentRequest.getIndex());
-                    // TODO: get the PendingRequests, and remove
-                    currUser.getJSONArray(PENDING_REQUESTS).remove(requestIndex);
-                    // TODO: add friends to their friends lists
-                    setViewProfile(btnRequest, toUser);
+                public void done(List<Friends> objects, ParseException e) {
+                    if (objects.size() == 0) {
+                        determineRequest(currUser, friendUser);
+                    } else {
+                        Boolean areFriends = false;
+                        for (int i = 0; i < objects.size(); i++) {
+                            JSONArray friendsArray = objects.get(i).getFriends();
+                            for (int friends = 0; friends < friendsArray.length(); friends++) {
+                                try {
+                                    String currFriendId = friendsArray.getJSONObject(friends).getString(OBJECT_ID);
+                                    ParseQuery<ParseUser> friendQuery = ParseQuery.getQuery(ParseUser.class);
+                                    ParseUser friend = friendQuery.get(currFriendId);
+                                    if (friendUser.getObjectId().equals(friend.getObjectId())) {
+                                        areFriends = true;
+                                    }
+                                } catch (JSONException | ParseException ex) {
+                                    ex.printStackTrace();
+                                }
+                            }
+                            if (areFriends) {
+                                setViewProfile(btnRequest, friendUser);
+                            } else {
+                                determineRequest(currUser, friendUser);
+                            }
+                        }
+                    }
                 }
             });
         }
@@ -125,18 +140,20 @@ public class SearchUsersAdapter extends RecyclerView.Adapter<SearchUsersAdapter.
                 @Override
                 public void done(List<MemRequest> objects, ParseException e) {
                     if (e != null) {
-                        Log.e(TAG, "Error while saving marker", e);
+                        Log.e(TAG, "Error while saving getting mem requests", e);
                     } else {
                         for (int i = 0; i < objects.size(); i++) {
                             MemRequest currMemRequest = objects.get(i);
                             ParseUser fromUser = objects.get(i).getFromUser();
                             ParseUser toUser = objects.get(i).getToUser();
                             if (fromUser.getObjectId().equals(currUser.getObjectId())
-                                    && toUser.getObjectId().equals(otherUser.getObjectId())) {
+                                    && toUser.getObjectId().equals(otherUser.getObjectId())
+                                    && objects.get(i).getStatus().equals(StaticVariables.STATUS_PENDING)) {
                                 setPendingRequest(btnRequest);
                                 return;
                             } else if (fromUser.getObjectId().equals(otherUser.getObjectId())
-                                    && toUser.getObjectId().equals(currUser.getObjectId())){
+                                    && toUser.getObjectId().equals(currUser.getObjectId())
+                                    && objects.get(i).getStatus().equals(StaticVariables.STATUS_PENDING)) {
                                 acceptRequest(currMemRequest, otherUser, currUser);
                                 return;
                             }
@@ -148,17 +165,64 @@ public class SearchUsersAdapter extends RecyclerView.Adapter<SearchUsersAdapter.
             });
         }
 
-        private Boolean areFriends(ParseUser user, JSONArray friendsArray) {
-            for (int i = 0; i < friendsArray.length(); i++) {
-                try {
-                    if (friendsArray.getJSONObject(i).getString(OBJECT_ID).equals(user.getObjectId())) {
-                        return true;
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
+        private void acceptRequest(final MemRequest currentRequest, final ParseUser toUser, final ParseUser currUser) {
+            btnRequest.setText(ACCEPT_REQUEST_TITLE);
+            btnRequest.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    currentRequest.setStatus(StaticVariables.STATUS_ACCEPTED);
+                    currentRequest.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            if (e != null) {
+                                Log.e(TAG, "Error while saving status", e);
+                            }
+                        }
+                    });
+                    addFriends(currUser, toUser);
+                    addFriends(toUser, currUser);
+                    setViewProfile(btnRequest, toUser);
                 }
-            }
-            return false;
+            });
+        }
+
+        private void addFriends(final ParseUser user, final ParseUser friend) {
+            ParseQuery<Friends> query = ParseQuery.getQuery(Friends.class);
+            query.include(Friends.KEY_USER);
+            query.whereEqualTo(Friends.KEY_USER, user);
+            query.findInBackground(new FindCallback<Friends>() {
+                @Override
+                public void done(List<Friends> objects, ParseException e) {
+                    if (objects.size() == 0) {
+                        Friends friends = new Friends();
+                        friends.setFriendsUser(user);
+                        friends.add(FRIENDS, friend);
+                        friends.saveInBackground(new SaveCallback() {
+                            @Override
+                            public void done(ParseException e) {
+                                if (e != null) {
+                                    Log.e(TAG, "Error while saving new pending request", e);
+                                }
+                            }
+                        });
+                    } else {
+                        for (int i = 0; i < objects.size(); i++) {
+                            ParseUser currUser = objects.get(i).getFriendsUser();
+                            if (currUser.getObjectId().equals(user.getObjectId())) {
+                                objects.get(i).add(FRIENDS, friend);
+                                objects.get(i).saveInBackground(new SaveCallback() {
+                                    @Override
+                                    public void done(ParseException e) {
+                                        if (e != null) {
+                                            Log.e(TAG, "Error while saving pending request", e);
+                                        }
+                                    }
+                                });
+                            }
+                        }
+                    }
+                }
+            });
         }
 
         private void createRequestOnClick(Button btn, final ParseUser toUser) {
@@ -173,7 +237,7 @@ public class SearchUsersAdapter extends RecyclerView.Adapter<SearchUsersAdapter.
                         @Override
                         public void done(ParseException e) {
                             if (e != null) {
-                                Log.e(TAG, "Error while saving marker", e);
+                                Log.e(TAG, "Error while saving new request", e);
                             }
                         }
                     });
@@ -197,7 +261,7 @@ public class SearchUsersAdapter extends RecyclerView.Adapter<SearchUsersAdapter.
                         @Override
                         public void done(ParseException e) {
                             if (e != null) {
-                                Log.e(TAG, "Error while saving marker", e);
+                                Log.e(TAG, "Error while saving request index", e);
                             }
                         }
                     });

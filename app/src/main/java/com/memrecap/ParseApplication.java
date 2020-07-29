@@ -2,6 +2,7 @@ package com.memrecap;
 
 import android.app.Application;
 
+import com.memrecap.models.Friends;
 import com.memrecap.models.MarkerPoint;
 import com.memrecap.models.MemRequest;
 import com.memrecap.models.Memory;
@@ -20,6 +21,7 @@ public class ParseApplication extends Application {
         ParseObject.registerSubclass(MarkerPoint.class);
         ParseObject.registerSubclass(MemRequest.class);
         ParseObject.registerSubclass(PendingRequests.class);
+        ParseObject.registerSubclass(Friends.class);
 
         // Referring to Heroku App Setting Strings
         Parse.initialize(new Parse.Configuration.Builder(this)

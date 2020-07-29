@@ -2,6 +2,7 @@ package com.memrecap;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +15,22 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.memrecap.activities.ImageMemoryDetailsActivity;
 import com.memrecap.activities.QuoteMemoryDetailsActivity;
+import com.memrecap.models.Friends;
 import com.memrecap.models.Memory;
+import com.memrecap.models.PendingRequests;
+import com.parse.FindCallback;
 import com.parse.ParseFile;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.parceler.Parcels;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Locale;
 
@@ -35,13 +45,7 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private static final int DAY_MILLIS = 24 * HOUR_MILLIS;
     private static int TYPE_IMAGE = 1;
     private static int TYPE_QUOTE = 2;
-
-    private static final String SELF_CARE = "selfCare";
-    private static final String FOOD = "food";
-    private static final String FAMILY = "family";
-    private static final String STEPPING_STONE = "steppingStone";
-    private static final String ACTIVE = "active";
-    private static final String TRAVEL = "travel";
+    private static final String OBJECT_ID = "objectId";
 
     private static final String SELF_CARE_TITLE = "self care";
     private static final String FOOD_TITLE = "food";
@@ -236,19 +240,19 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         return "";
     }
 
-    private String getCategoryTitle(String category){
+    private String getCategoryTitle(String category) {
         String categoryTitle = "";
-        if(category.equals(FOOD)){
+        if (category.equals(StaticVariables.FOOD)) {
             categoryTitle = FOOD_TITLE;
-        } else if(category.equals(SELF_CARE)){
+        } else if (category.equals(StaticVariables.SELF_CARE)) {
             categoryTitle = SELF_CARE_TITLE;
-        } else if(category.equals(FAMILY)){
+        } else if (category.equals(StaticVariables.FAMILY)) {
             categoryTitle = FAMILY_TITLE;
-        } else if(category.equals(STEPPING_STONE)){
+        } else if (category.equals(StaticVariables.STEPPING_STONE)) {
             categoryTitle = STEPPING_STONE_TITLE;
-        } else if(category.equals(TRAVEL)){
+        } else if (category.equals(StaticVariables.TRAVEL)) {
             categoryTitle = TRAVEL_TITLE;
-        } else{
+        } else {
             categoryTitle = ACTIVE_TITLE;
         }
         return categoryTitle;
@@ -259,8 +263,52 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         notifyDataSetChanged();
     }
 
-    public void addAll(List<Memory> list) {
-        memories.addAll(list);
-        notifyDataSetChanged();
+    public void addAll(final List<Memory> list) {
+        final ParseUser currUser = ParseUser.getCurrentUser();
+        final List<String> selfAndFriends = new ArrayList<>();
+
+        ParseQuery<Friends> query = ParseQuery.getQuery(Friends.class);
+        query.include(Friends.KEY_USER);
+        query.whereEqualTo(PendingRequests.KEY_USER, currUser);
+
+        query.findInBackground(new FindCallback<Friends>() {
+            @Override
+            public void done(List<Friends> objects, com.parse.ParseException e) {
+                if (objects.size() == 0) {
+                    selfAndFriends.add(currUser.getObjectId());
+                } else {
+                    selfAndFriends.add(currUser.getObjectId());
+                    selfAndFriends.addAll(addFriends(objects, currUser));
+                }
+                setMemories(list, selfAndFriends);
+                notifyDataSetChanged();
+            }
+        });
+    }
+
+    public void setMemories(List<Memory> list, List<String> selfAndFriends){
+        for(int i = 0; i < list.size(); i++){
+            for(int j = 0; j < selfAndFriends.size(); j++){
+                String memoryUser = list.get(i).getUser().getObjectId();
+                if(memoryUser.equals(selfAndFriends.get(j))){
+                    memories.add(list.get(i));
+                }
+            }
+        }
+    }
+
+    public List<String> addFriends(List<Friends> objects, ParseUser currUser) {
+        List<String> friends = new ArrayList<>();
+        for (int i = 0; i < objects.size(); i++) {
+            JSONArray friendsArray = objects.get(i).getFriends();
+            for (int friend = 0; friend < friendsArray.length(); friend++) {
+                try {
+                    friends.add(friendsArray.getJSONObject(friend).getString(OBJECT_ID));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return friends;
     }
 }

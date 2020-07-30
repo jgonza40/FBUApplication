@@ -114,6 +114,6 @@ Optional:
 
 Here's a walkthrough of the progress I have made on the app:
 
-<img src='walkthrough.gif' width='' alt='Video Walkthrough' />
+<img src='WalkthroughSample3.gif' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).      

@@ -110,7 +110,7 @@ Optional:
    - Create Post Screen
       - (Create/POST) Create a new post object
       
-## Video Walkthrough
+## Walkthrough
 
 Here's a walkthrough of the progress I have made on the app:
 

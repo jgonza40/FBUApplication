@@ -21,8 +21,6 @@ import com.bumptech.glide.Glide;
 import com.memrecap.MemoryAdapter;
 import com.memrecap.R;
 import com.memrecap.StaticVariables;
-import com.memrecap.activities.ComposeActivity;
-import com.memrecap.activities.ComposeImageMemoryActivity;
 import com.memrecap.activities.ProfileRecapActivity;
 import com.memrecap.models.Memory;
 import com.parse.FindCallback;
@@ -92,7 +90,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         btnProfileSteppingStone = view.findViewById(R.id.btnProfileSteppingStone);
         btnProfileActive = view.findViewById(R.id.btnProfileActive);
         btnProfileRecap = view.findViewById(R.id.btnProfileRecap);
-        rvCategoryMemories = view.findViewById(R.id.rvCategoryMemories);
+        rvCategoryMemories = view.findViewById(R.id.rvProfileCategoryMemories);
 
         btnProfileRecap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,7 +111,6 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         foodSelected = true;
 
         setProfileComponents(ivProfileImage, tvProfileUsername);
-
         recyclerViewSetup();
     }
 

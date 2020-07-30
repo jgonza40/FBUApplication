@@ -61,9 +61,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="48dp"
             android:text="travel"
-            app:layout_constraintBottom_toTopOf="@+id/btnImagePost"
+            app:layout_constraintBottom_toBottomOf="@+id/btnProfileSteppingStone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnProfileFood"
             app:layout_constraintVertical_bias="1.0" />
@@ -75,9 +74,8 @@
             android:layout_marginStart="21dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="48dp"
             android:text="active"
-            app:layout_constraintBottom_toTopOf="@+id/btnImagePost"
+            app:layout_constraintBottom_toBottomOf="@+id/btnProfileSteppingStone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.9"
             app:layout_constraintStart_toEndOf="@+id/btnProfileSteppingStone"
@@ -95,7 +93,7 @@
             app:layout_constraintTop_toBottomOf="@+id/btnProfileSelfCare" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvCategoryMemories"
+            android:id="@+id/rvProfileCategoryMemories"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"

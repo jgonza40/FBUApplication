@@ -7,6 +7,7 @@
 1. [Product Spec](#Product-Spec)
 1. [Wireframes](#Wireframes)
 1. [Schema](#Schema)
+1. [Walkthrough](#Walkthrough)
 
 ## Overview
 ### Description
@@ -108,3 +109,11 @@ Optional:
       - (Read/GET) Query all posts where user is author
    - Create Post Screen
       - (Create/POST) Create a new post object
+      
+## Video Walkthrough
+
+Here's a walkthrough of the progress I have made on the app:
+
+<img src='walkthrough.gif' width='' alt='Video Walkthrough' />
+
+GIF created with [LiceCap](http://www.cockos.com/licecap/).      

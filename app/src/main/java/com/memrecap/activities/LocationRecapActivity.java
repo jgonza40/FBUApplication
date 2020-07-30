@@ -72,21 +72,16 @@ public class LocationRecapActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onLeftCardExit(Object dataObject) {
-                Toast.makeText(LocationRecapActivity.this, "Left!", Toast.LENGTH_SHORT).show();
-            }
+            public void onLeftCardExit(Object dataObject) {}
 
             @Override
-            public void onRightCardExit(Object o) {
-            }
+            public void onRightCardExit(Object o) {}
 
             @Override
-            public void onAdapterAboutToEmpty(int itemsInAdapter) {
-            }
+            public void onAdapterAboutToEmpty(int itemsInAdapter) {}
 
             @Override
-            public void onScroll(float scrollProgressPercent) {
-            }
+            public void onScroll(float scrollProgressPercent) {}
         });
 
         flingContainer.setOnItemClickListener(new SwipeFlingAdapterView.OnItemClickListener() {

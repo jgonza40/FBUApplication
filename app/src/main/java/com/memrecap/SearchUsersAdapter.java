@@ -93,41 +93,39 @@ public class SearchUsersAdapter extends RecyclerView.Adapter<SearchUsersAdapter.
                     .load(user.getParseFile(USER_PROFILE_PIC).getUrl())
                     .into(ivSearchUserImage);
 
-
             final ParseUser currentUser = ParseUser.getCurrentUser();
             setButtonRequests(currentUser, user);
         }
 
-        private void setButtonRequests(final ParseUser currUser, final ParseUser friendUser) {
+        private void setButtonRequests(final ParseUser currUser, final ParseUser searchUser) {
             ParseQuery<Friends> query = ParseQuery.getQuery(Friends.class);
             query.include(Friends.KEY_USER);
-            query.whereEqualTo(PendingRequests.KEY_USER, currUser);
+            query.whereEqualTo(Friends.KEY_USER, currUser);
             query.findInBackground(new FindCallback<Friends>() {
                 @Override
                 public void done(List<Friends> objects, ParseException e) {
                     if (objects.size() == 0) {
-                        determineRequest(currUser, friendUser);
+                        determineRequest(currUser, searchUser);
                     } else {
                         Boolean areFriends = false;
-                        for (int i = 0; i < objects.size(); i++) {
-                            JSONArray friendsArray = objects.get(i).getFriends();
-                            for (int friends = 0; friends < friendsArray.length(); friends++) {
-                                try {
-                                    String currFriendId = friendsArray.getJSONObject(friends).getString(OBJECT_ID);
-                                    ParseQuery<ParseUser> friendQuery = ParseQuery.getQuery(ParseUser.class);
-                                    ParseUser friend = friendQuery.get(currFriendId);
-                                    if (friendUser.getObjectId().equals(friend.getObjectId())) {
-                                        areFriends = true;
-                                    }
-                                } catch (JSONException | ParseException ex) {
-                                    ex.printStackTrace();
+                        Friends curr = objects.get(0);
+                        JSONArray friendsArray = curr.getFriends();
+                        for (int friends = 0; friends < friendsArray.length(); friends++) {
+                            try {
+                                String currFriendId = friendsArray.getJSONObject(friends).getString(OBJECT_ID);
+                                ParseQuery<ParseUser> friendQuery = ParseQuery.getQuery(ParseUser.class);
+                                ParseUser friend = friendQuery.get(currFriendId);
+                                if (searchUser.getObjectId().equals(friend.getObjectId())) {
+                                    areFriends = true;
                                 }
+                            } catch (JSONException | ParseException ex) {
+                                ex.printStackTrace();
                             }
-                            if (areFriends) {
-                                setViewProfile(btnRequest, friendUser);
-                            } else {
-                                determineRequest(currUser, friendUser);
-                            }
+                        }
+                        if (areFriends) {
+                            setViewProfile(btnRequest, searchUser);
+                        } else {
+                            determineRequest(currUser, searchUser);
                         }
                     }
                 }

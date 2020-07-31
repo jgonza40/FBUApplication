@@ -12,7 +12,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.memrecap.activities.ImageMemoryDetailsActivity;
+import com.memrecap.activities.LocationRecapActivity;
 import com.memrecap.activities.MainActivity;
+import com.memrecap.activities.ProfileRecapActivity;
 import com.memrecap.models.Memory;
 import com.parse.ParseFile;
 
@@ -29,8 +31,10 @@ public class RecapAdapter extends ArrayAdapter<Memory> {
     private static int TYPE_QUOTE = 2;
     private static int TYPE_TITLE = 3;
     private static int TYPE_LOCATION = 4;
+    private static int TYPE_DONE = 5;
 
     private static String LOCATION = "location";
+    private static String PROFILE = "profile";
 
     private static final String SELF_CARE = "selfCare";
     private static final String FOOD = "food";
@@ -53,6 +57,8 @@ public class RecapAdapter extends ArrayAdapter<Memory> {
     private TextView tvCategoryTitle;
     private TextView tvContinueTitle;
     private Button btnHome;
+    private TextView tvDoneTitle;
+    private Button btnDone;
 
     private String type;
 
@@ -71,8 +77,10 @@ public class RecapAdapter extends ArrayAdapter<Memory> {
             itemView = setQuoteLayout(itemView, item_memory, parent);
         } else if (type == TYPE_TITLE){
             itemView = setTitleLayout(itemView, item_memory, parent);
-        } else {
+        } else if (type == TYPE_LOCATION){
             itemView = setLocationLayout(itemView, item_memory, parent);
+        } else {
+            itemView = setDoneLayout(itemView, item_memory, parent);
         }
         return itemView;
     }
@@ -159,13 +167,38 @@ public class RecapAdapter extends ArrayAdapter<Memory> {
         return view;
     }
 
+    private View setDoneLayout(View view, Memory memory, ViewGroup parent) {
+        if (view == null) {
+            view = LayoutInflater.from(getContext()).inflate(R.layout.item_recap_done, parent, false);
+        }
+
+        tvDoneTitle = view.findViewById(R.id.tvDoneTitle);
+        btnDone = view.findViewById(R.id.btnDone);
+
+        tvDoneTitle.setText("all done!");
+        btnDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), MainActivity.class);
+                getContext().startActivity(intent);
+            }
+        });
+        return view;
+    }
+
     public int getItemViewType(Memory memory) {
+        if(memory.getDone()){
+            return TYPE_DONE;
+        }
+
         if (memory.getImage() != null) {
             return TYPE_IMAGE;
         }
+
         if (memory.getQuote() != null) {
             return TYPE_QUOTE;
         }
+
         if(type.equals(LOCATION)){
             return TYPE_LOCATION;
         } else {

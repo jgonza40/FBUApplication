@@ -37,10 +37,9 @@ public class ProfileRecapActivity extends AppCompatActivity {
     private List<Memory> listMemories;
 
     private RecapAdapter adapter;
-    private int items;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_recap);
 
@@ -136,6 +135,9 @@ public class ProfileRecapActivity extends AppCompatActivity {
                 setCategoryMemories(travelMemories);
                 setCategoryMemories(steppingStoneMemories);
                 setCategoryMemories(activeMemories);
+                Memory done = new Memory();
+                done.setDone(true);
+                listMemories.add(done);
 
                 adapter.notifyDataSetChanged();
             }

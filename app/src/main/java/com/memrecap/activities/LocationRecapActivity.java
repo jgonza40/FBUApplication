@@ -38,6 +38,7 @@ public class LocationRecapActivity extends AppCompatActivity {
     private List<Memory> listMemories;
     private RecapAdapter adapter;
     private Map<String, Double> unvisitedMarkers;
+    public Boolean done = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +63,6 @@ public class LocationRecapActivity extends AppCompatActivity {
         unvisitedMarkers.remove(currMarker.getObjectId());
 
         listMemories = new ArrayList<Memory>();
-
         getLocationPosts(currMarker);
         adapter = new RecapAdapter(this, R.layout.item_image_recap, listMemories, LOCATION);
         SwipeFlingAdapterView flingContainer;
@@ -84,7 +84,7 @@ public class LocationRecapActivity extends AppCompatActivity {
 
             @Override
             public void onAdapterAboutToEmpty(int itemsInAdapter) {
-                if(listMemories.size() != 0 && unvisitedMarkers.size() != 0){
+                if(listMemories.size() != 0 && unvisitedMarkers.size() != 0 && !done){
                     try {
                         Memory continueMemory = new Memory();
                         listMemories.add(continueMemory);
@@ -96,6 +96,14 @@ public class LocationRecapActivity extends AppCompatActivity {
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
+                }
+                if(unvisitedMarkers.size() == 0){
+                    Memory done = new Memory();
+                    done.setDone(true);
+                    listMemories.add(done);
+                    setDone();
+                    // Adding to prevent more done cards from populating
+                    unvisitedMarkers.put("done", 0.0);
                 }
             }
 
@@ -109,6 +117,14 @@ public class LocationRecapActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void setDone(){
+        done = true;
+    }
+
+    public boolean getDone(){
+        return done;
     }
 
     private void getLocationPosts(final MarkerPoint markerPoint) {

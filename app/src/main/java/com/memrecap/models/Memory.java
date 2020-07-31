@@ -19,6 +19,7 @@ public class Memory extends ParseObject {
     public static final String KEY_CATEGORY = "category";
     public static final String KEY_CREATED_AT = "createdAt";
     public static final String KEY_MARKER = "marker";
+    public static final String KEY_DONE = "done";
 
     public String getDescription() {
         return getString(KEY_DESCRIPTION);
@@ -72,5 +73,13 @@ public class Memory extends ParseObject {
 
     public void setCategory(String category) {
         put(KEY_CATEGORY, category);
+    }
+
+    public Boolean getDone() {
+        return getBoolean(KEY_DONE);
+    }
+
+    public void setDone(Boolean done) {
+        put(KEY_DONE, done);
     }
 }

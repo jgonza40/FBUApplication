@@ -6,7 +6,7 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="Sett" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="Loc" />
     <option name="TOOL_WINDOW_LOG_LEVEL" value="info" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
@@ -16,11 +16,16 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/jarAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.1.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/memrecap/LocationRecapAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/memrecap/RecapAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/memrecap/activities/LocationRecapActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/memrecap/activities/LocationRecapActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/memrecap/activities/ProfileRecapActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/memrecap/activities/ProfileRecapActivity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,8 +54,8 @@
         <option value="valueResourceFile" />
         <option value="resourceFile" />
         <option value="Kotlin File" />
-        <option value="layoutResourceFile" />
         <option value="Class" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
@@ -198,13 +203,13 @@
     <state x="591" y="298" key="AndroidCreateResourceDirectoryDialog/0.23.1792.1030@0.23.1792.1030" timestamp="1595266706539" />
     <state x="591" y="299" key="AndroidCreateResourceDirectoryDialog/0.23.1792.1031@0.23.1792.1031" timestamp="1594783896589" />
     <state x="591" y="300" key="AndroidCreateResourceDirectoryDialog/0.23.1792.1036@0.23.1792.1036" timestamp="1594828337845" />
-    <state x="624" y="302" key="AndroidCreateResourceFileDialog" timestamp="1595871984148">
-      <screen x="0" y="23" width="1792" height="1030" />
+    <state x="624" y="303" key="AndroidCreateResourceFileDialog" timestamp="1596168464145">
+      <screen x="0" y="23" width="1792" height="1034" />
     </state>
     <state x="624" y="302" key="AndroidCreateResourceFileDialog/0.23.1792.1030@0.23.1792.1030" timestamp="1595871984148" />
     <state x="624" y="302" key="AndroidCreateResourceFileDialog/0.23.1792.1031@0.23.1792.1031" timestamp="1595629935263" />
     <state x="624" y="303" key="AndroidCreateResourceFileDialog/0.23.1792.1033@0.23.1792.1033" timestamp="1595606869677" />
-    <state x="624" y="303" key="AndroidCreateResourceFileDialog/0.23.1792.1034@0.23.1792.1034" timestamp="1594699751611" />
+    <state x="624" y="303" key="AndroidCreateResourceFileDialog/0.23.1792.1034@0.23.1792.1034" timestamp="1596168464145" />
     <state x="697" y="299" width="644" height="476" key="Downloadable.Font.Dialog.Size" timestamp="1595004042439">
       <screen x="0" y="23" width="1792" height="1030" />
     </state>
@@ -217,42 +222,42 @@
       <screen x="0" y="23" width="1792" height="1036" />
     </state>
     <state x="767" y="276" key="Github.UntrackedFilesDialog/0.23.1792.1036@0.23.1792.1036" timestamp="1594265045039" />
-    <state width="1470" height="191" key="GridCell.Tab.0.bottom" timestamp="1596143954144">
-      <screen x="0" y="23" width="1792" height="1037" />
+    <state width="1470" height="191" key="GridCell.Tab.0.bottom" timestamp="1596179422707">
+      <screen x="0" y="23" width="1792" height="1034" />
     </state>
     <state width="1185" height="179" key="GridCell.Tab.0.bottom/0.23.1792.1030@0.23.1792.1030" timestamp="1595311635277" />
     <state width="1239" height="337" key="GridCell.Tab.0.bottom/0.23.1792.1031@0.0.1792.1120" timestamp="1595009927234" />
     <state width="1470" height="163" key="GridCell.Tab.0.bottom/0.23.1792.1031@0.23.1792.1031" timestamp="1595619260906" />
     <state width="709" height="564" key="GridCell.Tab.0.bottom/0.23.1792.1033@0.23.1792.1033" timestamp="1595623276779" />
-    <state width="1470" height="233" key="GridCell.Tab.0.bottom/0.23.1792.1034@0.23.1792.1034" timestamp="1596064595036" />
+    <state width="1470" height="191" key="GridCell.Tab.0.bottom/0.23.1792.1034@0.23.1792.1034" timestamp="1596179422707" />
     <state width="1670" height="164" key="GridCell.Tab.0.bottom/0.23.1792.1036@0.23.1792.1036" timestamp="1594831762515" />
     <state width="1470" height="191" key="GridCell.Tab.0.bottom/0.23.1792.1037@0.23.1792.1037" timestamp="1596143954144" />
-    <state width="1470" height="191" key="GridCell.Tab.0.center" timestamp="1596143954143">
-      <screen x="0" y="23" width="1792" height="1037" />
+    <state width="1470" height="191" key="GridCell.Tab.0.center" timestamp="1596179422706">
+      <screen x="0" y="23" width="1792" height="1034" />
     </state>
     <state width="1185" height="179" key="GridCell.Tab.0.center/0.23.1792.1030@0.23.1792.1030" timestamp="1595311635275" />
     <state width="1470" height="163" key="GridCell.Tab.0.center/0.23.1792.1031@0.23.1792.1031" timestamp="1595619260905" />
     <state width="709" height="564" key="GridCell.Tab.0.center/0.23.1792.1033@0.23.1792.1033" timestamp="1595623276778" />
-    <state width="1470" height="233" key="GridCell.Tab.0.center/0.23.1792.1034@0.23.1792.1034" timestamp="1596064595035" />
+    <state width="1470" height="191" key="GridCell.Tab.0.center/0.23.1792.1034@0.23.1792.1034" timestamp="1596179422705" />
     <state width="1670" height="164" key="GridCell.Tab.0.center/0.23.1792.1036@0.23.1792.1036" timestamp="1594831762514" />
     <state width="1470" height="191" key="GridCell.Tab.0.center/0.23.1792.1037@0.23.1792.1037" timestamp="1596143954143" />
-    <state width="1470" height="191" key="GridCell.Tab.0.left" timestamp="1596143954143">
-      <screen x="0" y="23" width="1792" height="1037" />
+    <state width="1470" height="191" key="GridCell.Tab.0.left" timestamp="1596179422705">
+      <screen x="0" y="23" width="1792" height="1034" />
     </state>
     <state width="1185" height="179" key="GridCell.Tab.0.left/0.23.1792.1030@0.23.1792.1030" timestamp="1595311635274" />
     <state width="1470" height="163" key="GridCell.Tab.0.left/0.23.1792.1031@0.23.1792.1031" timestamp="1595619260905" />
     <state width="709" height="564" key="GridCell.Tab.0.left/0.23.1792.1033@0.23.1792.1033" timestamp="1595623276778" />
-    <state width="1470" height="233" key="GridCell.Tab.0.left/0.23.1792.1034@0.23.1792.1034" timestamp="1596064595034" />
+    <state width="1470" height="191" key="GridCell.Tab.0.left/0.23.1792.1034@0.23.1792.1034" timestamp="1596179422705" />
     <state width="1670" height="164" key="GridCell.Tab.0.left/0.23.1792.1036@0.23.1792.1036" timestamp="1594831762514" />
     <state width="1470" height="191" key="GridCell.Tab.0.left/0.23.1792.1037@0.23.1792.1037" timestamp="1596143954143" />
-    <state width="1470" height="191" key="GridCell.Tab.0.right" timestamp="1596143954144">
-      <screen x="0" y="23" width="1792" height="1037" />
+    <state width="1470" height="191" key="GridCell.Tab.0.right" timestamp="1596179422706">
+      <screen x="0" y="23" width="1792" height="1034" />
     </state>
     <state width="1239" height="337" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1595009927207" />
     <state width="1185" height="179" key="GridCell.Tab.0.right/0.23.1792.1030@0.23.1792.1030" timestamp="1595311635276" />
     <state width="1470" height="163" key="GridCell.Tab.0.right/0.23.1792.1031@0.23.1792.1031" timestamp="1595619260906" />
     <state width="709" height="564" key="GridCell.Tab.0.right/0.23.1792.1033@0.23.1792.1033" timestamp="1595623276779" />
-    <state width="1470" height="233" key="GridCell.Tab.0.right/0.23.1792.1034@0.23.1792.1034" timestamp="1596064595036" />
+    <state width="1470" height="191" key="GridCell.Tab.0.right/0.23.1792.1034@0.23.1792.1034" timestamp="1596179422706" />
     <state width="1670" height="164" key="GridCell.Tab.0.right/0.23.1792.1036@0.23.1792.1036" timestamp="1594831762514" />
     <state width="1470" height="191" key="GridCell.Tab.0.right/0.23.1792.1037@0.23.1792.1037" timestamp="1596143954144" />
     <state x="742" y="325" key="chooseDestDirectoryDialog" timestamp="1594754547554">

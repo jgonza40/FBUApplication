@@ -2,13 +2,12 @@ package com.memrecap.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
-import com.memrecap.LocationRecapAdapter;
+import com.memrecap.RecapAdapter;
 import com.memrecap.R;
 import com.memrecap.StaticVariables;
 import com.memrecap.models.Memory;
@@ -16,9 +15,6 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
-
-import org.json.JSONArray;
-import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +26,8 @@ public class ProfileRecapActivity extends AppCompatActivity {
     public static final int MAX_POSTS = 20;
     public static final int NUM_OF_CATEGORIES = 6;
 
+    public static final String PROFILE = "profile";
+
     protected List<Memory> foodMemories;
     protected List<Memory> selfCareMemories;
     protected List<Memory> familyMemories;
@@ -37,7 +35,8 @@ public class ProfileRecapActivity extends AppCompatActivity {
     protected List<Memory> steppingStoneMemories;
     protected List<Memory> activeMemories;
     private List<Memory> listMemories;
-    private LocationRecapAdapter adapter;
+
+    private RecapAdapter adapter;
     private int items;
 
     @Override
@@ -57,7 +56,7 @@ public class ProfileRecapActivity extends AppCompatActivity {
         steppingStoneMemories = new ArrayList<Memory>();
         activeMemories = new ArrayList<Memory>();
 
-        adapter = new LocationRecapAdapter(this, R.layout.item_image_recap, listMemories);
+        adapter = new RecapAdapter(this, R.layout.item_image_recap, listMemories, PROFILE);
         SwipeFlingAdapterView flingContainer;
         flingContainer = (SwipeFlingAdapterView) findViewById(R.id.frame);
         flingContainer.setAdapter(adapter);

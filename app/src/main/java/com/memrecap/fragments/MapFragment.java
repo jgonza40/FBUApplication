@@ -64,6 +64,8 @@ import com.parse.SaveCallback;
 import org.json.JSONArray;
 import org.json.JSONException;
 
+import java.util.concurrent.TimeUnit;
+
 import permissions.dispatcher.NeedsPermission;
 import permissions.dispatcher.RuntimePermissions;
 
@@ -91,6 +93,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
     private GoogleMap mGoogleMap;
     private Location mCurrentLocation;
     private SupportMapFragment mSupportMapFragment;
+    private Marker sendMarker;
 
     public MapFragment() {}
 
@@ -175,7 +178,6 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
         builder.setView(messageView);
         ((Button) messageView.findViewById(R.id.btnAdd)).setText("add");
         ((Button) messageView.findViewById(R.id.btnView)).setText("recap");
-        Log.i(TAG, String.valueOf(marker.getPosition().latitude));
         final AlertDialog alertDialog = builder.create();
         messageView.findViewById(R.id.btnAdd).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -253,7 +255,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
 
         final AlertDialog alertDialog = alertDialogBuilder.create();
 
-        alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "OK",
+        alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "create memory",
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -283,8 +285,8 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
     }
 
     private void saveParseMarker(Marker marker, String title) {
+        sendMarker = marker;
         ParseUser user = ParseUser.getCurrentUser();
-
         MarkerPoint newMarker = new MarkerPoint();
         newMarker.setMarkerLat(Double.toString(marker.getPosition().latitude));
         newMarker.setMarkerLong(Double.toString((marker.getPosition().longitude)));
@@ -311,6 +313,19 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
                 }
             }
         });
+
+        // Sends user to create a memory post after drop pin animation is complete
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(getContext(), ComposeActivity.class);
+                i.putExtra(PASS_LAT, String.valueOf(sendMarker.getPosition().latitude));
+                i.putExtra(PASS_LONG, String.valueOf(sendMarker.getPosition().longitude));
+                startActivity(i);
+                getActivity().finish();
+            }
+        }, 2500);
     }
 
     private void dropPinEffect(final Marker marker) {

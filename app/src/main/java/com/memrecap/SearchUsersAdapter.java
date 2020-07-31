@@ -39,7 +39,6 @@ public class SearchUsersAdapter extends RecyclerView.Adapter<SearchUsersAdapter.
     private static final String USER_PROFILE_PIC = "profilePicture";
     private static final String USER_FRIENDS = "friends";
     private static final String OBJECT_ID = "objectId";
-    private static final String VIEW_PROFILE = "view profile";
     private static final String FRIEND_ID = "friendID";
     private static final String PENDING_REQUESTS = "pendingRequests";
     private static final String FRIENDS = "friends";
@@ -48,6 +47,7 @@ public class SearchUsersAdapter extends RecyclerView.Adapter<SearchUsersAdapter.
     private static final String MEM_REQUEST_TITLE = "Mem-Request";
     private static final String ACCEPT_REQUEST_TITLE = "accept";
     private static final String PENDING_REQUEST_TITLE = "pending";
+    private static final String VIEW_PROFILE_TITLE = "view profile";
 
     private Context context;
     private List<ParseUser> users;
@@ -94,6 +94,7 @@ public class SearchUsersAdapter extends RecyclerView.Adapter<SearchUsersAdapter.
                     .into(ivSearchUserImage);
 
             final ParseUser currentUser = ParseUser.getCurrentUser();
+            btnRequest.setVisibility(View.INVISIBLE);
             setButtonRequests(currentUser, user);
         }
 
@@ -156,6 +157,7 @@ public class SearchUsersAdapter extends RecyclerView.Adapter<SearchUsersAdapter.
                                 return;
                             }
                         }
+                        btnRequest.setVisibility(View.VISIBLE);
                         btnRequest.setText(MEM_REQUEST_TITLE);
                         createRequestOnClick(btnRequest, otherUser);
                     }
@@ -164,6 +166,7 @@ public class SearchUsersAdapter extends RecyclerView.Adapter<SearchUsersAdapter.
         }
 
         private void acceptRequest(final MemRequest currentRequest, final ParseUser toUser, final ParseUser currUser) {
+            btnRequest.setVisibility(View.VISIBLE);
             btnRequest.setText(ACCEPT_REQUEST_TITLE);
             btnRequest.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -306,7 +309,8 @@ public class SearchUsersAdapter extends RecyclerView.Adapter<SearchUsersAdapter.
         }
 
         private void setViewProfile(Button button, final ParseUser user) {
-            button.setText(VIEW_PROFILE);
+            btnRequest.setVisibility(View.VISIBLE);
+            button.setText(VIEW_PROFILE_TITLE);
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -318,6 +322,7 @@ public class SearchUsersAdapter extends RecyclerView.Adapter<SearchUsersAdapter.
         }
 
         private void setPendingRequest(Button btn) {
+            btnRequest.setVisibility(View.VISIBLE);
             btn.setText(PENDING_REQUEST_TITLE);
             btn.setBackgroundColor(context.getResources().getColor(R.color.red));
         }

@@ -83,23 +83,24 @@ public class SettingsActivity extends AppCompatActivity {
             public void done(List<PendingRequests> pendingRequests, ParseException e) {
                 if (e != null) {
                     Toast.makeText(getApplicationContext(), "Query Not Successful", Toast.LENGTH_LONG).show();
-
                 } else {
-                    PendingRequests currUserPendingRequests = pendingRequests.get(0);
-                    JSONArray requestsList = currUserPendingRequests.getJSONArray(PENDING_REQUESTS_ARRAY);
-                    for(int i = 0; i < requestsList.length(); i++){
-                        try {
-                            String memRequestId = requestsList.getJSONObject(i).getString(OBJECT_ID);
-                            ParseQuery<MemRequest> friendQuery = ParseQuery.getQuery(MemRequest.class);
-                            MemRequest currMemRequest = friendQuery.get(memRequestId);
-                            if(currMemRequest.getStatus().equals(StaticVariables.STATUS_PENDING)){
-                                allPendingRequests.add(currMemRequest);
+                    if(pendingRequests.size() != 0){
+                        PendingRequests currUserPendingRequests = pendingRequests.get(0);
+                        JSONArray requestsList = currUserPendingRequests.getJSONArray(PENDING_REQUESTS_ARRAY);
+                        for(int i = 0; i < requestsList.length(); i++){
+                            try {
+                                String memRequestId = requestsList.getJSONObject(i).getString(OBJECT_ID);
+                                ParseQuery<MemRequest> friendQuery = ParseQuery.getQuery(MemRequest.class);
+                                MemRequest currMemRequest = friendQuery.get(memRequestId);
+                                if(currMemRequest.getStatus().equals(StaticVariables.STATUS_PENDING)){
+                                    allPendingRequests.add(currMemRequest);
+                                }
+                            } catch (JSONException | ParseException ex) {
+                                ex.printStackTrace();
                             }
-                        } catch (JSONException | ParseException ex) {
-                            ex.printStackTrace();
                         }
+                        adapter.notifyDataSetChanged();
                     }
-                    adapter.notifyDataSetChanged();
                 }
             }
         });

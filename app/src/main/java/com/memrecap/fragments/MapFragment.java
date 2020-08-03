@@ -176,8 +176,8 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
         View messageView = LayoutInflater.from(getActivity()).inflate(R.layout.add_view_window, null);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(messageView);
-        ((Button) messageView.findViewById(R.id.btnAdd)).setText("add");
-        ((Button) messageView.findViewById(R.id.btnView)).setText("recap");
+        ((Button) messageView.findViewById(R.id.btnAdd)).setText("Add");
+        ((Button) messageView.findViewById(R.id.btnView)).setText("Recap");
         final AlertDialog alertDialog = builder.create();
         messageView.findViewById(R.id.btnAdd).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -252,9 +252,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
                 inflate(R.layout.map_window_item, null);
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
         alertDialogBuilder.setView(messageView);
-
         final AlertDialog alertDialog = alertDialogBuilder.create();
-
         alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "create memory",
                 new DialogInterface.OnClickListener() {
                     @Override

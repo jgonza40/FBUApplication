@@ -27,7 +27,7 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class FriendProfileActivity extends AppCompatActivity implements View.OnClickListener{
+public class FriendProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
     public static final String TAG = "FriendProfileActivity";
 
@@ -205,10 +205,8 @@ public class FriendProfileActivity extends AppCompatActivity implements View.OnC
                     switch (memory.getCategory()) {
                         case StaticVariables.FOOD:
                             foodMemories.add(memory);
-                            Log.i(TAG, foodMemories.toString());
                             break;
                         case StaticVariables.SELF_CARE:
-                            Log.i(TAG, "here");
                             selfCareMemories.add(memory);
                             break;
                         case StaticVariables.FAMILY:
@@ -227,7 +225,6 @@ public class FriendProfileActivity extends AppCompatActivity implements View.OnC
                     }
                 }
                 setFinalList();
-                Log.i(TAG, finalList.toString());
                 adapter.notifyDataSetChanged();
             }
         });

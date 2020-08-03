@@ -69,7 +69,6 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         if (viewType == TYPE_IMAGE) {
             view = LayoutInflater.from(context).inflate(R.layout.image_memory_post, parent, false);
             return new ImageViewHolder(view);
-
         } else {
             view = LayoutInflater.from(context).inflate(R.layout.quote_memory_post, parent, false);
             return new QuoteViewHolder(view);
@@ -274,7 +273,7 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         query.findInBackground(new FindCallback<Friends>() {
             @Override
             public void done(List<Friends> objects, com.parse.ParseException e) {
-                if (objects.size() == 0) {
+                if (objects.get(0).getFriends() == null) {
                     selfAndFriends.add(currUser.getObjectId());
                 } else {
                     selfAndFriends.add(currUser.getObjectId());
@@ -286,11 +285,11 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         });
     }
 
-    public void setMemories(List<Memory> list, List<String> selfAndFriends){
-        for(int i = 0; i < list.size(); i++){
-            for(int j = 0; j < selfAndFriends.size(); j++){
+    public void setMemories(List<Memory> list, List<String> selfAndFriends) {
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = 0; j < selfAndFriends.size(); j++) {
                 String memoryUser = list.get(i).getUser().getObjectId();
-                if(memoryUser.equals(selfAndFriends.get(j))){
+                if (memoryUser.equals(selfAndFriends.get(j))) {
                     memories.add(list.get(i));
                 }
             }

@@ -24,16 +24,16 @@ import com.parse.ParseUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class SettingsActivity extends AppCompatActivity {
 
     public static final String TAG = "SettingsActivity";
 
-    public static final String PENDING_REQUESTS_ARRAY = "pendingRequests";
-    private static final String OBJECT_ID = "objectId";
 
     private Button btnLogout;
     private RecyclerView rvPendingRequests;
@@ -80,22 +80,27 @@ public class SettingsActivity extends AppCompatActivity {
         query.whereEqualTo(PendingRequests.KEY_USER, currUser);
         query.findInBackground(new FindCallback<PendingRequests>() {
             @Override
-            public void done(List<PendingRequests> pendingRequests, ParseException e) {
+            public void done(List<PendingRequests> requests, ParseException e) {
                 if (e != null) {
                     Toast.makeText(getApplicationContext(), "Query Not Successful", Toast.LENGTH_LONG).show();
                 } else {
-                    if(pendingRequests.size() != 0){
-                        PendingRequests currUserPendingRequests = pendingRequests.get(0);
-                        JSONArray requestsList = currUserPendingRequests.getJSONArray(PENDING_REQUESTS_ARRAY);
-                        for(int i = 0; i < requestsList.length(); i++){
+                    PendingRequests requestModel = requests.get(0);
+                    JSONObject requestsMap = requestModel.getPendingRequestsMap();
+                    Iterator<String> iterator = requestsMap.keys();
+                    if(requestsMap != null){
+                        while (iterator.hasNext()){
+                            String currKey = iterator.next();
+                            Log.i(TAG, currKey);
+                            String memRequestId = requestsMap.optString(currKey);
+                            Log.i(TAG, memRequestId);
+                            ParseQuery<MemRequest> query = ParseQuery.getQuery(MemRequest.class);
                             try {
-                                String memRequestId = requestsList.getJSONObject(i).getString(OBJECT_ID);
-                                ParseQuery<MemRequest> friendQuery = ParseQuery.getQuery(MemRequest.class);
-                                MemRequest currMemRequest = friendQuery.get(memRequestId);
+                                MemRequest currMemRequest = query.get(memRequestId);
                                 if(currMemRequest.getStatus().equals(StaticVariables.STATUS_PENDING)){
                                     allPendingRequests.add(currMemRequest);
+                                    Log.i(TAG, allPendingRequests.toString());
                                 }
-                            } catch (JSONException | ParseException ex) {
+                            } catch (ParseException ex) {
                                 ex.printStackTrace();
                             }
                         }

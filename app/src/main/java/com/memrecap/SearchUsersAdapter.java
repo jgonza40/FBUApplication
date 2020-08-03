@@ -29,6 +29,7 @@ import com.parse.SaveCallback;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -41,6 +42,8 @@ public class SearchUsersAdapter extends RecyclerView.Adapter<SearchUsersAdapter.
     private static final String OBJECT_ID = "objectId";
     private static final String FRIEND_ID = "friendID";
     private static final String PENDING_REQUESTS = "pendingRequests";
+    private static final String PENDING_REQUESTS_MAP = "pendingRequestsMap";
+    private static final String FRIENDS_MAP = "friendsMap";
     private static final String FRIENDS = "friends";
     private static final String USER = "user";
 
@@ -104,68 +107,94 @@ public class SearchUsersAdapter extends RecyclerView.Adapter<SearchUsersAdapter.
             query.whereEqualTo(Friends.KEY_USER, currUser);
             query.findInBackground(new FindCallback<Friends>() {
                 @Override
-                public void done(List<Friends> objects, ParseException e) {
-                    if (objects.size() == 0) {
-                        determineRequest(currUser, searchUser);
-                    } else {
-                        Boolean areFriends = false;
-                        Friends curr = objects.get(0);
-                        JSONArray friendsArray = curr.getFriends();
-                        for (int friends = 0; friends < friendsArray.length(); friends++) {
-                            try {
-                                String currFriendId = friendsArray.getJSONObject(friends).getString(OBJECT_ID);
-                                ParseQuery<ParseUser> friendQuery = ParseQuery.getQuery(ParseUser.class);
-                                ParseUser friend = friendQuery.get(currFriendId);
-                                if (searchUser.getObjectId().equals(friend.getObjectId())) {
-                                    areFriends = true;
-                                }
-                            } catch (JSONException | ParseException ex) {
-                                ex.printStackTrace();
-                            }
-                        }
-                        if (areFriends) {
+                public void done(List<Friends> friends, ParseException e) {
+                    Friends currFriendModel = friends.get(0);
+                    JSONObject map = currFriendModel.getFriendsMap();
+                    if (map != null) {
+                        if (map.has(searchUser.getObjectId())) {
                             setViewProfile(btnRequest, searchUser);
                         } else {
                             determineRequest(currUser, searchUser);
                         }
+                    } else {
+                        determineRequest(currUser, searchUser);
                     }
                 }
             });
         }
 
-        private void determineRequest(final ParseUser currUser, final ParseUser otherUser) {
-            ParseQuery<MemRequest> query = ParseQuery.getQuery(MemRequest.class);
-            query.findInBackground(new FindCallback<MemRequest>() {
+        private void determineRequest(final ParseUser currUser, final ParseUser searchUser) {
+            determineIfAcceptRequest(currUser, searchUser);
+            determineIfPendingRequest(currUser, searchUser);
+
+            btnRequest.setVisibility(View.VISIBLE);
+            btnRequest.setText(MEM_REQUEST_TITLE);
+            createRequestOnClick(btnRequest, searchUser);
+        }
+
+        private void determineIfAcceptRequest(final ParseUser currUser, final ParseUser searchUser){
+            ParseQuery<PendingRequests> queryPending = ParseQuery.getQuery(PendingRequests.class);
+            queryPending.include(PendingRequests.KEY_USER);
+            queryPending.whereEqualTo(PendingRequests.KEY_USER, currUser);
+            queryPending.findInBackground(new FindCallback<PendingRequests>() {
                 @Override
-                public void done(List<MemRequest> objects, ParseException e) {
+                public void done(List<PendingRequests> requests, ParseException e) {
                     if (e != null) {
-                        Log.e(TAG, "Error while saving getting mem requests", e);
+                        Log.e(TAG, "Error getting pending request for determineRequest", e);
                     } else {
-                        for (int i = 0; i < objects.size(); i++) {
-                            MemRequest currMemRequest = objects.get(i);
-                            ParseUser fromUser = objects.get(i).getFromUser();
-                            ParseUser toUser = objects.get(i).getToUser();
-                            if (fromUser.getObjectId().equals(currUser.getObjectId())
-                                    && toUser.getObjectId().equals(otherUser.getObjectId())
-                                    && objects.get(i).getStatus().equals(StaticVariables.STATUS_PENDING)) {
-                                setPendingRequest(btnRequest);
-                                return;
-                            } else if (fromUser.getObjectId().equals(otherUser.getObjectId())
-                                    && toUser.getObjectId().equals(currUser.getObjectId())
-                                    && objects.get(i).getStatus().equals(StaticVariables.STATUS_PENDING)) {
-                                acceptRequest(currMemRequest, otherUser, currUser);
-                                return;
+                        PendingRequests requestModel = requests.get(0);
+                        JSONObject currUserRequests = requestModel.getPendingRequestsMap();
+                        if (currUserRequests != null) {
+                            if (currUserRequests.has(searchUser.getObjectId())) {
+                                try {
+                                    String memRequestId = currUserRequests.optString(searchUser.getObjectId());
+                                    ParseQuery<MemRequest> query = ParseQuery.getQuery(MemRequest.class);
+                                    MemRequest memRequest = query.get(memRequestId);
+                                    if (memRequest.getStatus().equals(StaticVariables.STATUS_PENDING)) {
+                                        setAcceptRequest(memRequest, searchUser, currUser);
+                                    }
+                                } catch (ParseException ex) {
+                                    ex.printStackTrace();
+                                }
                             }
                         }
-                        btnRequest.setVisibility(View.VISIBLE);
-                        btnRequest.setText(MEM_REQUEST_TITLE);
-                        createRequestOnClick(btnRequest, otherUser);
                     }
                 }
             });
         }
 
-        private void acceptRequest(final MemRequest currentRequest, final ParseUser toUser, final ParseUser currUser) {
+        private void determineIfPendingRequest(final ParseUser currUser, final ParseUser searchUser){
+            ParseQuery<PendingRequests> queryAccept = ParseQuery.getQuery(PendingRequests.class);
+            queryAccept.include(PendingRequests.KEY_USER);
+            queryAccept.whereEqualTo(PendingRequests.KEY_USER, searchUser);
+            queryAccept.findInBackground(new FindCallback<PendingRequests>() {
+                @Override
+                public void done(List<PendingRequests> requests, ParseException e) {
+                    if (e != null) {
+                        Log.e(TAG, "Error getting pending request for determineRequest", e);
+                    } else {
+                        PendingRequests requestModel = requests.get(0);
+                        JSONObject searchUserRequests = requestModel.getPendingRequestsMap();
+                        if (searchUserRequests != null) {
+                            if (searchUserRequests.has(currUser.getObjectId())) {
+                                try {
+                                    String memRequestId = searchUserRequests.optString(currUser.getObjectId());
+                                    ParseQuery<MemRequest> query = ParseQuery.getQuery(MemRequest.class);
+                                    MemRequest memRequest = query.get(memRequestId);
+                                    if (memRequest.getStatus().equals(StaticVariables.STATUS_PENDING)) {
+                                        setPendingRequest(btnRequest);
+                                    }
+                                } catch (ParseException ex) {
+                                    ex.printStackTrace();
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        private void setAcceptRequest(final MemRequest currentRequest, final ParseUser searchUser, final ParseUser currUser) {
             btnRequest.setVisibility(View.VISIBLE);
             btnRequest.setText(ACCEPT_REQUEST_TITLE);
             btnRequest.setOnClickListener(new View.OnClickListener() {
@@ -180,9 +209,9 @@ public class SearchUsersAdapter extends RecyclerView.Adapter<SearchUsersAdapter.
                             }
                         }
                     });
-                    addFriends(currUser, toUser);
-                    addFriends(toUser, currUser);
-                    setViewProfile(btnRequest, toUser);
+                    addFriends(currUser, searchUser);
+                    addFriends(searchUser, currUser);
+                    setViewProfile(btnRequest, searchUser);
                 }
             });
         }
@@ -193,46 +222,45 @@ public class SearchUsersAdapter extends RecyclerView.Adapter<SearchUsersAdapter.
             query.whereEqualTo(Friends.KEY_USER, user);
             query.findInBackground(new FindCallback<Friends>() {
                 @Override
-                public void done(List<Friends> objects, ParseException e) {
-                    if (objects.size() == 0) {
-                        Friends friends = new Friends();
-                        friends.setFriendsUser(user);
-                        friends.add(FRIENDS, friend);
-                        friends.saveInBackground(new SaveCallback() {
+                public void done(List<Friends> friends, ParseException e) {
+                    if (e != null) {
+                        Log.e(TAG, "Error while getting friends for addFriends", e);
+                    }
+                    Friends friendModel = friends.get(0);
+                    JSONObject map = friendModel.getFriendsMap();
+                    if (map == null) {
+                        map = new JSONObject();
+                        friendModel.put(FRIENDS_MAP, map);
+                        friendModel.saveInBackground(new SaveCallback() {
                             @Override
                             public void done(ParseException e) {
-                                if (e != null) {
-                                    Log.e(TAG, "Error while saving new pending request", e);
-                                }
+                                Log.e(TAG, "Error while saving addFriends", e);
                             }
                         });
-                    } else {
-                        for (int i = 0; i < objects.size(); i++) {
-                            ParseUser currUser = objects.get(i).getFriendsUser();
-                            if (currUser.getObjectId().equals(user.getObjectId())) {
-                                objects.get(i).add(FRIENDS, friend);
-                                objects.get(i).saveInBackground(new SaveCallback() {
-                                    @Override
-                                    public void done(ParseException e) {
-                                        if (e != null) {
-                                            Log.e(TAG, "Error while saving pending request", e);
-                                        }
-                                    }
-                                });
+                    }
+                    try {
+                        map.put(friend.getObjectId(), friend.getObjectId());
+                        friendModel.put(FRIENDS_MAP, map);
+                        friendModel.saveInBackground(new SaveCallback() {
+                            @Override
+                            public void done(ParseException e) {
+                                Log.e(TAG, "Error while saving addFriends", e);
                             }
-                        }
+                        });
+                    } catch (JSONException ex) {
+                        ex.printStackTrace();
                     }
                 }
             });
         }
 
-        private void createRequestOnClick(Button btn, final ParseUser toUser) {
+        private void createRequestOnClick(Button btn, final ParseUser searchUser) {
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     MemRequest newRequest = new MemRequest();
                     newRequest.setFromUser(ParseUser.getCurrentUser());
-                    newRequest.setToUser(toUser);
+                    newRequest.setToUser(searchUser);
                     newRequest.setStatus(StaticVariables.STATUS_PENDING);
                     newRequest.saveInBackground(new SaveCallback() {
                         @Override
@@ -242,66 +270,50 @@ public class SearchUsersAdapter extends RecyclerView.Adapter<SearchUsersAdapter.
                             }
                         }
                     });
-                    createPendingRequest(toUser, newRequest);
-                    setPendingArrayIndex(toUser, newRequest);
+                    createPendingRequest(searchUser, newRequest);
                     setPendingRequest(btnRequest);
                     btnRequest.setClickable(false);
                 }
             });
         }
 
-        private void setPendingArrayIndex(ParseUser toUser, final MemRequest newRequest) {
+        private void createPendingRequest(final ParseUser searchUser, final MemRequest memRequest) {
             ParseQuery<PendingRequests> query = ParseQuery.getQuery(PendingRequests.class);
             query.include(PendingRequests.KEY_USER);
-            query.whereEqualTo(PendingRequests.KEY_USER, toUser);
+            query.whereEqualTo(PendingRequests.KEY_USER, searchUser);
             query.findInBackground(new FindCallback<PendingRequests>() {
                 @Override
-                public void done(List<PendingRequests> objects, ParseException e) {
-                    newRequest.setIndex(Integer.toString(objects.size()));
-                    newRequest.saveInBackground(new SaveCallback() {
-                        @Override
-                        public void done(ParseException e) {
-                            if (e != null) {
-                                Log.e(TAG, "Error while saving request index", e);
-                            }
-                        }
-                    });
-                }
-            });
-        }
-
-        private void createPendingRequest(final ParseUser user, final MemRequest memRequest) {
-            ParseQuery<PendingRequests> query = ParseQuery.getQuery(PendingRequests.class);
-            query.include(PendingRequests.KEY_USER);
-            query.whereEqualTo(PendingRequests.KEY_USER, user);
-            query.findInBackground(new FindCallback<PendingRequests>() {
-                @Override
-                public void done(List<PendingRequests> objects, ParseException e) {
-                    if (objects.size() == 0) {
-                        PendingRequests newPendingRequest = new PendingRequests();
-                        newPendingRequest.setPendingRequestsUser(user);
-                        newPendingRequest.add(PENDING_REQUESTS, memRequest);
-                        newPendingRequest.saveInBackground(new SaveCallback() {
-                            @Override
-                            public void done(ParseException e) {
-                                if (e != null) {
-                                    Log.e(TAG, "Error while saving new pending request", e);
-                                }
-                            }
-                        });
+                public void done(List<PendingRequests> requests, ParseException e) {
+                    if (e != null) {
+                        Log.e(TAG, "Error while getting requests in createPendingRequest", e);
                     } else {
-                        for (int i = 0; i < objects.size(); i++) {
-                            if (objects.get(i).getPendingRequestsUser().getObjectId().equals(user.getObjectId())) {
-                                objects.get(i).add(PENDING_REQUESTS, memRequest);
-                                objects.get(i).saveInBackground(new SaveCallback() {
-                                    @Override
-                                    public void done(ParseException e) {
-                                        if (e != null) {
-                                            Log.e(TAG, "Error while saving pending request", e);
-                                        }
+                        PendingRequests requestModel = requests.get(0);
+                        JSONObject requestsMap = requestModel.getPendingRequestsMap();
+                        if (requestsMap == null) {
+                            requestsMap = new JSONObject();
+                            requestModel.put(PENDING_REQUESTS_MAP, requestsMap);
+                            requestModel.saveInBackground(new SaveCallback() {
+                                @Override
+                                public void done(ParseException e) {
+                                    if (e != null) {
+                                        Log.e(TAG, "Error while creating addFriendsMap object", e);
                                     }
-                                });
-                            }
+                                }
+                            });
+                        }
+                        try {
+                            requestsMap.put(memRequest.getFromUser().getObjectId(), memRequest.getObjectId());
+                            requestModel.put(PENDING_REQUESTS_MAP, requestsMap);
+                            requestModel.saveInBackground(new SaveCallback() {
+                                @Override
+                                public void done(ParseException e) {
+                                    if (e != null) {
+                                        Log.e(TAG, "Error while saving addFriendsMap", e);
+                                    }
+                                }
+                            });
+                        } catch (JSONException ex) {
+                            ex.printStackTrace();
                         }
                     }
                 }

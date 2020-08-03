@@ -24,6 +24,9 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.List;
 
 public class SettingsAdapter extends RecyclerView.Adapter<SettingsAdapter.SettingsViewHolder> {
@@ -33,6 +36,7 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingsAdapter.Settin
     private static final String USER_PROFILE_PIC = "profilePicture";
     private static final String ACCEPT_REQUEST_TITLE = "accept";
     private static final String FRIENDS = "friends";
+    private static final String FRIENDS_MAP = "friendsMap";
     private static final String VIEW_PROFILE = "view profile";
     private static final String FRIEND_ID = "friendID";
     private static final String OBJECT_ID = "objectId";
@@ -104,7 +108,6 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingsAdapter.Settin
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-
         }
 
         private void addFriends(final ParseUser user, final ParseUser friend) {
@@ -113,30 +116,37 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingsAdapter.Settin
             query.whereEqualTo(Friends.KEY_USER, user);
             query.findInBackground(new FindCallback<Friends>() {
                 @Override
-                public void done(List<Friends> objects, ParseException e) {
-                    if (objects.size() == 0) {
-                        Friends friends = new Friends();
-                        friends.setFriendsUser(user);
-                        friends.add(FRIENDS, friend);
-                        friends.saveInBackground(new SaveCallback() {
+                public void done(List<Friends> friends, ParseException e) {
+                    if (e != null) {
+                        Log.e(TAG, "Error while getting friends for addFriends", e);
+                    }
+                    Friends friendModel = friends.get(0);
+                    JSONObject map = friendModel.getFriendsMap();
+                    if (map == null) {
+                        map = new JSONObject();
+                        friendModel.put(FRIENDS_MAP, map);
+                        friendModel.saveInBackground(new SaveCallback() {
                             @Override
                             public void done(ParseException e) {
                                 if (e != null) {
-                                    Log.e(TAG, "Error while saving new pending request", e);
+                                    Log.e(TAG, "Error while creating addFriendsMap object", e);
                                 }
                             }
                         });
-                    } else {
-                        Friends currUserFriendModel = objects.get(0);
-                        currUserFriendModel.add(FRIENDS, friend);
-                        currUserFriendModel.saveInBackground(new SaveCallback() {
+                    }
+                    try {
+                        map.put(friend.getObjectId(), friend.getObjectId());
+                        friendModel.put(FRIENDS_MAP, map);
+                        friendModel.saveInBackground(new SaveCallback() {
                             @Override
                             public void done(ParseException e) {
                                 if (e != null) {
-                                    Log.e(TAG, "Error while saving pending request", e);
+                                    Log.e(TAG, "Error while saving addFriendsMap", e);
                                 }
                             }
                         });
+                    } catch (JSONException ex) {
+                        ex.printStackTrace();
                     }
                 }
             });

@@ -90,15 +90,12 @@ public class SettingsActivity extends AppCompatActivity {
                             Iterator<String> iterator = requestsMap.keys();
                             while (iterator.hasNext()) {
                                 String currKey = iterator.next();
-                                Log.i(TAG, currKey);
                                 String memRequestId = requestsMap.optString(currKey);
-                                Log.i(TAG, memRequestId);
                                 ParseQuery<MemRequest> query = ParseQuery.getQuery(MemRequest.class);
                                 try {
                                     MemRequest currMemRequest = query.get(memRequestId);
                                     if (currMemRequest.getStatus().equals(StaticVariables.STATUS_PENDING)) {
                                         allPendingRequests.add(currMemRequest);
-                                        Log.i(TAG, allPendingRequests.toString());
                                     }
                                 } catch (ParseException ex) {
                                     ex.printStackTrace();

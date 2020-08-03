@@ -84,27 +84,27 @@ public class SettingsActivity extends AppCompatActivity {
                 if (e != null) {
                     Toast.makeText(getApplicationContext(), "Query Not Successful", Toast.LENGTH_LONG).show();
                 } else {
-                    PendingRequests requestModel = requests.get(0);
-                    JSONObject requestsMap = requestModel.getPendingRequestsMap();
-                    Iterator<String> iterator = requestsMap.keys();
-                    if(requestsMap != null){
-                        while (iterator.hasNext()){
-                            String currKey = iterator.next();
-                            Log.i(TAG, currKey);
-                            String memRequestId = requestsMap.optString(currKey);
-                            Log.i(TAG, memRequestId);
-                            ParseQuery<MemRequest> query = ParseQuery.getQuery(MemRequest.class);
-                            try {
-                                MemRequest currMemRequest = query.get(memRequestId);
-                                if(currMemRequest.getStatus().equals(StaticVariables.STATUS_PENDING)){
-                                    allPendingRequests.add(currMemRequest);
-                                    Log.i(TAG, allPendingRequests.toString());
+                        PendingRequests requestModel = requests.get(0);
+                        JSONObject requestsMap = requestModel.getPendingRequestsMap();
+                        if (requestsMap != null) {
+                            Iterator<String> iterator = requestsMap.keys();
+                            while (iterator.hasNext()) {
+                                String currKey = iterator.next();
+                                Log.i(TAG, currKey);
+                                String memRequestId = requestsMap.optString(currKey);
+                                Log.i(TAG, memRequestId);
+                                ParseQuery<MemRequest> query = ParseQuery.getQuery(MemRequest.class);
+                                try {
+                                    MemRequest currMemRequest = query.get(memRequestId);
+                                    if (currMemRequest.getStatus().equals(StaticVariables.STATUS_PENDING)) {
+                                        allPendingRequests.add(currMemRequest);
+                                        Log.i(TAG, allPendingRequests.toString());
+                                    }
+                                } catch (ParseException ex) {
+                                    ex.printStackTrace();
                                 }
-                            } catch (ParseException ex) {
-                                ex.printStackTrace();
                             }
-                        }
-                        adapter.notifyDataSetChanged();
+                            adapter.notifyDataSetChanged();
                     }
                 }
             }

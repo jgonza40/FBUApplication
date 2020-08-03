@@ -1,8 +1,10 @@
 package com.memrecap.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,6 +21,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public static final String TAG = "LoginActivity";
 
+    private ConstraintLayout constraintLayout;
     private EditText etUsername;
     private EditText etPassword;
     private Button btnLogin;
@@ -28,6 +31,15 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        constraintLayout = findViewById(R.id.constraintLayout);
+
+        // This deals with the Login screen animation (changing colors)
+        AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(1000);
+        animationDrawable.setExitFadeDuration(2000);
+        animationDrawable.start();
+
         // Makes sure that current user remains during app restarts
         if (ParseUser.getCurrentUser() != null) {
             goMainActivity();

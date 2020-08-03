@@ -269,7 +269,6 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         ParseQuery<Friends> query = ParseQuery.getQuery(Friends.class);
         query.include(Friends.KEY_USER);
         query.whereEqualTo(PendingRequests.KEY_USER, currUser);
-
         query.findInBackground(new FindCallback<Friends>() {
             @Override
             public void done(List<Friends> objects, com.parse.ParseException e) {

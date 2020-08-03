@@ -24,7 +24,19 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="/private/var/folders/3z/nh139d010xbdd7zklclj5x7c0000gn/T/ic_android_black_24dp.xml" />
+                                                <entry key="imagePath" value="/private/var/folders/3z/nh139d010xbdd7zklclj5x7c0000gn/T/baseline_lock_24.xml" />
+                                                <entry key="opacityPercent" value="80" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                      <entry key="clipartAsset">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="url" value="jar:file:/private/var/folders/3z/nh139d010xbdd7zklclj5x7c0000gn/T/AppTranslocation/E4804F3E-42FE-4B22-BEA1-2AAE6D9C88AF/d/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material/icons/materialicons/lock/baseline_lock_24.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -54,6 +66,13 @@
                                       </entry>
                                     </map>
                                   </option>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="outputName" value="ic_action_password" />
+                                      <entry key="theme" value="CUSTOM" />
+                                      <entry key="themeColor" value="f26627" />
+                                    </map>
+                                  </option>
                                 </PersistentState>
                               </value>
                             </entry>
@@ -67,8 +86,8 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="imagePath" value="$PROJECT_DIR$/../AppTitle.png" />
-                                                <entry key="scalingPercent" value="60" />
+                                                <entry key="imagePath" value="$PROJECT_DIR$/../memRecapLogo.png" />
+                                                <entry key="scalingPercent" value="46" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -79,7 +98,19 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="imagePath" value="/private/var/folders/3z/nh139d010xbdd7zklclj5x7c0000gn/T/ic_android_black_24dp.xml" />
+                                                <entry key="color" value="000000" />
+                                                <entry key="imagePath" value="/private/var/folders/3z/nh139d010xbdd7zklclj5x7c0000gn/T/baseline_person_24.xml" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                      <entry key="foregroundClipartAsset">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="url" value="jar:file:/private/var/folders/3z/nh139d010xbdd7zklclj5x7c0000gn/T/AppTranslocation/E4804F3E-42FE-4B22-BEA1-2AAE6D9C88AF/d/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material/icons/materialicons/person/baseline_person_24.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -91,8 +122,8 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="$PROJECT_DIR$/../AppTitle.png" />
-                                                <entry key="scalingPercent" value="60" />
+                                                <entry key="imagePath" value="$PROJECT_DIR$/../memRecapLogo.png" />
+                                                <entry key="scalingPercent" value="46" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -125,7 +156,7 @@
                                   <option name="values">
                                     <map>
                                       <entry key="legacyIconShape" value="NONE" />
-                                      <entry key="outputName" value="app_title" />
+                                      <entry key="outputName" value="mem_recap_logo" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -302,6 +333,11 @@
                 </map>
               </option>
             </PersistentState>
+          </value>
+        </entry>
+        <entry key="vectorWizard">
+          <value>
+            <PersistentState />
           </value>
         </entry>
       </map>

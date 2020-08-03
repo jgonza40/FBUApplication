@@ -20,11 +20,11 @@
         android:layout_width="60dp"
         android:layout_height="50dp"
         android:layout_gravity="start"
-        app:srcCompat="@drawable/new_app_icon_clear" />
+        app:srcCompat="@drawable/mem_recap_logo" />
 
     <ImageView
         android:id="@+id/app_title"
-        android:layout_gravity="center"
+        android:layout_gravity="start"
         android:layout_width= "130dp"
         android:layout_height="50dp"
         android:scaleType="centerCrop"

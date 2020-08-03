@@ -2,6 +2,7 @@ package com.memrecap;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,7 +51,7 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private static final String SELF_CARE_TITLE = "self care";
     private static final String FOOD_TITLE = "food";
     private static final String FAMILY_TITLE = "family";
-    private static final String STEPPING_STONE_TITLE = "stepping stone";
+    private static final String STEPPING_STONE_TITLE = "milestone";
     private static final String ACTIVE_TITLE = "active";
     private static final String TRAVEL_TITLE = "travel";
 
@@ -140,7 +141,8 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             tvImgUsername.setText(memory.getUser().getUsername());
             tvImgCreatedAt.setText(getRelativeTimeAgo(memory.getCreatedAt().toString()));
             tvImgCaption.setText(memory.getDescription());
-            tvImgCategory.setText("category: " + getCategoryTitle(memory.getCategory()));
+            String sourceString = "<b>" + "category:" + "</b> " + getCategoryTitle(memory.getCategory());
+            tvImgCategory.setText(Html.fromHtml(sourceString));
             tvImgTripTitle.setText(memory.getMemoryTitle());
             ParseFile image = memory.getImage();
             if (image != null) {
@@ -197,8 +199,9 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         public void setQuoteDetails(Memory memory) {
             tvQuoteUsername.setText(memory.getUser().getUsername());
             tvQuoteCreatedAt.setText(getRelativeTimeAgo(memory.getCreatedAt().toString()));
-            tvQuoteCategory.setText("category: " + getCategoryTitle(memory.getCategory()));
-            tvQuote.setText(memory.getQuote());
+            String sourceString = "<b>" + "category:" + "</b> " + getCategoryTitle(memory.getCategory());
+            tvQuoteCategory.setText(Html.fromHtml(sourceString));
+            tvQuote.setText(" \" " + memory.getQuote() + " \"");
             tvQuoteTripTitle.setText(memory.getMemoryTitle());
             Glide.with(context)
                     .load(memory.getUser().getParseFile(USER_PROFILE_PIC).getUrl())

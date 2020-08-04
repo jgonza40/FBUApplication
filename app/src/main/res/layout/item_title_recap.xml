@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginEnd="16dp"
-    android:layout_marginBottom="16dp"
+    android:layout_marginStart="24dp"
+    android:layout_marginTop="24dp"
+    android:layout_marginEnd="24dp"
+    android:layout_marginBottom="24dp"
     android:clipToPadding="false"
     android:outlineProvider="bounds">
 
@@ -17,8 +17,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        app:cardBackgroundColor="@color/green"
         app:cardCornerRadius="4dp">
+
+        <ImageView
+            android:src="@drawable/animation_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"/>
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -30,10 +35,11 @@
                 android:layout_height="match_parent"
                 android:fontFamily="@font/roboto_bold"
                 android:gravity="center"
+                android:paddingRight="16dp"
+                android:paddingLeft="16dp"
                 android:textColor="@android:color/white"
                 android:textSize="28sp"
                 tools:text="quote" />
-
         </FrameLayout>
     </androidx.cardview.widget.CardView>
 </FrameLayout>

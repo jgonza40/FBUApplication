@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -34,10 +35,10 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingsAdapter.Settin
     public static final String TAG = "SettingsAdapter";
 
     private static final String USER_PROFILE_PIC = "profilePicture";
-    private static final String ACCEPT_REQUEST_TITLE = "accept";
+    private static final String ACCEPT_REQUEST_TITLE = "Accept";
     private static final String FRIENDS = "friends";
     private static final String FRIENDS_MAP = "friendsMap";
-    private static final String VIEW_PROFILE = "view profile";
+    private static final String VIEW_PROFILE = "View Profile";
     private static final String FRIEND_ID = "friendID";
     private static final String OBJECT_ID = "objectId";
 
@@ -88,6 +89,7 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingsAdapter.Settin
                         .load(fromUser.getParseFile(USER_PROFILE_PIC).getUrl())
                         .into(ivSearchUserImage);
                 btnRequest.setText(ACCEPT_REQUEST_TITLE);
+                btnRequest.setBackground(ContextCompat.getDrawable(context, R.drawable.pending_button));
                 btnRequest.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -154,6 +156,7 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingsAdapter.Settin
 
         private void setViewProfile(Button button, final ParseUser user) {
             button.setText(VIEW_PROFILE);
+            btnRequest.setBackground(ContextCompat.getDrawable(context, R.drawable.profile_recap_button));
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

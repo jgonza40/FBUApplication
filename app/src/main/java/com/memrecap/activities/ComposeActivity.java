@@ -1,8 +1,10 @@
 package com.memrecap.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,11 +21,21 @@ public class ComposeActivity extends AppCompatActivity {
 
     private Button btnImage;
     private Button btnQuote;
+    private ConstraintLayout constraintLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compose);
+
+        constraintLayout = findViewById(R.id.constraintLayout);
+
+        // This deals with the Login screen animation (changing colors)
+        AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(1000);
+        animationDrawable.setExitFadeDuration(2000);
+        animationDrawable.start();
+
         btnImage = findViewById(R.id.btnImage);
         btnQuote = findViewById(R.id.btnQuote);
 

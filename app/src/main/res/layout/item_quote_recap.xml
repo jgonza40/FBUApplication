@@ -6,34 +6,43 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:clipToPadding="false"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginEnd="16dp"
-    android:layout_marginBottom="16dp"
+    android:layout_marginStart="24dp"
+    android:layout_marginTop="24dp"
+    android:layout_marginEnd="24dp"
+    android:layout_marginBottom="24dp"
     android:outlineProvider="bounds">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        app:cardBackgroundColor="@color/blue"
-        app:cardCornerRadius="4dp">
+        app:cardBackgroundColor="@color/creme"
+        app:cardCornerRadius="5dp">
 
-        <FrameLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/tvLocationQuote"
                 android:layout_width="match_parent"
-                android:gravity="center"
-                android:textColor="@android:color/white"
-                android:fontFamily="@font/roboto_bold"
-                android:textSize="28sp"
-                tools:text="quote"
                 android:layout_height="match_parent"
-                />
+                android:fontFamily="@font/roboto_bold"
+                android:gravity="center"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:textAlignment="viewStart"
+                android:textColor="#000000"
+                android:textSize="28sp"
+                android:textStyle="italic"
+                tools:text="quote" />
+
+            <ImageView
+                android:id="@+id/ivQuotePinPoint"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:gravity="bottom"
+                app:srcCompat="@drawable/ic_location" />
 
             <TextView
                 android:id="@+id/tvLocationName"
@@ -41,11 +50,12 @@
                 android:layout_height="match_parent"
                 android:fontFamily="@font/roboto_medium"
                 android:gravity="bottom"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                tools:text="@string/hello" />
-
-        </FrameLayout>
+                android:textAlignment="viewEnd"
+                android:paddingRight="8dp"
+                android:paddingBottom="8dp"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                tools:text="hello" />
+        </RelativeLayout>
     </androidx.cardview.widget.CardView>
-
 </FrameLayout>

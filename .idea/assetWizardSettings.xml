@@ -122,7 +122,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="$PROJECT_DIR$/../memRecapLogo.png" />
+                                                <entry key="imagePath" value="$PROJECT_DIR$/../9812544-2.jpg" />
                                                 <entry key="scalingPercent" value="46" />
                                               </map>
                                             </option>
@@ -156,7 +156,7 @@
                                   <option name="values">
                                     <map>
                                       <entry key="legacyIconShape" value="NONE" />
-                                      <entry key="outputName" value="mem_recap_logo" />
+                                      <entry key="outputName" value="background_recap" />
                                     </map>
                                   </option>
                                 </PersistentState>

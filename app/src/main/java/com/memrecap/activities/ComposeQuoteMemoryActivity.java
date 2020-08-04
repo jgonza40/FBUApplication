@@ -1,6 +1,7 @@
 package com.memrecap.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,12 +39,12 @@ public class ComposeQuoteMemoryActivity extends AppCompatActivity {
     public static final String ACTIVE = "active";
     public static final String TRAVEL = "travel";
 
-    private Button btnImageFood;
-    private Button btnImageSelfCare;
-    private Button btnImageFamily;
-    private Button btnImageTravel;
-    private Button btnImageSteppingStone;
-    private Button btnImageActive;
+    private Button btnQuoteFood;
+    private Button btnQuoteSelfCare;
+    private Button btnQuoteFamily;
+    private Button btnQuoteTravel;
+    private Button btnQuoteSteppingStone;
+    private Button btnQuoteActive;
     private String setCategory;
     private EditText etQuote;
     private Button btnPost;
@@ -54,12 +55,12 @@ public class ComposeQuoteMemoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compose_quote_memory);
         btnPost = findViewById(R.id.btnQuotePost);
-        btnImageFood = findViewById(R.id.btnQuoteFood);
-        btnImageSelfCare = findViewById(R.id.btnQuoteSelfCare);
-        btnImageFamily = findViewById(R.id.btnQuoteFamily);
-        btnImageTravel = findViewById(R.id.btnQuoteTravel);
-        btnImageSteppingStone = findViewById(R.id.btnQuoteSteppingStone);
-        btnImageActive = findViewById(R.id.btnQuoteActive);
+        btnQuoteFood = findViewById(R.id.btnQuoteFood);
+        btnQuoteSelfCare = findViewById(R.id.btnQuoteSelfCare);
+        btnQuoteFamily = findViewById(R.id.btnQuoteFamily);
+        btnQuoteTravel = findViewById(R.id.btnQuoteTravel);
+        btnQuoteSteppingStone = findViewById(R.id.btnQuoteSteppingStone);
+        btnQuoteActive = findViewById(R.id.btnQuoteActive);
         etQuote = findViewById(R.id.etQuote);
 
         // Gets the previously created intent to get 2 marker values
@@ -125,42 +126,63 @@ public class ComposeQuoteMemoryActivity extends AppCompatActivity {
 
     private String getCategory() {
         setCategory = "";
-        btnImageFood.setOnClickListener(new View.OnClickListener() {
+        btnQuoteFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetButtonColor();
+                btnQuoteFood.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.profile_recap_button));
                 setCategory = FOOD;
             }
         });
-        btnImageSelfCare.setOnClickListener(new View.OnClickListener() {
+        btnQuoteSelfCare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetButtonColor();
+                btnQuoteSelfCare.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.profile_recap_button));
                 setCategory = SELF_CARE;
             }
         });
-        btnImageFamily.setOnClickListener(new View.OnClickListener() {
+        btnQuoteFamily.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetButtonColor();
+                btnQuoteFamily.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.profile_recap_button));
                 setCategory = FAMILY;
             }
         });
-        btnImageTravel.setOnClickListener(new View.OnClickListener() {
+        btnQuoteTravel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetButtonColor();
+                btnQuoteTravel.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.profile_recap_button));
                 setCategory = TRAVEL;
             }
         });
-        btnImageSteppingStone.setOnClickListener(new View.OnClickListener() {
+        btnQuoteSteppingStone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetButtonColor();
+                btnQuoteSteppingStone.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.profile_recap_button));
                 setCategory = STEPPING_STONE;
             }
         });
-        btnImageActive.setOnClickListener(new View.OnClickListener() {
+        btnQuoteActive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetButtonColor();
+                btnQuoteActive.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.profile_recap_button));
                 setCategory = ACTIVE;
             }
         });
         return "";
+    }
+
+    private void resetButtonColor(){
+        btnQuoteFood.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.location_custom_button));
+        btnQuoteSelfCare.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.location_custom_button));
+        btnQuoteFamily.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.location_custom_button));
+        btnQuoteTravel.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.location_custom_button));
+        btnQuoteSteppingStone.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.location_custom_button));
+        btnQuoteActive.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.location_custom_button));
     }
 }

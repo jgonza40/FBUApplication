@@ -129,7 +129,6 @@ public class RecapAdapter extends ArrayAdapter<Memory> {
                     .load(image.getUrl())
                     .into(ivLocationImg);
         }
-
         return view;
     }
 
@@ -141,7 +140,7 @@ public class RecapAdapter extends ArrayAdapter<Memory> {
         tvLocationQuote = view.findViewById(R.id.tvLocationQuote);
         tvLocationName = view.findViewById(R.id.tvLocationName);
 
-        tvLocationQuote.setText(memory.getQuote());
+        tvLocationQuote.setText(" \" " + memory.getQuote() + " \"");
         tvLocationName.setText(memory.getMemoryTitle());
 
         return view;
@@ -163,7 +162,6 @@ public class RecapAdapter extends ArrayAdapter<Memory> {
                 getContext().startActivity(intent);
             }
         });
-
         return view;
     }
 

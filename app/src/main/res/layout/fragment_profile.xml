@@ -10,26 +10,83 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingBottom="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="8dp"
+        android:paddingLeft="8dp"
         tools:context=".fragments.ProfileFragment">
 
-        <ImageView
-            android:id="@+id/ivProfileImage"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="16dp"
-            android:scaleType="centerCrop"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="395dp"
+            android:layout_height="117dp"
+            app:cardBackgroundColor="@color/creme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="400dp"
+                android:layout_height="115dp">
+
+                <ImageView
+                    android:id="@+id/ivProfileImage"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="2dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/tvProfileUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="jgonza40"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivProfileImage"
+                    app:layout_constraintStart_toEndOf="@+id/ivProfileImage"
+                    app:layout_constraintTop_toTopOf="@+id/ivProfileImage" />
+
+                <Button
+                    android:id="@+id/btnProfileRecap"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/profile_recap_button"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Recap"
+                    android:textAllCaps="false"
+                    android:textColor="@color/blue"
+                    android:textSize="20sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/ivProfileImage"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/ivProfileImage"
+                    app:layout_constraintVertical_bias="0.444" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
 
         <Button
             android:id="@+id/btnProfileSelfCare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
-            android:layout_marginTop="16dp"
-            android:text="self-care"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/location_custom_button"
+            android:fontFamily="@font/roboto"
+            android:text="Self-Care"
+            android:textAllCaps="false"
+            android:textColor="@color/blue"
+            android:textSize="17sp"
             app:layout_constraintStart_toEndOf="@+id/btnProfileFood"
             app:layout_constraintTop_toBottomOf="@+id/tvSelect" />
 
@@ -38,8 +95,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="food"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/location_custom_button"
+            android:fontFamily="@font/roboto"
+            android:text="Food"
+            android:textAllCaps="false"
+            android:textColor="@color/blue"
+            android:textSize="17sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvSelect" />
 
@@ -47,9 +109,14 @@
             android:id="@+id/btnProfileFamily"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
-            android:text="family"
+            android:background="@drawable/location_custom_button"
+            android:fontFamily="@font/roboto"
+            android:text="Family"
+            android:textAllCaps="false"
+            android:textColor="@color/blue"
+            android:textSize="17sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/btnProfileSelfCare"
@@ -61,7 +128,12 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="travel"
+            android:background="@drawable/location_custom_button"
+            android:text="Travel"
+            android:textAllCaps="false"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/blue"
+            android:textSize="17sp"
             app:layout_constraintBottom_toBottomOf="@+id/btnProfileSteppingStone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnProfileFood"
@@ -74,7 +146,12 @@
             android:layout_marginStart="21dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:text="active"
+            android:background="@drawable/location_custom_button"
+            android:text="Active"
+            android:textAllCaps="false"
+            android:textColor="@color/blue"
+            android:textSize="17sp"
+            android:fontFamily="@font/roboto"
             app:layout_constraintBottom_toBottomOf="@+id/btnProfileSteppingStone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.9"
@@ -86,9 +163,14 @@
             android:id="@+id/btnProfileSteppingStone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="21dp"
+            android:layout_marginStart="56dp"
             android:layout_marginTop="16dp"
-            android:text="stepping-stone"
+            android:background="@drawable/location_custom_button"
+            android:text="Milestone"
+            android:fontFamily="@font/roboto"
+            android:textAllCaps="false"
+            android:textColor="@color/blue"
+            android:textSize="17sp"
             app:layout_constraintStart_toEndOf="@+id/btnProfileTravel"
             app:layout_constraintTop_toBottomOf="@+id/btnProfileSelfCare" />
 
@@ -104,34 +186,12 @@
             android:id="@+id/tvSelect"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="which memories would you like to view?"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnProfileRecap" />
-
-        <Button
-            android:id="@+id/btnProfileRecap"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="recap"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvProfileUsername" />
-
-        <TextView
-            android:id="@+id/tvProfileUsername"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="36dp"
             android:fontFamily="@font/roboto_medium"
-            android:text="jgonza40"
-            android:textColor="#000000"
-            android:textSize="24sp"
+            android:text="Which memories would you like to view?"
+            android:textColor="@color/blue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivProfileImage" />
-
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

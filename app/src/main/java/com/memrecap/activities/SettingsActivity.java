@@ -34,7 +34,6 @@ public class SettingsActivity extends AppCompatActivity {
 
     public static final String TAG = "SettingsActivity";
 
-
     private Button btnLogout;
     private RecyclerView rvPendingRequests;
     private SettingsAdapter adapter;
@@ -84,24 +83,24 @@ public class SettingsActivity extends AppCompatActivity {
                 if (e != null) {
                     Toast.makeText(getApplicationContext(), "Query Not Successful", Toast.LENGTH_LONG).show();
                 } else {
-                        PendingRequests requestModel = requests.get(0);
-                        JSONObject requestsMap = requestModel.getPendingRequestsMap();
-                        if (requestsMap != null) {
-                            Iterator<String> iterator = requestsMap.keys();
-                            while (iterator.hasNext()) {
-                                String currKey = iterator.next();
-                                String memRequestId = requestsMap.optString(currKey);
-                                ParseQuery<MemRequest> query = ParseQuery.getQuery(MemRequest.class);
-                                try {
-                                    MemRequest currMemRequest = query.get(memRequestId);
-                                    if (currMemRequest.getStatus().equals(StaticVariables.STATUS_PENDING)) {
-                                        allPendingRequests.add(currMemRequest);
-                                    }
-                                } catch (ParseException ex) {
-                                    ex.printStackTrace();
+                    PendingRequests requestModel = requests.get(0);
+                    JSONObject requestsMap = requestModel.getPendingRequestsMap();
+                    if (requestsMap != null) {
+                        Iterator<String> iterator = requestsMap.keys();
+                        while (iterator.hasNext()) {
+                            String currKey = iterator.next();
+                            String memRequestId = requestsMap.optString(currKey);
+                            ParseQuery<MemRequest> query = ParseQuery.getQuery(MemRequest.class);
+                            try {
+                                MemRequest currMemRequest = query.get(memRequestId);
+                                if (currMemRequest.getStatus().equals(StaticVariables.STATUS_PENDING)) {
+                                    allPendingRequests.add(currMemRequest);
                                 }
+                            } catch (ParseException ex) {
+                                ex.printStackTrace();
                             }
-                            adapter.notifyDataSetChanged();
+                        }
+                        adapter.notifyDataSetChanged();
                     }
                 }
             }

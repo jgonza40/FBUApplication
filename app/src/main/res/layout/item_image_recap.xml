@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:clipToPadding="false"
-    android:layout_marginStart="16dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginEnd="16dp"
-    android:layout_marginBottom="16dp"
+    android:layout_marginStart="24dp"
+    android:layout_marginTop="24dp"
+    android:layout_marginEnd="24dp"
+    android:layout_marginBottom="24dp"
     android:outlineProvider="bounds">
 
     <androidx.cardview.widget.CardView
@@ -29,18 +29,25 @@
                 android:layout_height="fill_parent"
                 android:scaleType="centerCrop"/>
 
+            <ImageView
+                android:id="@+id/ivImagePinPoint"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:gravity="bottom"
+                app:srcCompat="@drawable/ic_location" />
+
             <TextView
                 android:id="@+id/tvLocation"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:fontFamily="@font/roboto_medium"
                 android:gravity="bottom"
+                android:textAlignment="viewEnd"
+                android:paddingRight="8dp"
+                android:paddingBottom="8dp"
                 android:textColor="@android:color/white"
                 android:textSize="24sp"
                 tools:text="hello" />
-
         </FrameLayout>
     </androidx.cardview.widget.CardView>
-
-
 </FrameLayout>

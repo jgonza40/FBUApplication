@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -109,6 +110,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
         resetBooleanValues();
         foodSelected = true;
+        btnProfileFood.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.profile_recap_button));
 
         setProfileComponents(ivProfileImage, tvProfileUsername);
         recyclerViewSetup();
@@ -120,27 +122,33 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             case R.id.btnProfileFood:
                 resetBooleanValues();
                 foodSelected = true;
+                btnProfileFood.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.profile_recap_button));
                 break;
             case R.id.btnProfileSelfCare:
                 resetBooleanValues();
                 selfCareSelected = true;
+                btnProfileSelfCare.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.profile_recap_button));
                 break;
             case R.id.btnProfileFamily:
                 resetBooleanValues();
                 familySelected = true;
+                btnProfileFamily.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.profile_recap_button));
                 break;
             case R.id.btnProfileTravel:
                 resetBooleanValues();
                 travelSelected = true;
+                btnProfileTravel.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.profile_recap_button));
                 break;
             case R.id.btnProfileSteppingStone:
                 resetBooleanValues();
                 steppingStoneSelected = true;
+                btnProfileSteppingStone.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.profile_recap_button));
                 break;
             case R.id.btnProfileActive:
             default:
                 resetBooleanValues();
                 activeSelected = true;
+                btnProfileActive.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.profile_recap_button));
                 break;
         }
         recyclerViewSetup();
@@ -148,11 +156,17 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     private void resetBooleanValues() {
         foodSelected = false;
+        btnProfileFood.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.location_custom_button));
         selfCareSelected = false;
+        btnProfileSelfCare.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.location_custom_button));
         familySelected = false;
+        btnProfileFamily.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.location_custom_button));
         travelSelected = false;
+        btnProfileTravel.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.location_custom_button));
         steppingStoneSelected = false;
+        btnProfileSteppingStone.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.location_custom_button));
         activeSelected = false;
+        btnProfileActive.setBackground(ContextCompat.getDrawable(getContext(), R.drawable.location_custom_button));
     }
 
     private void setProfileComponents(ImageView profImage, TextView username) {

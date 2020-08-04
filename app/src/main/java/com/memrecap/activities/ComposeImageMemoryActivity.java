@@ -2,6 +2,7 @@ package com.memrecap.activities;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import android.content.Intent;
@@ -147,40 +148,61 @@ public class ComposeImageMemoryActivity extends AppCompatActivity {
         btnImageFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetButtonColor();
+                btnImageFood.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.profile_recap_button));
                 setCategory = FOOD;
             }
         });
         btnImageSelfCare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetButtonColor();
+                btnImageSelfCare.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.profile_recap_button));
                 setCategory = SELF_CARE;
             }
         });
         btnImageFamily.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetButtonColor();
+                btnImageFamily.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.profile_recap_button));
                 setCategory = FAMILY;
             }
         });
         btnImageTravel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetButtonColor();
+                btnImageTravel.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.profile_recap_button));
                 setCategory = TRAVEL;
             }
         });
         btnImageSteppingStone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetButtonColor();
+                btnImageSteppingStone.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.profile_recap_button));
                 setCategory = STEPPING_STONE;
             }
         });
         btnImageActive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                resetButtonColor();
+                btnImageActive.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.profile_recap_button));
                 setCategory = ACTIVE;
             }
         });
         return "";
+    }
+
+    private void resetButtonColor(){
+        btnImageFood.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.location_custom_button));
+        btnImageSelfCare.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.location_custom_button));
+        btnImageFamily.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.location_custom_button));
+        btnImageTravel.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.location_custom_button));
+        btnImageSteppingStone.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.location_custom_button));
+        btnImageActive.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.location_custom_button));
     }
 
     private void launchCamera() {

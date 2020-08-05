@@ -12,4 +12,6 @@
     <color name="lightOrange">#F9A26C</color>
     <color name="lightBlue">#9BD7D1</color>
     <color name="creme">#FFF8E7</color>
+    <color name="lightCreme">#77FFF8E7</color>
+    <color name="transparentBlue">#88000000</color>
 </resources>

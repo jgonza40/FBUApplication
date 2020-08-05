@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#33FFFFFF"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#33FFFFFF"
     android:padding="10dp">
 
     <Button
@@ -14,10 +13,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"
         android:layout_marginTop="16dp"
-        android:textAllCaps="false"
-        android:fontFamily="@font/roboto_medium"
         android:background="@drawable/location_custom_button"
+        android:fontFamily="@font/roboto_medium"
         android:text="Recap"
+        android:textAllCaps="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvInfoWindowTitle" />
 
@@ -26,11 +25,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:textAllCaps="false"
+        android:background="@drawable/location_custom_button"
         android:fontFamily="@font/roboto_medium"
         android:text="Add"
+        android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/location_custom_button"
         app:layout_constraintStart_toEndOf="@+id/btnView"
         app:layout_constraintTop_toBottomOf="@+id/tvInfoWindowTitle" />
 
@@ -38,12 +37,23 @@
         android:id="@+id/tvInfoWindowTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:fontFamily="@font/roboto_medium"
         android:text="What would you like to do with this marker?"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/ivExitButton" />
+
+    <ImageView
+        android:id="@+id/ivExitButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/exit_button_background" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

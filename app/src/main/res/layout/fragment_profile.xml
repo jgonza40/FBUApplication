@@ -1,197 +1,263 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:fillViewport="false"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/creme"
     android:orientation="vertical">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/settings_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="8dp"
-        android:paddingRight="8dp"
-        android:paddingTop="8dp"
-        android:paddingLeft="8dp"
-        tools:context=".fragments.ProfileFragment">
+        android:layout_height="wrap_content"
+        android:background="@color/blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="@android:color/white">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
-            android:layout_width="395dp"
-            android:layout_height="117dp"
-            app:cardBackgroundColor="@color/creme"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:id="@+id/mem_recap_search_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="start"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/mem_recap_logo" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="400dp"
-                android:layout_height="115dp">
+        <ImageView
+            android:id="@+id/settings_title"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/profile_header_background" />
 
-                <ImageView
-                    android:id="@+id/ivProfileImage"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="2dp"
-                    android:scaleType="centerCrop"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:src="@tools:sample/avatars" />
+        <ImageView
+            android:id="@+id/settings_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="end"
+            android:onClick="goToSettings"
+            app:srcCompat="@drawable/ic_settings" />
+    </androidx.appcompat.widget.Toolbar>
 
-                <TextView
-                    android:id="@+id/tvProfileUsername"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/roboto_medium"
-                    android:text="jgonza40"
-                    android:textColor="#000000"
-                    android:textSize="24sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/ivProfileImage"
-                    app:layout_constraintStart_toEndOf="@+id/ivProfileImage"
-                    app:layout_constraintTop_toTopOf="@+id/ivProfileImage" />
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="false"
+        android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/btnProfileRecap"
-                    android:layout_width="100dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/profile_recap_button"
-                    android:fontFamily="@font/roboto_medium"
-                    android:text="Recap"
-                    android:textAllCaps="false"
-                    android:textColor="@color/blue"
-                    android:textSize="20sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/ivProfileImage"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/ivProfileImage"
-                    app:layout_constraintVertical_bias="0.444" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.cardview.widget.CardView>
-
-
-        <Button
-            android:id="@+id/btnProfileSelfCare"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/location_custom_button"
-            android:fontFamily="@font/roboto"
-            android:text="Self-Care"
-            android:textAllCaps="false"
-            android:textColor="@color/blue"
-            android:textSize="17sp"
-            app:layout_constraintStart_toEndOf="@+id/btnProfileFood"
-            app:layout_constraintTop_toBottomOf="@+id/tvSelect" />
-
-        <Button
-            android:id="@+id/btnProfileFood"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/location_custom_button"
-            android:fontFamily="@font/roboto"
-            android:text="Food"
-            android:textAllCaps="false"
-            android:textColor="@color/blue"
-            android:textSize="17sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvSelect" />
-
-        <Button
-            android:id="@+id/btnProfileFamily"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/location_custom_button"
-            android:fontFamily="@font/roboto"
-            android:text="Family"
-            android:textAllCaps="false"
-            android:textColor="@color/blue"
-            android:textSize="17sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/btnProfileSelfCare"
-            app:layout_constraintTop_toBottomOf="@+id/tvSelect" />
-
-        <Button
-            android:id="@+id/btnProfileTravel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/location_custom_button"
-            android:text="Travel"
-            android:textAllCaps="false"
-            android:fontFamily="@font/roboto"
-            android:textColor="@color/blue"
-            android:textSize="17sp"
-            app:layout_constraintBottom_toBottomOf="@+id/btnProfileSteppingStone"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnProfileFood"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <Button
-            android:id="@+id/btnProfileActive"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="21dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/location_custom_button"
-            android:text="Active"
-            android:textAllCaps="false"
-            android:textColor="@color/blue"
-            android:textSize="17sp"
-            android:fontFamily="@font/roboto"
-            app:layout_constraintBottom_toBottomOf="@+id/btnProfileSteppingStone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.9"
-            app:layout_constraintStart_toEndOf="@+id/btnProfileSteppingStone"
-            app:layout_constraintTop_toBottomOf="@+id/btnProfileFamily"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <Button
-            android:id="@+id/btnProfileSteppingStone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/location_custom_button"
-            android:text="Milestone"
-            android:fontFamily="@font/roboto"
-            android:textAllCaps="false"
-            android:textColor="@color/blue"
-            android:textSize="17sp"
-            app:layout_constraintStart_toEndOf="@+id/btnProfileTravel"
-            app:layout_constraintTop_toBottomOf="@+id/btnProfileSelfCare" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvProfileCategoryMemories"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:padding="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/btnProfileSteppingStone" />
+            android:layout_height="match_parent"
+            android:paddingLeft="8dp"
+            android:paddingTop="8dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="8dp"
+            tools:context=".fragments.ProfileFragment">
 
-        <TextView
-            android:id="@+id/tvSelect"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="36dp"
-            android:fontFamily="@font/roboto_medium"
-            android:text="Which memories would you like to view?"
-            android:textColor="@color/blue"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="395dp"
+                android:layout_height="117dp"
+                app:cardBackgroundColor="#FFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="400dp"
+                    android:layout_height="115dp">
+
+                    <ImageView
+                        android:id="@+id/ivProfileImage"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="2dp"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:src="@tools:sample/avatars" />
+
+                    <TextView
+                        android:id="@+id/tvProfileUsername"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="jgonza40"
+                        android:textColor="#000000"
+                        android:textSize="24sp"
+                        app:layout_constraintStart_toEndOf="@+id/ivProfileImage"
+                        app:layout_constraintTop_toTopOf="@+id/ivProfileImage" />
+
+                    <TextView
+                        android:id="@+id/tvNumFriends"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="Friends: 2"
+                        android:textColor="#000000"
+                        app:layout_constraintStart_toStartOf="@+id/tvProfileUsername"
+                        app:layout_constraintTop_toBottomOf="@+id/tvProfileUsername" />
+
+                    <Button
+                        android:id="@+id/btnProfileRecap"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/profile_recap_button"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="Recap"
+                        android:textAllCaps="false"
+                        android:textColor="@color/blue"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivProfileImage"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/ivProfileImage"
+                        app:layout_constraintVertical_bias="0.444" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <Button
+                android:id="@+id/btnProfileSelfCare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/location_custom_button"
+                android:fontFamily="@font/roboto"
+                android:text="Self-Care"
+                android:textAllCaps="false"
+                android:textColor="@color/blue"
+                android:textSize="17sp"
+                app:layout_constraintStart_toEndOf="@+id/btnProfileFood"
+                app:layout_constraintTop_toBottomOf="@+id/tvSelect" />
+
+            <Button
+                android:id="@+id/btnProfileFood"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/location_custom_button"
+                android:fontFamily="@font/roboto"
+                android:text="Food"
+                android:textAllCaps="false"
+                android:textColor="@color/blue"
+                android:textSize="17sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvSelect" />
+
+            <Button
+                android:id="@+id/btnProfileFamily"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/location_custom_button"
+                android:fontFamily="@font/roboto"
+                android:text="Family"
+                android:textAllCaps="false"
+                android:textColor="@color/blue"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/btnProfileSelfCare"
+                app:layout_constraintTop_toBottomOf="@+id/tvSelect" />
+
+            <Button
+                android:id="@+id/btnProfileTravel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/location_custom_button"
+                android:fontFamily="@font/roboto"
+                android:text="Travel"
+                android:textAllCaps="false"
+                android:textColor="@color/blue"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="@+id/btnProfileSteppingStone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnProfileFood"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <Button
+                android:id="@+id/btnProfileActive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="21dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/location_custom_button"
+                android:fontFamily="@font/roboto"
+                android:text="Active"
+                android:textAllCaps="false"
+                android:textColor="@color/blue"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="@+id/btnProfileSteppingStone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.9"
+                app:layout_constraintStart_toEndOf="@+id/btnProfileSteppingStone"
+                app:layout_constraintTop_toBottomOf="@+id/btnProfileFamily"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <Button
+                android:id="@+id/btnProfileSteppingStone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/location_custom_button"
+                android:fontFamily="@font/roboto"
+                android:text="Milestone"
+                android:textAllCaps="false"
+                android:textColor="@color/blue"
+                android:textSize="17sp"
+                app:layout_constraintStart_toEndOf="@+id/btnProfileTravel"
+                app:layout_constraintTop_toBottomOf="@+id/btnProfileSelfCare" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvProfileCategoryMemories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/tvNumPosts"
+                tools:layout_editor_absoluteX="8dp" />
+
+            <TextView
+                android:id="@+id/tvSelect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Which memories would you like to view?"
+                android:textColor="@color/blue"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+            <TextView
+                android:id="@+id/tvNumPosts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="You have 3 Food posts!"
+                android:textColor="#000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnProfileSteppingStone" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</LinearLayout>

@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.memrecap.R;
@@ -36,6 +38,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     private Button btnLogout;
     private RecyclerView rvPendingRequests;
+    private TextView tvPendingRequests;
     private SettingsAdapter adapter;
 
     private List<MemRequest> allPendingRequests;
@@ -46,6 +49,7 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
         btnLogout = findViewById(R.id.btnLogout);
         rvPendingRequests = findViewById(R.id.rvPendingRequests);
+        tvPendingRequests = findViewById(R.id.tvPendingRequests);
 
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +84,7 @@ public class SettingsActivity extends AppCompatActivity {
         query.findInBackground(new FindCallback<PendingRequests>() {
             @Override
             public void done(List<PendingRequests> requests, ParseException e) {
+                int numRequests = 0;
                 if (e != null) {
                     Toast.makeText(getApplicationContext(), "Query Not Successful", Toast.LENGTH_LONG).show();
                 } else {
@@ -95,6 +100,7 @@ public class SettingsActivity extends AppCompatActivity {
                                 MemRequest currMemRequest = query.get(memRequestId);
                                 if (currMemRequest.getStatus().equals(StaticVariables.STATUS_PENDING)) {
                                     allPendingRequests.add(currMemRequest);
+                                    numRequests++;
                                 }
                             } catch (ParseException ex) {
                                 ex.printStackTrace();
@@ -103,7 +109,18 @@ public class SettingsActivity extends AppCompatActivity {
                         adapter.notifyDataSetChanged();
                     }
                 }
+                if(numRequests == 0){
+                    tvPendingRequests.setText("You do not have pending friend requests");
+                } else if(numRequests == 1){
+                    tvPendingRequests.setText("You have " + numRequests + " pending friend request!");
+                } else {
+                    tvPendingRequests.setText("You have " + numRequests + " pending friend requests!");
+                }
             }
         });
+    }
+
+    public void goBackToMain(View view) {
+        this.finish();
     }
 }

@@ -53,7 +53,6 @@ dependencies {
     compile 'com.lorentzos.swipecards:library:1.0.9'
     implementation "androidx.cardview:cardview:1.0.0"
 
-
-
+    implementation "androidx.appcompat:appcompat:1.0.2"
 }
 

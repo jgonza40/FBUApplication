@@ -89,7 +89,7 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingsAdapter.Settin
                         .load(fromUser.getParseFile(USER_PROFILE_PIC).getUrl())
                         .into(ivSearchUserImage);
                 btnRequest.setText(ACCEPT_REQUEST_TITLE);
-                btnRequest.setBackground(ContextCompat.getDrawable(context, R.drawable.pending_button));
+                btnRequest.setBackground(ContextCompat.getDrawable(context, R.drawable.profile_recap_button));
                 btnRequest.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -156,7 +156,7 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingsAdapter.Settin
 
         private void setViewProfile(Button button, final ParseUser user) {
             button.setText(VIEW_PROFILE);
-            btnRequest.setBackground(ContextCompat.getDrawable(context, R.drawable.profile_recap_button));
+            btnRequest.setBackground(ContextCompat.getDrawable(context, R.drawable.location_custom_button));
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

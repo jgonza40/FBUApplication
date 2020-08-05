@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,11 +24,14 @@ import com.memrecap.MemoryAdapter;
 import com.memrecap.R;
 import com.memrecap.StaticVariables;
 import com.memrecap.activities.ProfileRecapActivity;
+import com.memrecap.models.Friends;
 import com.memrecap.models.Memory;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -50,6 +54,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private Button btnProfileSteppingStone;
     private Button btnProfileActive;
     private RecyclerView rvCategoryMemories;
+    private TextView tvNumFriends;
+    private TextView tvNumPosts;
 
     protected List<Memory> foodMemories;
     protected List<Memory> selfCareMemories;
@@ -92,6 +98,10 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         btnProfileActive = view.findViewById(R.id.btnProfileActive);
         btnProfileRecap = view.findViewById(R.id.btnProfileRecap);
         rvCategoryMemories = view.findViewById(R.id.rvProfileCategoryMemories);
+        tvNumFriends = view.findViewById(R.id.tvNumFriends);
+        tvNumPosts = view.findViewById(R.id.tvNumPosts);
+
+        setNumFriends();
 
         btnProfileRecap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -238,17 +248,50 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
     private void setFinalList() {
         finalList.clear();
         if (foodSelected) {
+            setTvNumPosts(foodMemories, StaticVariables.FOOD_STRING);
             finalList.addAll(foodMemories);
         } else if (selfCareSelected) {
+            setTvNumPosts(selfCareMemories, StaticVariables.SELF_CARE_STRING);
             finalList.addAll(selfCareMemories);
         } else if (familySelected) {
+            setTvNumPosts(familyMemories, StaticVariables.FAMILY_STRING);
             finalList.addAll(familyMemories);
         } else if (travelSelected) {
+            setTvNumPosts(travelMemories, StaticVariables.TRAVEL_STRING);
             finalList.addAll(travelMemories);
         } else if (steppingStoneSelected) {
+            setTvNumPosts(steppingStoneMemories, StaticVariables.STEPPING_STONE_STRING);
             finalList.addAll(steppingStoneMemories);
         } else {
+            setTvNumPosts(activeMemories, StaticVariables.ACTIVE_STRING);
             finalList.addAll(activeMemories);
         }
+    }
+
+    private void setTvNumPosts(List<Memory> currentMemories, String currMem){
+        if(currentMemories.size() == 0){
+            tvNumPosts.setText("You do not have " + currMem + " memories :(");
+        } else if(currentMemories.size() == 1){
+            tvNumPosts.setText("You have 1 "+ currMem + " memory!");
+        } else {
+            tvNumPosts.setText("You have " + currentMemories.size() + currMem + "memories!");
+        }
+    }
+
+    private void setNumFriends(){
+        ParseUser curr = ParseUser.getCurrentUser();
+        ParseQuery<Friends> query = ParseQuery.getQuery(Friends.class);
+        query.include(Friends.KEY_USER);
+        query.whereEqualTo(Friends.KEY_USER, curr);
+        query.findInBackground(new FindCallback<Friends>() {
+            @Override
+            public void done(List<Friends> friends, ParseException e) {
+                Friends currFriendModel = friends.get(0);
+                JSONObject friendsList = currFriendModel.getFriendsMap();
+                int numFriends = friendsList.length();
+                String sourceString = "<b>" + "Friends:" + "</b> " + Integer.toString(numFriends);
+                tvNumFriends.setText(Html.fromHtml(sourceString));
+            }
+        });
     }
 }

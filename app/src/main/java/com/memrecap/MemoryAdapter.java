@@ -141,7 +141,7 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             tvImgUsername.setText(memory.getUser().getUsername());
             tvImgCreatedAt.setText(getRelativeTimeAgo(memory.getCreatedAt().toString()));
             tvImgCaption.setText(memory.getDescription());
-            String sourceString = "<b>" + "category:" + "</b> " + getCategoryTitle(memory.getCategory());
+            String sourceString = "<b>" + "Category:" + "</b> " + getCategoryTitle(memory.getCategory());
             tvImgCategory.setText(Html.fromHtml(sourceString));
             tvImgTripTitle.setText(memory.getMemoryTitle());
             ParseFile image = memory.getImage();
@@ -199,7 +199,7 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         public void setQuoteDetails(Memory memory) {
             tvQuoteUsername.setText(memory.getUser().getUsername());
             tvQuoteCreatedAt.setText(getRelativeTimeAgo(memory.getCreatedAt().toString()));
-            String sourceString = "<b>" + "category:" + "</b> " + getCategoryTitle(memory.getCategory());
+            String sourceString = "<b>" + "Category:" + "</b> " + getCategoryTitle(memory.getCategory());
             tvQuoteCategory.setText(Html.fromHtml(sourceString));
             tvQuote.setText(" \" " + memory.getQuote() + " \"");
             tvQuoteTripTitle.setText(memory.getMemoryTitle());

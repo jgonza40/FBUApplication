@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintLayout"
@@ -8,13 +7,14 @@
     android:layout_height="match_parent"
     android:background="@drawable/animation_list"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="10dp"
+    tools:context=".activities.ComposeActivity">
 
     <TextView
         android:id="@+id/tvTypeCompose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="275dp"
         android:fontFamily="@font/roboto_medium"
         android:text="Which memory did you create today?"
         android:textColor="@color/creme"
@@ -28,8 +28,10 @@
         android:layout_width="130sp"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:background="@drawable/custom_button"
-        android:text="Image Memory"
+        android:background="@drawable/profile_recap_button"
+        android:drawableLeft="@drawable/ic_camera"
+        android:padding="16dp"
+        android:text="Image"
         android:textAllCaps="false"
         android:textColor="@color/blue"
         android:textSize="17sp"
@@ -42,8 +44,10 @@
         android:layout_width="130sp"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:background="@drawable/custom_button"
-        android:text="Quote Memory"
+        android:background="@drawable/profile_recap_button"
+        android:drawableLeft="@drawable/ic_book"
+        android:padding="16dp"
+        android:text="Quote"
         android:textAllCaps="false"
         android:textColor="@color/blue"
         android:textSize="17sp"
@@ -63,4 +67,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btnQuote" />
+
+    <ImageView
+        android:id="@+id/ivExitCompose"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="8dp"
+        android:onClick="exitToMap"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_exit_light" />
 </androidx.constraintlayout.widget.ConstraintLayout>

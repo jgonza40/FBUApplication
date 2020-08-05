@@ -24,7 +24,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="/private/var/folders/3z/nh139d010xbdd7zklclj5x7c0000gn/T/baseline_arrow_back_24.xml" />
+                                                <entry key="imagePath" value="/private/var/folders/3z/nh139d010xbdd7zklclj5x7c0000gn/T/baseline_clear_24.xml" />
                                                 <entry key="opacityPercent" value="80" />
                                               </map>
                                             </option>
@@ -36,7 +36,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/private/var/folders/3z/nh139d010xbdd7zklclj5x7c0000gn/T/AppTranslocation/E4804F3E-42FE-4B22-BEA1-2AAE6D9C88AF/d/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material/icons/materialicons/arrow_back/baseline_arrow_back_24.xml" />
+                                                <entry key="url" value="jar:file:/private/var/folders/3z/nh139d010xbdd7zklclj5x7c0000gn/T/AppTranslocation/E4804F3E-42FE-4B22-BEA1-2AAE6D9C88AF/d/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material/icons/materialicons/clear/baseline_clear_24.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -48,7 +48,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="$PROJECT_DIR$/../logo_and_title.png" />
+                                                <entry key="imagePath" value="$PROJECT_DIR$/../MemRecapImages/location_icon.png" />
                                                 <entry key="opacityPercent" value="80" />
                                               </map>
                                             </option>
@@ -81,10 +81,10 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="imageAsset" value="$PROJECT_DIR$/../logo_and_title.png" />
-                                      <entry key="outputName" value="ic_exit" />
+                                      <entry key="imageAsset" value="$PROJECT_DIR$/../MemRecapImages/location_icon.png" />
+                                      <entry key="outputName" value="ic_exit_blue" />
                                       <entry key="theme" value="CUSTOM" />
-                                      <entry key="themeColor" value="ffffff" />
+                                      <entry key="themeColor" value="325d79" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -169,7 +169,6 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="generateLegacyIcon" value="false" />
                                       <entry key="outputName" value="exit_button" />
                                     </map>
                                   </option>
@@ -339,6 +338,11 @@
                                 </PersistentState>
                               </value>
                             </entry>
+                          </map>
+                        </option>
+                        <option name="values">
+                          <map>
+                            <entry key="outputIconType" value="ACTIONBAR" />
                           </map>
                         </option>
                       </PersistentState>

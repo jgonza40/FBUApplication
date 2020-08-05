@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:layout_marginStart="24dp"
-    android:layout_marginTop="24dp"
+    android:layout_marginTop="40dp"
     android:layout_marginEnd="24dp"
     android:layout_marginBottom="24dp"
     android:clipToPadding="false"
@@ -20,10 +20,10 @@
         app:cardCornerRadius="4dp">
 
         <ImageView
-            android:src="@drawable/animation_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="fitXY"/>
+            android:scaleType="fitXY"
+            android:src="@drawable/animation_list" />
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -33,13 +33,13 @@
                 android:id="@+id/tvCategoryTitle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:fontFamily="@font/roboto_bold"
+                android:fontFamily="@font/roboto_medium"
                 android:gravity="center"
-                android:paddingRight="16dp"
                 android:paddingLeft="16dp"
+                android:paddingRight="16dp"
                 android:textColor="@android:color/white"
                 android:textSize="28sp"
-                tools:text="quote" />
+                tools:text="Category Title" />
         </FrameLayout>
     </androidx.cardview.widget.CardView>
 </FrameLayout>

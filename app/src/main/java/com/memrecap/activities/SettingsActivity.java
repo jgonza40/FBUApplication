@@ -107,17 +107,21 @@ public class SettingsActivity extends AppCompatActivity {
                             }
                         }
                         adapter.notifyDataSetChanged();
+                        setTitle();
                     }
-                }
-                if(numRequests == 0){
-                    tvPendingRequests.setText("You do not have pending friend requests");
-                } else if(numRequests == 1){
-                    tvPendingRequests.setText("You have " + numRequests + " pending friend request!");
-                } else {
-                    tvPendingRequests.setText("You have " + numRequests + " pending friend requests!");
                 }
             }
         });
+    }
+
+    public void setTitle() {
+        if (adapter.getItemCount() == 0) {
+            tvPendingRequests.setText("You do not have pending friend requests");
+        } else if (adapter.getItemCount() == 1) {
+            tvPendingRequests.setText("You have " + adapter.getItemCount() + " pending friend request!");
+        } else {
+            tvPendingRequests.setText("You have " + adapter.getItemCount() + " pending friend requests!");
+        }
     }
 
     public void goBackToMain(View view) {

@@ -6,36 +6,36 @@
     android:layout_height="wrap_content"
     android:fillViewport="false"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="10dp"
+    tools:context=".activities.ComposeImageMemoryActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".activities.ComposeActivity">
+        android:layout_height="match_parent">
 
         <EditText
             android:id="@+id/etDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="16dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="20dp"
             android:backgroundTint="@color/blue"
             android:ems="10"
             android:hint="caption..."
             android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/ivPostImage" />
 
         <Button
             android:id="@+id/btnCaptureImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="12dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
-            android:background="@drawable/location_custom_button"
+            android:background="@drawable/profile_recap_button"
             android:fontFamily="@font/roboto_medium"
             android:text="Take Picture"
             android:textAllCaps="false"
@@ -44,16 +44,17 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/etDescription" />
+            app:layout_constraintTop_toBottomOf="@+id/ivExitComposeImg" />
 
         <ImageView
             android:id="@+id/ivPostImage"
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_marginTop="24dp"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:scaleType="centerCrop"
             app:layout_constraintTop_toBottomOf="@+id/btnCaptureImage"
             tools:srcCompat="@tools:sample/avatars" />
 
@@ -65,8 +66,8 @@
             android:layout_marginTop="48dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:fontFamily="@font/roboto_medium"
             android:background="@drawable/profile_recap_button"
+            android:fontFamily="@font/roboto_medium"
             android:text="Post"
             android:textAllCaps="false"
             android:textColor="@color/blue"
@@ -83,8 +84,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="44dp"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/roboto_medium"
             android:background="@drawable/location_custom_button"
+            android:fontFamily="@font/roboto_medium"
             android:text="Self-Care"
             android:textAllCaps="false"
             android:textColor="@color/blue"
@@ -98,8 +99,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/roboto_medium"
             android:background="@drawable/location_custom_button"
+            android:fontFamily="@font/roboto_medium"
             android:text="Food"
             android:textAllCaps="false"
             android:textColor="@color/blue"
@@ -113,8 +114,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:fontFamily="@font/roboto_medium"
             android:background="@drawable/location_custom_button"
+            android:fontFamily="@font/roboto_medium"
             android:text="Family"
             android:textAllCaps="false"
             android:textColor="@color/blue"
@@ -131,8 +132,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="48dp"
-            android:fontFamily="@font/roboto_medium"
             android:background="@drawable/location_custom_button"
+            android:fontFamily="@font/roboto_medium"
             android:text="Travel"
             android:textAllCaps="false"
             android:textColor="@color/blue"
@@ -150,8 +151,8 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="48dp"
-            android:fontFamily="@font/roboto_medium"
             android:background="@drawable/location_custom_button"
+            android:fontFamily="@font/roboto_medium"
             android:text="Active"
             android:textAllCaps="false"
             android:textColor="@color/blue"
@@ -182,13 +183,22 @@
             android:id="@+id/tvImageCategory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:textColor="@color/blue"
-            android:textSize="16sp"
+            android:layout_margin="24dp"
             android:fontFamily="@font/roboto_medium"
             android:text="Which type of memory did you create? "
+            android:textColor="@color/blue"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivPostImage" />
+            app:layout_constraintTop_toBottomOf="@+id/etDescription" />
+
+        <ImageView
+            android:id="@+id/ivExitComposeImg"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:onClick="exitToCompose"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_exit_blue" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

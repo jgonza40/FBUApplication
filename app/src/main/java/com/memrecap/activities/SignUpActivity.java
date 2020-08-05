@@ -64,7 +64,7 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void signUpUser(String newUsername, String newPassword, String newFirstName,
-                                 String newLastName, String newBirthday) {
+                            String newLastName, String newBirthday) {
         user = new ParseUser();
 
         user.setUsername(newUsername);
@@ -122,5 +122,9 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void errorCheckBirthday(String birthdayInput) {
         //TODO: Deal with error handling
+    }
+
+    public void exitBack(View view) {
+        finish();
     }
 }

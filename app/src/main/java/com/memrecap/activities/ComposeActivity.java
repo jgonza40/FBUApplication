@@ -42,7 +42,7 @@ public class ComposeActivity extends AppCompatActivity {
         // Gets the previously created intent to get 2 marker values
         Intent myIntent = getIntent();
         final String markerLat = myIntent.getStringExtra(PASS_LAT);
-        final String markerLong= myIntent.getStringExtra(PASS_LONG);
+        final String markerLong = myIntent.getStringExtra(PASS_LONG);
 
         btnImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,5 +63,9 @@ public class ComposeActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    public void exitToMap(View view) {
+        finish();
     }
 }

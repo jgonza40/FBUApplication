@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
@@ -45,7 +46,7 @@ public class ProfileRecapActivity extends AppCompatActivity {
 
         listMemories = new ArrayList<Memory>();
 
-        for(int i = 0; i < NUM_OF_CATEGORIES; i++){
+        for (int i = 0; i < NUM_OF_CATEGORIES; i++) {
 
         }
         foodMemories = new ArrayList<Memory>();
@@ -71,22 +72,25 @@ public class ProfileRecapActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onLeftCardExit(Object dataObject) {}
+            public void onLeftCardExit(Object dataObject) {
+            }
 
             @Override
-            public void onRightCardExit(Object o) {}
+            public void onRightCardExit(Object o) {
+            }
 
             @Override
-            public void onAdapterAboutToEmpty(int itemsInAdapter) {}
+            public void onAdapterAboutToEmpty(int itemsInAdapter) {
+            }
 
             @Override
-            public void onScroll(float scrollProgressPercent) {}
+            public void onScroll(float scrollProgressPercent) {
+            }
         });
 
         flingContainer.setOnItemClickListener(new SwipeFlingAdapterView.OnItemClickListener() {
             @Override
             public void onItemClicked(int itemPosition, Object dataObject) {
-                Toast.makeText(ProfileRecapActivity.this, "Clicked!", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -144,13 +148,17 @@ public class ProfileRecapActivity extends AppCompatActivity {
         });
     }
 
-    private void setCategoryMemories(List<Memory> list){
-        if(list.size() == 0){
+    private void setCategoryMemories(List<Memory> list) {
+        if (list.size() == 0) {
             return;
         }
         Memory titleMemory = new Memory();
         titleMemory.setCategory(list.get(0).getCategory());
         listMemories.add(titleMemory);
         listMemories.addAll(list);
+    }
+
+    public void exitToProfile(View view) {
+        finish();
     }
 }

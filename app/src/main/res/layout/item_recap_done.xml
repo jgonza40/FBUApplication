@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:clipToPadding="false"
     android:layout_marginStart="24dp"
-    android:layout_marginTop="24dp"
+    android:layout_marginTop="40dp"
     android:layout_marginEnd="24dp"
     android:layout_marginBottom="24dp"
+    android:clipToPadding="false"
     android:outlineProvider="bounds">
 
     <androidx.cardview.widget.CardView
@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        app:cardBackgroundColor="@color/green"
+        app:cardBackgroundColor="#FFFFFF"
         app:cardCornerRadius="4dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -32,26 +32,45 @@
                 android:layout_marginEnd="8dp"
                 android:fontFamily="@font/roboto_bold"
                 android:textAlignment="center"
-                android:textColor="@android:color/white"
+                android:textColor="@color/blue"
                 android:textSize="28sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.426"
-                tools:text="done" />
+                app:layout_constraintTop_toBottomOf="@+id/gifImageView"
+                app:layout_constraintVertical_bias="0.0"
+                tools:text="Done!" />
 
-            <Button
-                android:id="@+id/btnDone"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="go home"
+            <pl.droidsonroids.gif.GifImageView
+                android:id="@+id/gifImageView"
+                android:layout_width="175dp"
+                android:layout_height="175dp"
+                android:layout_marginBottom="250dp"
+                android:background="@drawable/giphy"
+                android:scaleType="centerCrop"
+                android:src="@drawable/giphy"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btnDone"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/profile_recap_button"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Go Back"
+                android:textAllCaps="false"
+                android:textColor="@color/blue"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.492"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvDoneTitle"
-                app:layout_constraintVertical_bias="0.14" />
+                app:layout_constraintVertical_bias="0.23" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </FrameLayout>

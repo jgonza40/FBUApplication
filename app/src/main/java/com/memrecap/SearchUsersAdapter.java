@@ -133,7 +133,7 @@ public class SearchUsersAdapter extends RecyclerView.Adapter<SearchUsersAdapter.
             createRequestOnClick(btnRequest, searchUser);
         }
 
-        private void determineIfAcceptRequest(final ParseUser currUser, final ParseUser searchUser){
+        private void determineIfAcceptRequest(final ParseUser currUser, final ParseUser searchUser) {
             ParseQuery<PendingRequests> queryPending = ParseQuery.getQuery(PendingRequests.class);
             queryPending.include(PendingRequests.KEY_USER);
             queryPending.whereEqualTo(PendingRequests.KEY_USER, currUser);
@@ -164,7 +164,7 @@ public class SearchUsersAdapter extends RecyclerView.Adapter<SearchUsersAdapter.
             });
         }
 
-        private void determineIfPendingRequest(final ParseUser currUser, final ParseUser searchUser){
+        private void determineIfPendingRequest(final ParseUser currUser, final ParseUser searchUser) {
             ParseQuery<PendingRequests> queryAccept = ParseQuery.getQuery(PendingRequests.class);
             queryAccept.include(PendingRequests.KEY_USER);
             queryAccept.whereEqualTo(PendingRequests.KEY_USER, searchUser);
@@ -174,7 +174,7 @@ public class SearchUsersAdapter extends RecyclerView.Adapter<SearchUsersAdapter.
                     if (e != null) {
                         Log.e(TAG, "Error getting pending request for determineRequest", e);
                     } else {
-                        if(requests.size() != 0) {
+                        if (requests.size() != 0) {
                             PendingRequests requestModel = requests.get(0);
                             JSONObject searchUserRequests = requestModel.getPendingRequestsMap();
                             if (searchUserRequests != null) {
@@ -200,7 +200,6 @@ public class SearchUsersAdapter extends RecyclerView.Adapter<SearchUsersAdapter.
         private void setAcceptRequest(final MemRequest currentRequest, final ParseUser searchUser, final ParseUser currUser) {
             btnRequest.setVisibility(View.VISIBLE);
             btnRequest.setText(ACCEPT_REQUEST_TITLE);
-            btnRequest.setBackground(ContextCompat.getDrawable(context, R.drawable.profile_recap_button));
             btnRequest.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -327,7 +326,6 @@ public class SearchUsersAdapter extends RecyclerView.Adapter<SearchUsersAdapter.
         private void setViewProfile(Button button, final ParseUser user) {
             btnRequest.setVisibility(View.VISIBLE);
             button.setText(VIEW_PROFILE_TITLE);
-            btnRequest.setBackground(ContextCompat.getDrawable(context, R.drawable.location_custom_button));
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -341,7 +339,6 @@ public class SearchUsersAdapter extends RecyclerView.Adapter<SearchUsersAdapter.
         private void setPendingRequest(Button btn) {
             btnRequest.setVisibility(View.VISIBLE);
             btn.setText(PENDING_REQUEST_TITLE);
-            btnRequest.setBackground(ContextCompat.getDrawable(context, R.drawable.profile_recap_button));
         }
     }
 }

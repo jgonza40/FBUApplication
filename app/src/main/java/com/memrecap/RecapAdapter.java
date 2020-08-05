@@ -1,7 +1,10 @@
 package com.memrecap;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +23,10 @@ import com.parse.ParseFile;
 
 import org.parceler.Parcels;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 
 public class RecapAdapter extends ArrayAdapter<Memory> {
@@ -46,7 +52,7 @@ public class RecapAdapter extends ArrayAdapter<Memory> {
     private static final String SELF_CARE_TITLE = "self care";
     private static final String FOOD_TITLE = "food";
     private static final String FAMILY_TITLE = "family";
-    private static final String STEPPING_STONE_TITLE = "stepping stone";
+    private static final String STEPPING_STONE_TITLE = "milestone";
     private static final String ACTIVE_TITLE = "active";
     private static final String TRAVEL_TITLE = "travel";
 
@@ -59,12 +65,16 @@ public class RecapAdapter extends ArrayAdapter<Memory> {
     private Button btnHome;
     private TextView tvDoneTitle;
     private Button btnDone;
+    private TextView tvImageDate;
+    private TextView tvQuoteCreatedAt;
 
     private String type;
+    private Context context;
 
     public RecapAdapter(Context context, int resourceId, List<Memory> memories, String type) {
         super(context, resourceId, memories);
         this.type = type;
+        this.context = context;
     }
 
     public View getView(int position, View itemView, ViewGroup parent) {
@@ -75,9 +85,9 @@ public class RecapAdapter extends ArrayAdapter<Memory> {
             itemView = setImageLayout(itemView, item_memory, parent);
         } else if (type == TYPE_QUOTE) {
             itemView = setQuoteLayout(itemView, item_memory, parent);
-        } else if (type == TYPE_TITLE){
+        } else if (type == TYPE_TITLE) {
             itemView = setTitleLayout(itemView, item_memory, parent);
-        } else if (type == TYPE_LOCATION){
+        } else if (type == TYPE_LOCATION) {
             itemView = setLocationLayout(itemView, item_memory, parent);
         } else {
             itemView = setDoneLayout(itemView, item_memory, parent);
@@ -91,7 +101,8 @@ public class RecapAdapter extends ArrayAdapter<Memory> {
         }
 
         tvCategoryTitle = view.findViewById(R.id.tvCategoryTitle);
-        tvCategoryTitle.setText(getCategoryTitle(memory.getCategory()) + " memories you have created! :)");
+        String categoryTitle = "Swipe to view " + "<b>" + getCategoryTitle(memory.getCategory()) + "</b> " + " memories you have created!";
+        tvCategoryTitle.setText(Html.fromHtml(categoryTitle));
 
         return view;
     }
@@ -121,8 +132,12 @@ public class RecapAdapter extends ArrayAdapter<Memory> {
 
         tvLocation = view.findViewById(R.id.tvLocation);
         ivLocationImg = view.findViewById(R.id.ivLocationImg);
+        tvImageDate = view.findViewById(R.id.tvImageDate);
 
         tvLocation.setText(memory.getMemoryTitle());
+        String rawJsonDate = memory.getCreatedAt().toString();
+        String[] parts = rawJsonDate.split(" ");
+        tvImageDate.setText(parts[2] + " " + parts[1] + " " + parts[5]);
         ParseFile image = memory.getImage();
         if (image != null) {
             Glide.with(getContext())
@@ -139,9 +154,13 @@ public class RecapAdapter extends ArrayAdapter<Memory> {
 
         tvLocationQuote = view.findViewById(R.id.tvLocationQuote);
         tvLocationName = view.findViewById(R.id.tvLocationName);
+        tvQuoteCreatedAt = view.findViewById(R.id.tvQuoteCreatedAt);
 
-        tvLocationQuote.setText(" \" " + memory.getQuote() + " \"");
+        tvLocationQuote.setText(" \" " + memory.getQuote() + " \" ");
         tvLocationName.setText(memory.getMemoryTitle());
+        String rawJsonDate = memory.getCreatedAt().toString();
+        String[] parts = rawJsonDate.split(" ");
+        tvQuoteCreatedAt.setText(parts[2] + " " + parts[1] + " " + parts[5]);
 
         return view;
     }
@@ -154,7 +173,7 @@ public class RecapAdapter extends ArrayAdapter<Memory> {
         tvContinueTitle = view.findViewById(R.id.tvContinueTitle);
         btnHome = view.findViewById(R.id.btnHome);
 
-        tvContinueTitle.setText("swipe to view next location memories!");
+        tvContinueTitle.setText("swipe to view " + memory.getMemoryTitle() + " memories!");
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -173,19 +192,24 @@ public class RecapAdapter extends ArrayAdapter<Memory> {
         tvDoneTitle = view.findViewById(R.id.tvDoneTitle);
         btnDone = view.findViewById(R.id.btnDone);
 
-        tvDoneTitle.setText("all done!");
+        if (type.equals(LOCATION)) {
+            btnDone.setText("Go Map");
+        } else {
+            btnDone.setText("Go Profile");
+        }
+
+        tvDoneTitle.setText("MemRecap Complete!");
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), MainActivity.class);
-                getContext().startActivity(intent);
+                ((Activity) context).finish();
             }
         });
         return view;
     }
 
     public int getItemViewType(Memory memory) {
-        if(memory.getDone()){
+        if (memory.getDone()) {
             return TYPE_DONE;
         }
 
@@ -197,7 +221,7 @@ public class RecapAdapter extends ArrayAdapter<Memory> {
             return TYPE_QUOTE;
         }
 
-        if(type.equals(LOCATION)){
+        if (type.equals(LOCATION)) {
             return TYPE_LOCATION;
         } else {
             return TYPE_TITLE;

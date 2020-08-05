@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#33FFFFFF"
-    android:padding="10dp">
+    android:padding="10dp"
+    tools:context=".activities.MainActivity">
 
     <Button
         android:id="@+id/btnView"
@@ -13,10 +14,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="68dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/location_custom_button"
+        android:background="@drawable/profile_recap_button"
         android:fontFamily="@font/roboto_medium"
         android:text="Recap"
         android:textAllCaps="false"
+        android:textColor="@color/blue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvInfoWindowTitle" />
 
@@ -25,10 +27,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:background="@drawable/location_custom_button"
+        android:background="@drawable/profile_recap_button"
         android:fontFamily="@font/roboto_medium"
         android:text="Add"
         android:textAllCaps="false"
+        android:textColor="@color/blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnView"
         app:layout_constraintTop_toBottomOf="@+id/tvInfoWindowTitle" />
@@ -37,6 +40,7 @@
         android:id="@+id/tvInfoWindowTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:fontFamily="@font/roboto_medium"
         android:text="What would you like to do with this marker?"
         android:textColor="#000000"
@@ -47,13 +51,12 @@
 
     <ImageView
         android:id="@+id/ivExitButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="4dp"
-
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/exit_button_background" />
+        app:srcCompat="@drawable/ic_ex" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

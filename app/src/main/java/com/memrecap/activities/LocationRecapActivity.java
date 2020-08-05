@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.lorentzos.flingswipe.SwipeFlingAdapterView;
 import com.memrecap.RecapAdapter;
@@ -77,17 +78,17 @@ public class LocationRecapActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onLeftCardExit(Object dataObject) {}
+            public void onLeftCardExit(Object dataObject) {
+            }
 
             @Override
-            public void onRightCardExit(Object o) {}
+            public void onRightCardExit(Object o) {
+            }
 
             @Override
             public void onAdapterAboutToEmpty(int itemsInAdapter) {
-                if(listMemories.size() != 0 && unvisitedMarkers.size() != 0 && !done){
+                if (listMemories.size() != 0 && unvisitedMarkers.size() != 0 && !done) {
                     try {
-                        Memory continueMemory = new Memory();
-                        listMemories.add(continueMemory);
                         String nextMarkerId = getNextMarkerMemories();
                         ParseQuery<MarkerPoint> query = ParseQuery.getQuery(MarkerPoint.class);
                         MarkerPoint nextMarker = query.get(nextMarkerId);
@@ -96,34 +97,35 @@ public class LocationRecapActivity extends AppCompatActivity {
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
-                }
-                if(unvisitedMarkers.size() == 0){
-                    Memory done = new Memory();
-                    done.setDone(true);
-                    listMemories.add(done);
-                    setDone();
-                    // Adding to prevent more done cards from populating
-                    unvisitedMarkers.put("done", 0.0);
+                } else {
+                    if (unvisitedMarkers.size() == 0) {
+                        Memory done = new Memory();
+                        done.setDone(true);
+                        listMemories.add(done);
+                        setDone();
+                        // Adding to prevent more done cards from populating
+                        unvisitedMarkers.put("done", 0.0);
+                    }
                 }
             }
 
             @Override
-            public void onScroll(float scrollProgressPercent) {}
+            public void onScroll(float scrollProgressPercent) {
+            }
         });
 
         flingContainer.setOnItemClickListener(new SwipeFlingAdapterView.OnItemClickListener() {
             @Override
             public void onItemClicked(int itemPosition, Object dataObject) {
-
             }
         });
     }
 
-    public void setDone(){
+    public void setDone() {
         done = true;
     }
 
-    public boolean getDone(){
+    public boolean getDone() {
         return done;
     }
 
@@ -164,10 +166,10 @@ public class LocationRecapActivity extends AppCompatActivity {
         return correspondingMarker;
     }
 
-    private void setUserMarkersMap(MarkerPoint currMarker){
+    private void setUserMarkersMap(MarkerPoint currMarker) {
         ParseUser currentUser = ParseUser.getCurrentUser();
         JSONArray markersArray = currentUser.getJSONArray(MARKERS_ARRAY);
-        for(int i = 0; i < markersArray.length(); i++){
+        for (int i = 0; i < markersArray.length(); i++) {
             String markerId = null;
             try {
                 markerId = markersArray.getJSONObject(i).getString(OBJECT_ID);
@@ -181,8 +183,8 @@ public class LocationRecapActivity extends AppCompatActivity {
         }
     }
 
-    private void updateMarkersMap(MarkerPoint currMarker){
-        for(String key : unvisitedMarkers.keySet()) {
+    private void updateMarkersMap(MarkerPoint currMarker) {
+        for (String key : unvisitedMarkers.keySet()) {
             Double value = unvisitedMarkers.get(key);
             ParseQuery<MarkerPoint> query = ParseQuery.getQuery(MarkerPoint.class);
             MarkerPoint loopMarker = null;
@@ -204,8 +206,7 @@ public class LocationRecapActivity extends AppCompatActivity {
 
         if ((lat1 == lat2) && (lon1 == lon2)) {
             return 0;
-        }
-        else {
+        } else {
             double theta = lon1 - lon2;
             double dist = Math.sin(Math.toRadians(lat1)) * Math.sin(Math.toRadians(lat2)) +
                     Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) * Math.cos(Math.toRadians(theta));
@@ -216,12 +217,12 @@ public class LocationRecapActivity extends AppCompatActivity {
         }
     }
 
-    private String getNextMarkerMemories(){
+    private String getNextMarkerMemories() {
         String minKey = null;
         Double minValue = Double.MAX_VALUE;
-        for(String key : unvisitedMarkers.keySet()) {
+        for (String key : unvisitedMarkers.keySet()) {
             Double value = unvisitedMarkers.get(key);
-            if(value < minValue) {
+            if (value < minValue) {
                 minValue = value;
                 minKey = key;
             }
@@ -230,10 +231,17 @@ public class LocationRecapActivity extends AppCompatActivity {
         MarkerPoint closestMarker = null;
         try {
             closestMarker = query.get(minKey);
+            Memory continueMemory = new Memory();
+            continueMemory.setMemoryTitle(closestMarker.getMarkerTitle());
+            listMemories.add(continueMemory);
             getLocationPosts(closestMarker);
         } catch (ParseException e) {
             e.printStackTrace();
         }
         return closestMarker.getObjectId();
+    }
+
+    public void exitToMapFragment(View view) {
+        finish();
     }
 }

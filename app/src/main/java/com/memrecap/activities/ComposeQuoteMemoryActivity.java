@@ -177,12 +177,16 @@ public class ComposeQuoteMemoryActivity extends AppCompatActivity {
         return "";
     }
 
-    private void resetButtonColor(){
+    private void resetButtonColor() {
         btnQuoteFood.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.location_custom_button));
         btnQuoteSelfCare.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.location_custom_button));
         btnQuoteFamily.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.location_custom_button));
         btnQuoteTravel.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.location_custom_button));
         btnQuoteSteppingStone.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.location_custom_button));
         btnQuoteActive.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.location_custom_button));
+    }
+
+    public void exitBackToCompose(View view) {
+        finish();
     }
 }

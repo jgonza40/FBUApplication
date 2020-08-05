@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.view.animation.BounceInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 import android.os.Handler;
 
@@ -55,6 +56,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import com.memrecap.activities.SettingsActivity;
 import com.memrecap.models.MarkerPoint;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -96,7 +98,8 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
     private SupportMapFragment mSupportMapFragment;
     private Marker sendMarker;
 
-    public MapFragment() {}
+    public MapFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -180,6 +183,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
         builder.setView(messageView);
         ((Button) messageView.findViewById(R.id.btnAdd)).setText("Add");
         ((Button) messageView.findViewById(R.id.btnView)).setText("Recap");
+        ImageView exit = messageView.findViewById(R.id.ivExitButton);
         final AlertDialog alertDialog = builder.create();
         messageView.findViewById(R.id.btnAdd).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -197,6 +201,11 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
                 i.putExtra(PASS_LAT, String.valueOf(marker.getPosition().latitude));
                 i.putExtra(PASS_LONG, String.valueOf(marker.getPosition().longitude));
                 startActivity(i);
+            }
+        });
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
             }
         });
         builder.setCancelable(true);
@@ -356,7 +365,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
 
     private void loadUserMarkers() throws ParseException, JSONException {
         JSONArray userMarkers = ParseUser.getCurrentUser().getJSONArray(MARKERS_ARRAY);
-        if(userMarkers != null){
+        if (userMarkers != null) {
             for (int i = 0; i < userMarkers.length(); i++) {
                 String marker = userMarkers.getJSONObject(i).getString("objectId");
                 ParseQuery<MarkerPoint> query = ParseQuery.getQuery(MarkerPoint.class);

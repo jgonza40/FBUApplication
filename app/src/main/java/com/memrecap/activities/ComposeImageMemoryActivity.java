@@ -196,7 +196,7 @@ public class ComposeImageMemoryActivity extends AppCompatActivity {
         return "";
     }
 
-    private void resetButtonColor(){
+    private void resetButtonColor() {
         btnImageFood.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.location_custom_button));
         btnImageSelfCare.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.location_custom_button));
         btnImageFamily.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.location_custom_button));
@@ -208,7 +208,7 @@ public class ComposeImageMemoryActivity extends AppCompatActivity {
     private void launchCamera() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         photoFile = getPhotoFileUri(photoFileName);
-
+        ivPostImage.setVisibility(View.VISIBLE);
         // wrap File object into a content provider
         // required for API >= 24
         // See https://guides.codepath.com/android/Sharing-Content-with-Intents#sharing-files-with-api-24-or-higher
@@ -273,5 +273,9 @@ public class ComposeImageMemoryActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    public void exitToCompose(View view) {
+        finish();
     }
 }

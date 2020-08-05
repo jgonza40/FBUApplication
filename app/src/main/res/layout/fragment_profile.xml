@@ -27,7 +27,7 @@
 
         <ImageView
             android:id="@+id/settings_title"
-            android:layout_width="150dp"
+            android:layout_width="130dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:scaleType="centerCrop"
@@ -242,7 +242,7 @@
                 android:layout_marginTop="36dp"
                 android:fontFamily="@font/roboto_medium"
                 android:text="Which memories would you like to view?"
-                android:textColor="@color/blue"
+                android:textColor="#000000"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView" />
@@ -253,7 +253,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:fontFamily="@font/roboto_medium"
-                android:text="You have 3 Food posts!"
                 android:textColor="#000000"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

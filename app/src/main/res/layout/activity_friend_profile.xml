@@ -1,139 +1,237 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:fillViewport="false"
-    android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/creme"
+    android:orientation="vertical"
+    tools:context=".activities.FriendProfileActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".fragments.ProfileFragment">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="false"
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/ivFriendImage"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="16dp"
-            android:scaleType="centerCrop"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:src="@tools:sample/avatars" />
-
-        <Button
-            android:id="@+id/btnFriendSelfCare"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
-            android:layout_marginTop="16dp"
-            android:text="self-care"
-            app:layout_constraintStart_toEndOf="@+id/btnFriendFood"
-            app:layout_constraintTop_toBottomOf="@+id/tvSelect" />
-
-        <Button
-            android:id="@+id/btnFriendFood"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:text="food"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvSelect" />
-
-        <Button
-            android:id="@+id/btnFriendFamily"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:text="family"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/btnFriendSelfCare"
-            app:layout_constraintTop_toBottomOf="@+id/tvSelect" />
-
-        <Button
-            android:id="@+id/btnFriendTravel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="48dp"
-            android:text="travel"
-            app:layout_constraintBottom_toTopOf="@+id/btnImagePost"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnFriendFood"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <Button
-            android:id="@+id/btnFriendActive"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="21dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="48dp"
-            android:text="active"
-            app:layout_constraintBottom_toTopOf="@+id/btnImagePost"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.9"
-            app:layout_constraintStart_toEndOf="@+id/btnFriendSteppingStone"
-            app:layout_constraintTop_toBottomOf="@+id/btnFriendFamily"
-            app:layout_constraintVertical_bias="1.0" />
-
-        <Button
-            android:id="@+id/btnFriendSteppingStone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="21dp"
-            android:layout_marginTop="16dp"
-            android:text="stepping-stone"
-            app:layout_constraintStart_toEndOf="@+id/btnFriendTravel"
-            app:layout_constraintTop_toBottomOf="@+id/btnFriendSelfCare" />
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvFriendCategoryMemories"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:padding="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/btnFriendSteppingStone" />
+            android:layout_height="match_parent"
+            android:paddingLeft="8dp"
+            android:paddingTop="8dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="8dp"
+            tools:context=".fragments.ProfileFragment">
 
-        <TextView
-            android:id="@+id/tvSelect"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="which memories would you like to view?"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnFriendRecap" />
+            <ImageView
+                android:id="@+id/ivExitFriend"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_exit_blue" />
 
-        <Button
-            android:id="@+id/btnFriendRecap"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="recap"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvFriendUsername" />
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="395dp"
+                android:layout_height="117dp"
+                android:layout_marginTop="8dp
+"
+                app:cardBackgroundColor="#FFFFFF"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivExitFriend">
 
-        <TextView
-            android:id="@+id/tvFriendUsername"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/roboto_medium"
-            android:text="jgonza40"
-            android:textColor="#000000"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivFriendImage" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="400dp"
+                    android:layout_height="115dp">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+                    <ImageView
+                        android:id="@+id/ivFriendImage"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="2dp"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:src="@tools:sample/avatars" />
+
+                    <TextView
+                        android:id="@+id/tvFriendUsername"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="jgonza40"
+                        android:textColor="#000000"
+                        android:textSize="24sp"
+                        app:layout_constraintStart_toEndOf="@+id/ivFriendImage"
+                        app:layout_constraintTop_toTopOf="@+id/ivFriendImage" />
+
+                    <TextView
+                        android:id="@+id/tvNumFriends"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="Friends: 2"
+                        android:textColor="#000000"
+                        app:layout_constraintStart_toStartOf="@+id/tvFriendUsername"
+                        app:layout_constraintTop_toBottomOf="@+id/tvFriendUsername" />
+
+                    <Button
+                        android:id="@+id/btnFriendRecap"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/profile_recap_button"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="Recap"
+                        android:textAllCaps="false"
+                        android:textColor="@color/blue"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivFriendImage"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/ivFriendImage"
+                        app:layout_constraintVertical_bias="0.444" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+            <Button
+                android:id="@+id/btnFriendSelfCare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/location_custom_button"
+                android:fontFamily="@font/roboto"
+                android:text="Self-Care"
+                android:textAllCaps="false"
+                android:textColor="@color/blue"
+                android:textSize="17sp"
+                app:layout_constraintStart_toEndOf="@+id/btnFriendFood"
+                app:layout_constraintTop_toBottomOf="@+id/tvSelect" />
+
+            <Button
+                android:id="@+id/btnFriendFood"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/location_custom_button"
+                android:fontFamily="@font/roboto"
+                android:text="Food"
+                android:textAllCaps="false"
+                android:textColor="@color/blue"
+                android:textSize="17sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvSelect" />
+
+            <Button
+                android:id="@+id/btnFriendFamily"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/location_custom_button"
+                android:fontFamily="@font/roboto"
+                android:text="Family"
+                android:textAllCaps="false"
+                android:textColor="@color/blue"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/btnFriendSelfCare"
+                app:layout_constraintTop_toBottomOf="@+id/tvSelect" />
+
+            <Button
+                android:id="@+id/btnFriendTravel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/location_custom_button"
+                android:fontFamily="@font/roboto"
+                android:text="Travel"
+                android:textAllCaps="false"
+                android:textColor="@color/blue"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="@+id/btnFriendSteppingStone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnFriendFood"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <Button
+                android:id="@+id/btnFriendActive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="21dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/location_custom_button"
+                android:fontFamily="@font/roboto"
+                android:text="Active"
+                android:textAllCaps="false"
+                android:textColor="@color/blue"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="@+id/btnFriendSteppingStone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.9"
+                app:layout_constraintStart_toEndOf="@+id/btnFriendSteppingStone"
+                app:layout_constraintTop_toBottomOf="@+id/btnFriendFamily"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <Button
+                android:id="@+id/btnFriendSteppingStone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/location_custom_button"
+                android:fontFamily="@font/roboto"
+                android:text="Milestone"
+                android:textAllCaps="false"
+                android:textColor="@color/blue"
+                android:textSize="17sp"
+                app:layout_constraintStart_toEndOf="@+id/btnFriendTravel"
+                app:layout_constraintTop_toBottomOf="@+id/btnFriendSelfCare" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvFriendCategoryMemories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:padding="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/tvNumPosts"
+                tools:layout_editor_absoluteX="8dp" />
+
+            <TextView
+                android:id="@+id/tvSelect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:fontFamily="@font/roboto_medium"
+                android:text="Which memories would you like to view?"
+                android:textColor="#000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+            <TextView
+                android:id="@+id/tvNumPosts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/roboto_medium"
+                android:textColor="#000000"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnFriendSteppingStone" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</LinearLayout>

@@ -7,6 +7,7 @@ import com.memrecap.models.MarkerPoint;
 import com.memrecap.models.MemRequest;
 import com.memrecap.models.Memory;
 import com.memrecap.models.PendingRequests;
+import com.memrecap.models.SharedMarker;
 import com.parse.Parse;
 import com.parse.ParseObject;
 
@@ -22,6 +23,7 @@ public class ParseApplication extends Application {
         ParseObject.registerSubclass(MemRequest.class);
         ParseObject.registerSubclass(PendingRequests.class);
         ParseObject.registerSubclass(Friends.class);
+        ParseObject.registerSubclass(SharedMarker.class);
 
         // Referring to Heroku App Setting Strings
         Parse.initialize(new Parse.Configuration.Builder(this)

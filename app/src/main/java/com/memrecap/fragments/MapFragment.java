@@ -57,7 +57,10 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 import com.memrecap.activities.SettingsActivity;
+import com.memrecap.models.Friends;
 import com.memrecap.models.MarkerPoint;
+import com.memrecap.models.SharedMarker;
+import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -66,7 +69,9 @@ import com.parse.SaveCallback;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import permissions.dispatcher.NeedsPermission;
@@ -80,9 +85,11 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
     public static final String TAG = "MapFragment";
 
     private static final String MARKERS_ARRAY = "markers";
+    private static final String SHARED_MARKERS_ARRAY = "sharedMarkers";
     private final static String KEY_LOCATION = "location";
     private static final String PASS_LAT = "markerClickedLat";
     private static final String PASS_LONG = "markerClickedLong";
+    private static final String MARKER_TYPE = "markerType";
     /*
      * Define a request code to send to Google Play services This code is
      * returned in Activity.onActivityResult
@@ -96,7 +103,9 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
     private GoogleMap mGoogleMap;
     private Location mCurrentLocation;
     private SupportMapFragment mSupportMapFragment;
-    private Marker sendMarker;
+    private Marker sendPersonalMarker;
+    private Marker sendSharedMarker;
+    private JSONObject friendsMap;
 
     public MapFragment() {
     }
@@ -157,6 +166,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
         }
         try {
             loadUserMarkers();
+            loadSharedMarkers();
         } catch (ParseException | JSONException e) {
             e.printStackTrace();
         }
@@ -191,6 +201,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
                 Intent i = new Intent(getActivity(), ComposeActivity.class);
                 i.putExtra(PASS_LAT, String.valueOf(marker.getPosition().latitude));
                 i.putExtra(PASS_LONG, String.valueOf(marker.getPosition().longitude));
+                i.putExtra(MARKER_TYPE, String.valueOf(marker.getPosition().longitude));
                 startActivity(i);
             }
         });
@@ -206,6 +217,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
         exit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                alertDialog.dismiss();
             }
         });
         builder.setCancelable(true);
@@ -263,38 +275,60 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
                 inflate(R.layout.map_window_item, null);
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
         alertDialogBuilder.setView(messageView);
+        ((Button) messageView.findViewById(R.id.btnSharedMarker)).setText("Shared Marker");
+        ((Button) messageView.findViewById(R.id.btnPersonalMarker)).setText("Personal Marker");
+        ImageView ivExit = messageView.findViewById(R.id.ivExitMarkerWindow);
         final AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Save Location",
-                new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        BitmapDescriptor defaultMarker =
-                                BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE);
-                        String title = ((EditText) alertDialog.findViewById(R.id.etMemoryTitle)).
-                                getText().toString();
-                        // Creates and adds marker to the map
-                        Marker marker = mGoogleMap.addMarker(new MarkerOptions()
-                                .position(point)
-                                .title(title)
-                                .icon(defaultMarker));
-                        dropPinEffect(marker);
+        messageView.findViewById(R.id.btnSharedMarker).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BitmapDescriptor defaultMarker =
+                        BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE);
+                String title = ((EditText) alertDialog.findViewById(R.id.etMemoryTitle)).
+                        getText().toString();
+                // Creates and adds marker to the map
+                Marker marker = mGoogleMap.addMarker(new MarkerOptions()
+                        .position(point)
+                        .title(title)
+                        .icon(defaultMarker));
+                dropPinEffect(marker);
 
-                        // Saving to Parse Database
-                        saveParseMarker(marker, title);
-                    }
-                });
+                // Saving to Parse Database
+                saveSharedMarker(marker, title);
+                alertDialog.dismiss();
+            }
+        });
+        messageView.findViewById(R.id.btnPersonalMarker).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BitmapDescriptor defaultMarker =
+                        BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE);
+                String title = ((EditText) alertDialog.findViewById(R.id.etMemoryTitle)).
+                        getText().toString();
+                // Creates and adds marker to the map
+                Marker marker = mGoogleMap.addMarker(new MarkerOptions()
+                        .position(point)
+                        .title(title)
+                        .icon(defaultMarker));
+                dropPinEffect(marker);
 
-        alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
+                // Saving to Parse Database
+                savePersonalParseMarker(marker, title);
+                alertDialog.dismiss();
+            }
+        });
+        ivExit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.dismiss();
+            }
+        });
+        alertDialogBuilder.setCancelable(true);
         alertDialog.show();
     }
 
-    private void saveParseMarker(Marker marker, String title) {
-        sendMarker = marker;
+    private void savePersonalParseMarker(Marker marker, String title) {
+        sendPersonalMarker = marker;
         ParseUser user = ParseUser.getCurrentUser();
         MarkerPoint newMarker = new MarkerPoint();
         newMarker.setMarkerLat(Double.toString(marker.getPosition().latitude));
@@ -329,8 +363,52 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
             @Override
             public void run() {
                 Intent i = new Intent(getContext(), ComposeActivity.class);
-                i.putExtra(PASS_LAT, String.valueOf(sendMarker.getPosition().latitude));
-                i.putExtra(PASS_LONG, String.valueOf(sendMarker.getPosition().longitude));
+                i.putExtra(PASS_LAT, String.valueOf(sendPersonalMarker.getPosition().latitude));
+                i.putExtra(PASS_LONG, String.valueOf(sendPersonalMarker.getPosition().longitude));
+                startActivity(i);
+                getActivity().finish();
+            }
+        }, 2500);
+    }
+
+    private void saveSharedMarker(Marker marker, String title) {
+        sendSharedMarker = marker;
+        ParseUser user = ParseUser.getCurrentUser();
+        SharedMarker newMarker = new SharedMarker();
+        newMarker.setMarkerLat(Double.toString(marker.getPosition().latitude));
+        newMarker.setMarkerLong(Double.toString((marker.getPosition().longitude)));
+        newMarker.setMarkerCreator(user);
+        newMarker.setMarkerTitle(title);
+        newMarker.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Error while saving shared marker", e);
+                    Toast.makeText(getContext(), "error while saving shared marker!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+            }
+        });
+        user.add(SHARED_MARKERS_ARRAY, newMarker);
+        user.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Error while saving marker to user", e);
+                    Toast.makeText(getContext(), "error while saving marker to user!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+            }
+        });
+
+        // Sends user to create a memory post after drop pin animation is complete
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent i = new Intent(getContext(), ComposeActivity.class);
+                i.putExtra(PASS_LAT, String.valueOf(sendSharedMarker.getPosition().latitude));
+                i.putExtra(PASS_LONG, String.valueOf(sendSharedMarker.getPosition().longitude));
                 startActivity(i);
                 getActivity().finish();
             }
@@ -379,6 +457,38 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
                         .icon(defaultMarker));
             }
         }
+    }
+
+    private void loadSharedMarkers() throws ParseException, JSONException {
+        final ParseUser currUser = ParseUser.getCurrentUser();
+        ParseQuery<Friends> query = ParseQuery.getQuery(Friends.class);
+        query.include(Friends.KEY_USER);
+        query.whereEqualTo(Friends.KEY_USER, currUser);
+        query.findInBackground(new FindCallback<Friends>() {
+            @Override
+            public void done(List<Friends> friends, ParseException e) {
+                Friends currFriendModel = friends.get(0);
+                friendsMap = currFriendModel.getFriendsMap();
+                ParseQuery<SharedMarker> query = ParseQuery.getQuery(SharedMarker.class);
+                query.findInBackground(new FindCallback<SharedMarker>() {
+                    @Override
+                    public void done(List<SharedMarker> sMarkers, ParseException e) {
+                        for (int i = 0; i < sMarkers.size(); i++) {
+                            SharedMarker curr = sMarkers.get(i);
+                            if (friendsMap.has(curr.getMarkerCreator().getObjectId()) || currUser.getObjectId().equals(curr.getMarkerCreator().getObjectId())) {
+                                BitmapDescriptor defaultMarker =
+                                        BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE);
+                                LatLng point = new LatLng(new Double(curr.getMarkerLat()), new Double(curr.getMarkerLong()));
+                                mGoogleMap.addMarker(new MarkerOptions()
+                                        .position(point)
+                                        .title(curr.getMarkerTitle())
+                                        .icon(defaultMarker));
+                            }
+                        }
+                    }
+                });
+            }
+        });
     }
 
     private boolean isGooglePlayServicesAvailable() {

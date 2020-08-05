@@ -23,6 +23,8 @@ import android.widget.Toast;
 import com.memrecap.models.MarkerPoint;
 import com.memrecap.models.Memory;
 import com.memrecap.R;
+import com.memrecap.models.SharedMarker;
+import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseQuery;
@@ -33,15 +35,18 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.io.File;
+import java.util.List;
 
 public class ComposeImageMemoryActivity extends AppCompatActivity {
 
-    public static final String TAG = "ComposeImageMemoryActivity";
+    public static final String TAG = "ComposeImageMemoryAct";
 
     public static final String PASS_LAT = "markerClickedLat";
     public static final String PASS_LONG = "markerClickedLong";
     public static final String MARKERS_ARRAY = "markers";
     public static final String OBJECT_ID = "objectId";
+    public static final String PERSONAL_MARKER_TYPE = "personalMarker";
+    public static final String SHARED_MARKER_TYPE = "sharedMarker";
 
     public static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 42;
     public static final String SELF_CARE = "selfCare";
@@ -50,7 +55,6 @@ public class ComposeImageMemoryActivity extends AppCompatActivity {
     public static final String STEPPING_STONE = "steppingStone";
     public static final String ACTIVE = "active";
     public static final String TRAVEL = "travel";
-
 
     private File photoFile;
     private EditText etDescription;
@@ -65,6 +69,8 @@ public class ComposeImageMemoryActivity extends AppCompatActivity {
     private Button btnImageSteppingStone;
     private Button btnImageActive;
     private MarkerPoint marker;
+    private SharedMarker sharedMarker;
+    private String type;
 
     private String setCategory;
     public String photoFileName = "photo.jpg";
@@ -97,7 +103,7 @@ public class ComposeImageMemoryActivity extends AppCompatActivity {
         final String markerLong = myIntent.getStringExtra(PASS_LONG);
 
         try {
-            marker = getMarkerForPost(markerLat, markerLong);
+            getMarkerForPost(markerLat, markerLong);
         } catch (JSONException e) {
             e.printStackTrace();
         } catch (ParseException e) {
@@ -124,23 +130,46 @@ public class ComposeImageMemoryActivity extends AppCompatActivity {
                 }
                 ParseUser currentUser = ParseUser.getCurrentUser();
 
-                savePost(description, currentUser, photoFile, setCategory, marker);
+                if (type.equals(PERSONAL_MARKER_TYPE)) {
+                    savePost(description, currentUser, photoFile, setCategory, marker);
+                }
+                if (type.equals(SHARED_MARKER_TYPE)) {
+                    saveSharedPost(description, currentUser, photoFile, setCategory, sharedMarker);
+                }
             }
         });
     }
 
-    private MarkerPoint getMarkerForPost(String markerLat, String markerLong) throws JSONException, ParseException {
+    private void getMarkerForPost(String markerLat, final String markerLong) throws JSONException, ParseException {
         JSONArray userMarkers = ParseUser.getCurrentUser().getJSONArray(MARKERS_ARRAY);
-        MarkerPoint correspondingMarker = null;
-        for (int i = 0; i < userMarkers.length(); i++) {
-            String marker = userMarkers.getJSONObject(i).getString(OBJECT_ID);
-            ParseQuery<MarkerPoint> query = ParseQuery.getQuery(MarkerPoint.class);
-            MarkerPoint currMarker = query.get(marker);
-            if (currMarker.getMarkerLat().equals(markerLat) && currMarker.getMarkerLong().equals(markerLong)) {
-                correspondingMarker = currMarker;
+        if (userMarkers != null) {
+            for (int i = 0; i < userMarkers.length(); i++) {
+                String markerId = userMarkers.getJSONObject(i).getString(OBJECT_ID);
+                ParseQuery<MarkerPoint> query = ParseQuery.getQuery(MarkerPoint.class);
+                MarkerPoint currMarker = query.get(markerId);
+                if (currMarker.getMarkerLat().equals(markerLat) && currMarker.getMarkerLong().equals(markerLong)) {
+                    marker = currMarker;
+                }
             }
         }
-        return correspondingMarker;
+        if (marker == null) {
+            ParseQuery<SharedMarker> query = ParseQuery.getQuery(SharedMarker.class);
+            query.include(SharedMarker.KEY_MARKER_LAT);
+            query.whereEqualTo(SharedMarker.KEY_MARKER_LAT, markerLat);
+            query.findInBackground(new FindCallback<SharedMarker>() {
+                @Override
+                public void done(List<SharedMarker> sharedMarkers, ParseException e) {
+                    for (int i = 0; i < sharedMarkers.size(); i++) {
+                        if (sharedMarkers.get(i).getMarkerLong().equals(markerLong)) {
+                            sharedMarker = sharedMarkers.get(i);
+                        }
+                    }
+                }
+            });
+            type = SHARED_MARKER_TYPE;
+        } else {
+            type = PERSONAL_MARKER_TYPE;
+        }
     }
 
     private String getCategory() {
@@ -257,6 +286,32 @@ public class ComposeImageMemoryActivity extends AppCompatActivity {
         memory.setCategory(category);
         memory.setMemoryTitle(markerPoint.getMarkerTitle());
         memory.setMarker(markerPoint);
+        memory.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e != null) {
+                    Log.e(TAG, "Error while saving", e);
+                    Toast.makeText(getApplicationContext(), "error while saving!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                etDescription.setText("");
+                ivPostImage.setImageResource(0);
+
+                Intent i = new Intent(ComposeImageMemoryActivity.this, MainActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
+    }
+
+    private void saveSharedPost(String description, ParseUser currentUser, File photoFile, String category, SharedMarker currSharedMarker) {
+        Memory memory = new Memory();
+        memory.setDescription(description);
+        memory.setImage(new ParseFile(photoFile));
+        memory.setUser(currentUser);
+        memory.setCategory(category);
+        memory.setMemoryTitle(currSharedMarker.getMarkerTitle());
+        memory.setSharedMarker(currSharedMarker);
         memory.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {

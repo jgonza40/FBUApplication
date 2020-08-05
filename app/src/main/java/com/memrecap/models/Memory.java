@@ -19,6 +19,7 @@ public class Memory extends ParseObject {
     public static final String KEY_CATEGORY = "category";
     public static final String KEY_CREATED_AT = "createdAt";
     public static final String KEY_MARKER = "marker";
+    public static final String KEY_SHARED_MARKER = "sharedMarker";
     public static final String KEY_DONE = "done";
 
     public String getDescription() {
@@ -50,6 +51,10 @@ public class Memory extends ParseObject {
     public void setMarker(MarkerPoint marker) {
         put(KEY_MARKER, marker);
     }
+
+    public String getKeySharedMarkerId() { return getParseObject(KEY_SHARED_MARKER).getObjectId(); }
+
+    public void setSharedMarker(SharedMarker sharedMarker) { put(KEY_SHARED_MARKER, sharedMarker); }
 
     public String getQuote() {
         return getString(KEY_QUOTE);

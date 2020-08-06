@@ -76,7 +76,8 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
 
     protected MemoryAdapter adapter;
 
-    public ProfileFragment() {}
+    public ProfileFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -268,17 +269,17 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    private void setTvNumPosts(List<Memory> currentMemories, String currMem){
-        if(currentMemories.size() == 0){
+    private void setTvNumPosts(List<Memory> currentMemories, String currMem) {
+        if (currentMemories.size() == 0) {
             tvNumPosts.setText("You do not have " + currMem + " memories :(");
-        } else if(currentMemories.size() == 1){
-            tvNumPosts.setText("You have 1 "+ currMem + " memory!");
+        } else if (currentMemories.size() == 1) {
+            tvNumPosts.setText("You have 1 " + currMem + " memory!");
         } else {
             tvNumPosts.setText("You have " + currentMemories.size() + currMem + "memories!");
         }
     }
 
-    private void setNumFriends(){
+    private void setNumFriends() {
         ParseUser curr = ParseUser.getCurrentUser();
         ParseQuery<Friends> query = ParseQuery.getQuery(Friends.class);
         query.include(Friends.KEY_USER);
@@ -288,9 +289,14 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
             public void done(List<Friends> friends, ParseException e) {
                 Friends currFriendModel = friends.get(0);
                 JSONObject friendsList = currFriendModel.getFriendsMap();
-                int numFriends = friendsList.length();
-                String sourceString = "<b>" + "Friends:" + "</b> " + Integer.toString(numFriends);
-                tvNumFriends.setText(Html.fromHtml(sourceString));
+                if (friendsList == null) {
+                    String sourceString = "<b>" + "Friends:" + "</b> " + "0";
+                    tvNumFriends.setText(Html.fromHtml(sourceString));
+                } else {
+                    int numFriends = friendsList.length();
+                    String sourceString = "<b>" + "Friends:" + "</b> " + Integer.toString(numFriends);
+                    tvNumFriends.setText(Html.fromHtml(sourceString));
+                }
             }
         });
     }

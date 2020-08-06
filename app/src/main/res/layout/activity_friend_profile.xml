@@ -27,24 +27,24 @@
                 android:id="@+id/ivExitFriend"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:onClick="exitToPrev"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_exit_blue" />
+                app:srcCompat="@drawable/ic_ex" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
-                android:layout_width="395dp"
-                android:layout_height="117dp"
-                android:layout_marginTop="8dp
-"
+                android:layout_width="396dp"
+                android:layout_height="131dp"
+                android:layout_marginTop="8dp"
                 app:cardBackgroundColor="#FFFFFF"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ivExitFriend">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="400dp"
-                    android:layout_height="115dp">
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
                     <ImageView
                         android:id="@+id/ivFriendImage"
@@ -64,7 +64,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:fontFamily="@font/roboto_medium"
-                        android:text="jgonza40"
                         android:textColor="#000000"
                         android:textSize="24sp"
                         app:layout_constraintStart_toEndOf="@+id/ivFriendImage"
@@ -76,7 +75,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:fontFamily="@font/roboto_medium"
-                        android:text="Friends: 2"
                         android:textColor="#000000"
                         app:layout_constraintStart_toStartOf="@+id/tvFriendUsername"
                         app:layout_constraintTop_toBottomOf="@+id/tvFriendUsername" />
@@ -85,17 +83,34 @@
                         android:id="@+id/btnFriendRecap"
                         android:layout_width="100dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
+                        android:layout_marginTop="8dp"
                         android:background="@drawable/profile_recap_button"
                         android:fontFamily="@font/roboto_medium"
                         android:text="Recap"
                         android:textAllCaps="false"
                         android:textColor="@color/blue"
-                        android:textSize="20sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/ivFriendImage"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="@+id/btnViewMap"
+                        app:layout_constraintStart_toStartOf="@+id/btnViewMap"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <Button
+                        android:id="@+id/btnViewMap"
+                        android:layout_width="120dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="8dp"
+                        android:background="@drawable/profile_recap_button"
+                        android:fontFamily="@font/roboto_medium"
+                        android:text="View Markers"
+                        android:textAllCaps="false"
+                        android:textColor="@color/blue"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/ivFriendImage"
-                        app:layout_constraintVertical_bias="0.444" />
+                        app:layout_constraintTop_toBottomOf="@+id/btnFriendRecap"
+                        app:layout_constraintVertical_bias="0.153" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -232,6 +247,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btnFriendSteppingStone" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </LinearLayout>

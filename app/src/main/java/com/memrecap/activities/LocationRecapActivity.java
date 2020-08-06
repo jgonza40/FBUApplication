@@ -143,8 +143,10 @@ public class LocationRecapActivity extends AppCompatActivity {
                     return;
                 }
                 for (Memory memory : memories) {
-                    if (memory.getKeyMarkerId().equals(markerPoint.getObjectId())) {
-                        listMemories.add(memory);
+                    if (memory.getKeyMarker() != null) {
+                        if (memory.getKeyMarkerId().equals(markerPoint.getObjectId())) {
+                            listMemories.add(memory);
+                        }
                     }
                 }
                 adapter.notifyDataSetChanged();

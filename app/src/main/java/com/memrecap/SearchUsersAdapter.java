@@ -41,7 +41,7 @@ public class SearchUsersAdapter extends RecyclerView.Adapter<SearchUsersAdapter.
     private static final String USER_PROFILE_PIC = "profilePicture";
     private static final String USER_FRIENDS = "friends";
     private static final String OBJECT_ID = "objectId";
-    private static final String FRIEND_ID = "friendID";
+    private static final String FRIEND_ID = "friendId";
     private static final String PENDING_REQUESTS = "pendingRequests";
     private static final String PENDING_REQUESTS_MAP = "pendingRequestsMap";
     private static final String FRIENDS_MAP = "friendsMap";

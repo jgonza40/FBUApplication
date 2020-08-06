@@ -43,11 +43,74 @@
             app:srcCompat="@drawable/ic_settings" />
     </androidx.appcompat.widget.Toolbar>
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:map="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/map_container"
-        class="com.google.android.gms.maps.SupportMapFragment"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        map:uiZoomControls="true" />
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="160dp"
+            android:layout_height="70dp"
+            android:layout_margin="8dp"
+            app:cardBackgroundColor="@color/creme"
+            app:cardCornerRadius="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/orangeCard"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_margin="8dp"
+                    android:layout_marginTop="9dp"
+                    app:cardBackgroundColor="#FF9D3A"
+                    app:cardCornerRadius="5dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="9dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Personal Markers"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toEndOf="@id/orangeCard"
+                    app:layout_constraintTop_toTopOf="@id/orangeCard" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/azureCard"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_margin="8dp"
+                    android:layout_marginBottom="9dp"
+                    app:cardBackgroundColor="#3A9DFF"
+                    app:cardCornerRadius="5dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/orangeCard" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="9dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Shared Markers"
+                    android:textColor="#000000"
+                    app:layout_constraintStart_toEndOf="@id/azureCard"
+                    app:layout_constraintTop_toTopOf="@id/azureCard" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:map="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/map_container"
+            class="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            map:uiZoomControls="true" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

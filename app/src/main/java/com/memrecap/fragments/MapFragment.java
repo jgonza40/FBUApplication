@@ -56,6 +56,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
+import com.memrecap.activities.LocationSharedRecapActivity;
 import com.memrecap.activities.SettingsActivity;
 import com.memrecap.models.Friends;
 import com.memrecap.models.MarkerPoint;
@@ -208,10 +209,29 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
         messageView.findViewById(R.id.btnView).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getActivity(), LocationRecapActivity.class);
-                i.putExtra(PASS_LAT, String.valueOf(marker.getPosition().latitude));
-                i.putExtra(PASS_LONG, String.valueOf(marker.getPosition().longitude));
-                startActivity(i);
+                ParseQuery<SharedMarker> query = ParseQuery.getQuery(SharedMarker.class);
+                query.include(SharedMarker.KEY_MARKER_LAT);
+                query.whereEqualTo(SharedMarker.KEY_MARKER_LAT, String.valueOf(marker.getPosition().latitude));
+                query.findInBackground(new FindCallback<SharedMarker>() {
+                    @Override
+                    public void done(List<SharedMarker> sharedMarkers, ParseException e) {
+                        if (sharedMarkers.size() != 0) {
+                            for (int i = 0; i < sharedMarkers.size(); i++) {
+                                if (sharedMarkers.get(i).getMarkerLong().equals(String.valueOf(marker.getPosition().longitude))) {
+                                    Intent intent = new Intent(getActivity(), LocationSharedRecapActivity.class);
+                                    intent.putExtra(PASS_LAT, String.valueOf(marker.getPosition().latitude));
+                                    intent.putExtra(PASS_LONG, String.valueOf(marker.getPosition().longitude));
+                                    startActivity(intent);
+                                }
+                            }
+                        } else {
+                            Intent i = new Intent(getActivity(), LocationRecapActivity.class);
+                            i.putExtra(PASS_LAT, String.valueOf(marker.getPosition().latitude));
+                            i.putExtra(PASS_LONG, String.valueOf(marker.getPosition().longitude));
+                            startActivity(i);
+                        }
+                    }
+                });
             }
         });
         exit.setOnClickListener(new View.OnClickListener() {
@@ -475,7 +495,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
                     public void done(List<SharedMarker> sMarkers, ParseException e) {
                         for (int i = 0; i < sMarkers.size(); i++) {
                             SharedMarker curr = sMarkers.get(i);
-                            if (friendsMap.has(curr.getMarkerCreator().getObjectId()) || currUser.getObjectId().equals(curr.getMarkerCreator().getObjectId())) {
+                            if (currUser.getObjectId().equals(curr.getMarkerCreator().getObjectId())) {
                                 BitmapDescriptor defaultMarker =
                                         BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE);
                                 LatLng point = new LatLng(new Double(curr.getMarkerLat()), new Double(curr.getMarkerLong()));
@@ -483,6 +503,18 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
                                         .position(point)
                                         .title(curr.getMarkerTitle())
                                         .icon(defaultMarker));
+                            } else {
+                                if (friendsMap != null) {
+                                    if (friendsMap.has(curr.getMarkerCreator().getObjectId())) {
+                                        BitmapDescriptor defaultMarker =
+                                                BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE);
+                                        LatLng point = new LatLng(new Double(curr.getMarkerLat()), new Double(curr.getMarkerLong()));
+                                        mGoogleMap.addMarker(new MarkerOptions()
+                                                .position(point)
+                                                .title(curr.getMarkerTitle())
+                                                .icon(defaultMarker));
+                                    }
+                                }
                             }
                         }
                     }

@@ -45,10 +45,6 @@ public class ProfileRecapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile_recap);
 
         listMemories = new ArrayList<Memory>();
-
-        for (int i = 0; i < NUM_OF_CATEGORIES; i++) {
-
-        }
         foodMemories = new ArrayList<Memory>();
         selfCareMemories = new ArrayList<Memory>();
         familyMemories = new ArrayList<Memory>();

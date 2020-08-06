@@ -84,7 +84,6 @@ public class SettingsActivity extends AppCompatActivity {
         query.findInBackground(new FindCallback<PendingRequests>() {
             @Override
             public void done(List<PendingRequests> requests, ParseException e) {
-                int numRequests = 0;
                 if (e != null) {
                     Toast.makeText(getApplicationContext(), "Query Not Successful", Toast.LENGTH_LONG).show();
                 } else {
@@ -100,7 +99,6 @@ public class SettingsActivity extends AppCompatActivity {
                                 MemRequest currMemRequest = query.get(memRequestId);
                                 if (currMemRequest.getStatus().equals(StaticVariables.STATUS_PENDING)) {
                                     allPendingRequests.add(currMemRequest);
-                                    numRequests++;
                                 }
                             } catch (ParseException ex) {
                                 ex.printStackTrace();
@@ -108,6 +106,8 @@ public class SettingsActivity extends AppCompatActivity {
                         }
                         adapter.notifyDataSetChanged();
                         setTitle();
+                    } else {
+                        tvPendingRequests.setText("You do not have pending friend requests");
                     }
                 }
             }

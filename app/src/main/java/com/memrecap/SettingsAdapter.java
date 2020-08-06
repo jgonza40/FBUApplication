@@ -40,7 +40,7 @@ public class SettingsAdapter extends RecyclerView.Adapter<SettingsAdapter.Settin
     private static final String FRIENDS = "friends";
     private static final String FRIENDS_MAP = "friendsMap";
     private static final String VIEW_PROFILE = "View Profile";
-    private static final String FRIEND_ID = "friendID";
+    private static final String FRIEND_ID = "friendId";
     private static final String OBJECT_ID = "objectId";
 
     private Context context;

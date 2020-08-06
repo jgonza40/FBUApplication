@@ -24,14 +24,13 @@ import com.parse.ParseFile;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 
-import org.json.JSONArray;
-import org.json.JSONException;
+import org.json.JSONObject;
 import org.parceler.Parcels;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
@@ -275,11 +274,11 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         query.findInBackground(new FindCallback<Friends>() {
             @Override
             public void done(List<Friends> objects, com.parse.ParseException e) {
-                if (objects.get(0).getFriends() == null) {
+                if (objects.get(0).getFriendsMap() == null) {
                     selfAndFriends.add(currUser.getObjectId());
                 } else {
                     selfAndFriends.add(currUser.getObjectId());
-                    selfAndFriends.addAll(addFriends(objects, currUser));
+                    selfAndFriends.addAll(addFriends(objects.get(0), currUser));
                 }
                 setMemories(list, selfAndFriends);
                 notifyDataSetChanged();
@@ -298,17 +297,14 @@ public class MemoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         }
     }
 
-    public List<String> addFriends(List<Friends> objects, ParseUser currUser) {
+    private List<String> addFriends(Friends friendModel, final ParseUser user) {
         List<String> friends = new ArrayList<>();
-        for (int i = 0; i < objects.size(); i++) {
-            JSONArray friendsArray = objects.get(i).getFriends();
-            for (int friend = 0; friend < friendsArray.length(); friend++) {
-                try {
-                    friends.add(friendsArray.getJSONObject(friend).getString(OBJECT_ID));
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
+        JSONObject friendMap = friendModel.getFriendsMap();
+        Iterator<String> iterator = friendMap.keys();
+        while (iterator.hasNext()) {
+            String currKey = iterator.next();
+            String friendId = friendMap.optString(currKey);
+            friends.add(friendId);
         }
         return friends;
     }

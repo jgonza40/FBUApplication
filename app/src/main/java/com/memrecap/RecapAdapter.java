@@ -101,7 +101,7 @@ public class RecapAdapter extends ArrayAdapter<Memory> {
         }
 
         tvCategoryTitle = view.findViewById(R.id.tvCategoryTitle);
-        String categoryTitle = "Swipe to view " + "<b>" + getCategoryTitle(memory.getCategory()) + "</b> " + " memories you have created!";
+        String categoryTitle = "Swipe to view " + "<b>" + getCategoryTitle(memory.getCategory()) + "</b> " + " memories!";
         tvCategoryTitle.setText(Html.fromHtml(categoryTitle));
 
         return view;

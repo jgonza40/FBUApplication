@@ -48,6 +48,8 @@ public class Memory extends ParseObject {
 
     public String getKeyMarkerId() { return getParseObject(KEY_MARKER).getObjectId(); }
 
+    public ParseObject getKeyMarker() { return getParseObject(KEY_MARKER); }
+
     public void setMarker(MarkerPoint marker) {
         put(KEY_MARKER, marker);
     }

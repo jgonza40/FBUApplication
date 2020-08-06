@@ -3,7 +3,9 @@ package com.memrecap;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.text.Html;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.core.content.res.ResourcesCompat;
 
 import com.bumptech.glide.Glide;
 import com.memrecap.activities.ImageMemoryDetailsActivity;
@@ -27,7 +31,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
-
 
 public class RecapAdapter extends ArrayAdapter<Memory> {
 
@@ -67,6 +70,8 @@ public class RecapAdapter extends ArrayAdapter<Memory> {
     private Button btnDone;
     private TextView tvImageDate;
     private TextView tvQuoteCreatedAt;
+    private ImageView ivImagePinPoint;
+    private ImageView ivQuotePinPoint;
 
     private String type;
     private Context context;
@@ -101,8 +106,9 @@ public class RecapAdapter extends ArrayAdapter<Memory> {
         }
 
         tvCategoryTitle = view.findViewById(R.id.tvCategoryTitle);
-        String categoryTitle = "Swipe to view " + "<b>" + getCategoryTitle(memory.getCategory()) + "</b> " + " memories!";
-        tvCategoryTitle.setText(Html.fromHtml(categoryTitle));
+        String categoryTitleHtml = "<b>" + getCategoryTitle(memory.getCategory()) + "</b> ";
+        Spanned categoryTitle = Html.fromHtml(categoryTitleHtml);
+        tvCategoryTitle.setText("swipe to view " + categoryTitle + " memories!");
 
         return view;
     }
@@ -133,11 +139,22 @@ public class RecapAdapter extends ArrayAdapter<Memory> {
         tvLocation = view.findViewById(R.id.tvLocation);
         ivLocationImg = view.findViewById(R.id.ivLocationImg);
         tvImageDate = view.findViewById(R.id.tvImageDate);
+        ivImagePinPoint = view.findViewById(R.id.ivImagePinPoint);
 
         tvLocation.setText(memory.getMemoryTitle());
+        Typeface typefaceLocation = ResourcesCompat.getFont(context, R.font.roboto_medium);
+        tvLocation.setTypeface(typefaceLocation);
+
         String rawJsonDate = memory.getCreatedAt().toString();
         String[] parts = rawJsonDate.split(" ");
         tvImageDate.setText(parts[2] + " " + parts[1] + " " + parts[5]);
+        Typeface typefaceDate = ResourcesCompat.getFont(context, R.font.roboto_condensed_regular);
+        tvImageDate.setTypeface(typefaceDate);
+
+        Glide.with(getContext())
+                .load(context.getResources().getDrawable(R.drawable.ic_pinpoint))
+                .into(ivImagePinPoint);
+
         ParseFile image = memory.getImage();
         if (image != null) {
             Glide.with(getContext())
@@ -155,12 +172,27 @@ public class RecapAdapter extends ArrayAdapter<Memory> {
         tvLocationQuote = view.findViewById(R.id.tvLocationQuote);
         tvLocationName = view.findViewById(R.id.tvLocationName);
         tvQuoteCreatedAt = view.findViewById(R.id.tvQuoteCreatedAt);
+        ivQuotePinPoint = view.findViewById(R.id.ivQuotePinPoint);
 
-        tvLocationQuote.setText(" \" " + memory.getQuote() + " \" ");
+        tvLocationQuote.setText(" \"" + memory.getQuote() + "\" ");
+        Typeface typefaceQuote = ResourcesCompat.getFont(context, R.font.roboto_medium);
+        tvLocationQuote.setTypeface(typefaceQuote);
+        tvLocationQuote.setTypeface(tvLocationQuote.getTypeface(), Typeface.ITALIC);
+
         tvLocationName.setText(memory.getMemoryTitle());
+        Typeface typeface = ResourcesCompat.getFont(context, R.font.roboto_medium);
+        tvLocationName.setTypeface(typeface);
+
+
         String rawJsonDate = memory.getCreatedAt().toString();
         String[] parts = rawJsonDate.split(" ");
         tvQuoteCreatedAt.setText(parts[2] + " " + parts[1] + " " + parts[5]);
+        Typeface typefaceDate = ResourcesCompat.getFont(context, R.font.roboto_condensed_regular);
+        tvQuoteCreatedAt.setTypeface(typefaceDate);
+
+        Glide.with(getContext())
+                .load(context.getResources().getDrawable(R.drawable.ic_location))
+                .into(ivQuotePinPoint);
 
         return view;
     }
@@ -174,11 +206,13 @@ public class RecapAdapter extends ArrayAdapter<Memory> {
         btnHome = view.findViewById(R.id.btnHome);
 
         tvContinueTitle.setText("swipe to view " + memory.getMemoryTitle() + " memories!");
+        Typeface typeface = ResourcesCompat.getFont(context, R.font.roboto_medium);
+        tvContinueTitle.setTypeface(typeface);
+
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), MainActivity.class);
-                getContext().startActivity(intent);
+                ((Activity) context).finish();
             }
         });
         return view;
@@ -199,6 +233,9 @@ public class RecapAdapter extends ArrayAdapter<Memory> {
         }
 
         tvDoneTitle.setText("MemRecap Complete!");
+        Typeface typeface = ResourcesCompat.getFont(context, R.font.roboto_bold);
+        tvDoneTitle.setTypeface(typeface);
+
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

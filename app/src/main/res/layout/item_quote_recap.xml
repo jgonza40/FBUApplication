@@ -62,7 +62,7 @@
                 android:fontFamily="@font/roboto_medium"
                 android:textAlignment="viewEnd"
                 android:textColor="#000000"
-                android:textSize="24sp"
+                android:textSize="22sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 tools:text="hello" />
@@ -76,7 +76,7 @@
                 android:fontFamily="@font/roboto_condensed_regular"
                 android:text="Sept. 12, 2000"
                 android:textColor="#000000"
-                android:textSize="22sp"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -51,6 +51,7 @@ public class LocationRecapActivity extends AppCompatActivity {
         final String markerLat = myIntent.getStringExtra(PASS_LAT);
         final String markerLong = myIntent.getStringExtra(PASS_LONG);
         MarkerPoint currMarker = null;
+
         try {
             currMarker = getMarkerForPost(markerLat, markerLong);
         } catch (JSONException e) {

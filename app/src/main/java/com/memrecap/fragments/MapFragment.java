@@ -18,6 +18,7 @@ import android.view.animation.BounceInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Handler;
 
@@ -161,6 +162,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mGoogleMap = googleMap;
+        mGoogleMap.setInfoWindowAdapter(new CustomWindowAdapter(getLayoutInflater()));
         if (ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
@@ -306,10 +308,12 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
                         BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE);
                 String title = ((EditText) alertDialog.findViewById(R.id.etMemoryTitle)).
                         getText().toString();
+                String snippet = ParseUser.getCurrentUser().getUsername();
                 // Creates and adds marker to the map
                 Marker marker = mGoogleMap.addMarker(new MarkerOptions()
                         .position(point)
                         .title(title)
+                        .snippet(snippet)
                         .icon(defaultMarker));
                 dropPinEffect(marker);
 
@@ -325,10 +329,12 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
                         BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE);
                 String title = ((EditText) alertDialog.findViewById(R.id.etMemoryTitle)).
                         getText().toString();
+                String snippet = ParseUser.getCurrentUser().getUsername();
                 // Creates and adds marker to the map
                 Marker marker = mGoogleMap.addMarker(new MarkerOptions()
                         .position(point)
                         .title(title)
+                        .snippet(snippet)
                         .icon(defaultMarker));
                 dropPinEffect(marker);
 
@@ -471,8 +477,15 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
                 BitmapDescriptor defaultMarker =
                         BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE);
                 LatLng point = new LatLng(new Double(currMarker.getMarkerLat()), new Double(currMarker.getMarkerLong()));
+                String friendName = "null";
+                try {
+                    friendName = currMarker.getMarkerUser().fetchIfNeeded().getUsername();
+                } catch (ParseException ex) {
+                    ex.printStackTrace();
+                }
                 mGoogleMap.addMarker(new MarkerOptions()
                         .position(point)
+                        .snippet(friendName)
                         .title(currMarker.getMarkerTitle())
                         .icon(defaultMarker));
             }
@@ -499,8 +512,15 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
                                 BitmapDescriptor defaultMarker =
                                         BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE);
                                 LatLng point = new LatLng(new Double(curr.getMarkerLat()), new Double(curr.getMarkerLong()));
+                                String name = "null";
+                                try {
+                                    name = curr.getMarkerCreator().fetchIfNeeded().getUsername();
+                                } catch (ParseException ex) {
+                                    ex.printStackTrace();
+                                }
                                 mGoogleMap.addMarker(new MarkerOptions()
                                         .position(point)
+                                        .snippet(name)
                                         .title(curr.getMarkerTitle())
                                         .icon(defaultMarker));
                             } else {
@@ -509,8 +529,15 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
                                         BitmapDescriptor defaultMarker =
                                                 BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE);
                                         LatLng point = new LatLng(new Double(curr.getMarkerLat()), new Double(curr.getMarkerLong()));
+                                        String friendName = "null";
+                                        try {
+                                            friendName = curr.getMarkerCreator().fetchIfNeeded().getUsername();
+                                        } catch (ParseException ex) {
+                                            ex.printStackTrace();
+                                        }
                                         mGoogleMap.addMarker(new MarkerOptions()
                                                 .position(point)
+                                                .snippet(friendName)
                                                 .title(curr.getMarkerTitle())
                                                 .icon(defaultMarker));
                                     }
@@ -571,6 +598,36 @@ public class MapFragment extends Fragment implements GoogleMap.OnMapLongClickLis
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             return mDialog;
+        }
+    }
+
+    private class CustomWindowAdapter implements GoogleMap.InfoWindowAdapter {
+        LayoutInflater mInflater;
+
+        public CustomWindowAdapter(LayoutInflater i) {
+            mInflater = i;
+        }
+
+        // This defines the contents within the info window based on the marker
+        @Override
+        public View getInfoContents(Marker marker) {
+            // Getting view from the layout file
+            View v = mInflater.inflate(R.layout.custom_info_window, null);
+            // Populate fields
+            TextView title = (TextView) v.findViewById(R.id.tv_info_window_title);
+            title.setText(marker.getTitle());
+
+            TextView description = (TextView) v.findViewById(R.id.tv_info_window_description);
+            description.setText(marker.getSnippet());
+            // Return info window contents
+            return v;
+        }
+
+        // This changes the frame of the info window; returning null uses the default frame.
+        // This is just the border and arrow surrounding the contents specified above
+        @Override
+        public View getInfoWindow(Marker marker) {
+            return null;
         }
     }
 }

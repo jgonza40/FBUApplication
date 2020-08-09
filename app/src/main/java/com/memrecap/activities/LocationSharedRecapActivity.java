@@ -79,7 +79,6 @@ public class LocationSharedRecapActivity extends AppCompatActivity {
                             SharedMarker currMarker = objects.get(i);
                             unvisitedMarkers = new HashMap<String, Double>();
                             setUserMarkersMap(currMarker);
-                            unvisitedMarkers.remove(currMarker.getObjectId());
 
                             listMemories = new ArrayList<Memory>();
                             getLocationPosts(currMarker);
@@ -154,8 +153,6 @@ public class LocationSharedRecapActivity extends AppCompatActivity {
 
     private void getLocationPosts(final SharedMarker sharedMarker) {
         ParseQuery<Memory> query = ParseQuery.getQuery(Memory.class);
-        query.include(Memory.KEY_USER);
-        query.whereEqualTo(Memory.KEY_USER, ParseUser.getCurrentUser());
         query.addDescendingOrder(Memory.KEY_CREATED_AT);
         query.setLimit(MAX_POSTS);
         query.findInBackground(new FindCallback<Memory>() {
@@ -205,6 +202,7 @@ public class LocationSharedRecapActivity extends AppCompatActivity {
                                 }
                             }
                         }
+                        unvisitedMarkers.remove(currSharedMarker.getObjectId());
                         setUnvisited(unvisitedMarkers);
                     }
                 });
@@ -213,7 +211,7 @@ public class LocationSharedRecapActivity extends AppCompatActivity {
     }
 
     private void setUnvisited(Map<String, Double> map) {
-        unvisitedMarkers = unvisitedMarkers;
+        unvisitedMarkers = map;
     }
 
     private void updateMarkersMap(SharedMarker currMarker) {

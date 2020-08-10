@@ -24,7 +24,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="imagePath" value="/private/var/folders/3z/nh139d010xbdd7zklclj5x7c0000gn/T/baseline_clear_24.xml" />
+                                                <entry key="imagePath" value="/private/var/folders/3z/nh139d010xbdd7zklclj5x7c0000gn/T/baseline_person_24.xml" />
                                                 <entry key="opacityPercent" value="80" />
                                               </map>
                                             </option>
@@ -36,7 +36,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/private/var/folders/3z/nh139d010xbdd7zklclj5x7c0000gn/T/AppTranslocation/E4804F3E-42FE-4B22-BEA1-2AAE6D9C88AF/d/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material/icons/materialicons/clear/baseline_clear_24.xml" />
+                                                <entry key="url" value="jar:file:/private/var/folders/3z/nh139d010xbdd7zklclj5x7c0000gn/T/AppTranslocation/E4804F3E-42FE-4B22-BEA1-2AAE6D9C88AF/d/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material/icons/materialicons/person/baseline_person_24.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -82,7 +82,7 @@
                                   <option name="values">
                                     <map>
                                       <entry key="imageAsset" value="$PROJECT_DIR$/../MemRecapImages/location_icon.png" />
-                                      <entry key="outputName" value="ic_exit_blue" />
+                                      <entry key="outputName" value="ic_person_blue" />
                                       <entry key="theme" value="CUSTOM" />
                                       <entry key="themeColor" value="325d79" />
                                     </map>

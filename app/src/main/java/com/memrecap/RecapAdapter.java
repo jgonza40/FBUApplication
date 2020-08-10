@@ -227,9 +227,9 @@ public class RecapAdapter extends ArrayAdapter<Memory> {
         btnDone = view.findViewById(R.id.btnDone);
 
         if (type.equals(LOCATION)) {
-            btnDone.setText("Go Map");
+            btnDone.setText("Go To Map");
         } else {
-            btnDone.setText("Go Profile");
+            btnDone.setText("Go To Profile");
         }
 
         tvDoneTitle.setText("MemRecap Complete!");

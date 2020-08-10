@@ -34,12 +34,6 @@ public class LoginActivity extends AppCompatActivity {
 
         constraintLayout = findViewById(R.id.constraintLayout);
 
-        // This deals with the Login screen animation (changing colors)
-        AnimationDrawable animationDrawable = (AnimationDrawable) constraintLayout.getBackground();
-        animationDrawable.setEnterFadeDuration(1000);
-        animationDrawable.setExitFadeDuration(2000);
-        animationDrawable.start();
-
         // Makes sure that current user remains during app restarts
         if (ParseUser.getCurrentUser() != null) {
             goMainActivity();

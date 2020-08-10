@@ -275,7 +275,7 @@ public class ProfileFragment extends Fragment implements View.OnClickListener {
         } else if (currentMemories.size() == 1) {
             tvNumPosts.setText("You have 1 " + currMem + " memory!");
         } else {
-            tvNumPosts.setText("You have " + currentMemories.size() + currMem + "memories!");
+            tvNumPosts.setText("You have " + currentMemories.size() + " " + currMem + " memories!");
         }
     }
 

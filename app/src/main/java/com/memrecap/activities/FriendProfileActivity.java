@@ -296,7 +296,7 @@ public class FriendProfileActivity extends AppCompatActivity implements View.OnC
         } else if (currentMemories.size() == 1) {
             tvNumPosts.setText("They have 1 " + currMem + " memory!");
         } else {
-            tvNumPosts.setText("They have " + currentMemories.size() + currMem + "memories!");
+            tvNumPosts.setText("They have " + currentMemories.size() + " " + currMem + " memories!");
         }
     }
 
